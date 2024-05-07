@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import AccordionPreview from "@/components/AccordionPreview";
 import ButtonsPreview from "@/components/ButtonsPreview";
@@ -6,12 +6,6 @@ import SwitchPreview from "@/components/SwitchPreview";
 import { MainButton, useShowPopup } from "@zakarliuka/react-telegram-web-tools";
 
 export default function Home() {
-  const showPopup = useShowPopup()
-  const popupOnClick = () => {
-    showPopup({
-      message: "no"
-    })
-  }
   return (
     <main className="w-full flex flex-col gap-y-16 p-6 items-center mx-auto bg-[#F2F2F7]">
       <section className="flex flex-col gap-y-6 w-full">
@@ -54,7 +48,6 @@ export default function Home() {
         <SwitchPreview />
         <AccordionPreview />
         <ButtonsPreview />
-        <MainButton text="Click to get some free money" color="#0098EA" textColor="#FFFFFF" onClick={popupOnClick} />
       </section>
     </main>
   );
