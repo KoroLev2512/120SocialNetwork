@@ -3,7 +3,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-  } from "@/components/ui/accordion";
+  } from "@/src/app/components/ui/accordion";
   
   export default function AccordionPreview() {
     const accordionItems = [

@@ -4,7 +4,7 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon, MinusIcon, PlusIcon } from "@radix-ui/react-icons";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/src/app/lib/utils";
 
 const Accordion = AccordionPrimitive.Root;
 
