@@ -36,15 +36,15 @@ export function AccordionPreview() {
       >
         {accordionItems.map((i, index) => {
           return (
-            <>
-              <AccordionItem key={index} value={i.value}>
+            <div key={index}>
+              <AccordionItem value={i.value}>
                 <AccordionTrigger>{i.title}</AccordionTrigger>
                 <AccordionContent>{i.content}</AccordionContent>
               </AccordionItem>
               {index < accordionItems.length - 1 && (
                 <div className="mx-[18px] h-[0.5px] bg-[#C8C7CB]" />
               )}
-            </>
+            </div>
           );
         })}
       </Accordion>
