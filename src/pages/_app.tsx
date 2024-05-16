@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/src/app/styles/globals.css";
-import { TelegramWebApp } from "@/src/app/providers/TelegramWebApp";
+import "@/app/styles/globals.css";
+import { TelegramWebApp } from "@/app/providers/TelegramWebApp";
 import { Component } from "react";
 import {AppProps} from "next/app";
 

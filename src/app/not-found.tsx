@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/shared/ui/button";
+import "@/app/styles/globals.css";
 
 export default function NotFound() {
     return (

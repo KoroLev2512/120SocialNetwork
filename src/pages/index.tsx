@@ -1,8 +1,8 @@
 "use client"
 
-import { AccordionPreview } from "@/src/widgets/AccordionPreview";
-import { ButtonsPreview } from "@/src/widgets/ButtonsPreview";
-import { SwitchPreview } from "@/src/widgets/SwitchPreview";
+import { AccordionPreview } from "@/widgets/AccordionPreview";
+import { ButtonsPreview } from "@/widgets/ButtonsPreview";
+import { SwitchPreview } from "@/widgets/SwitchPreview";
 import { MainButton, useShowPopup } from "@zakarliuka/react-telegram-web-tools";
 
 export default function Home() {

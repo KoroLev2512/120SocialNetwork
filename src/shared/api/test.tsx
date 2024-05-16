@@ -1,4 +1,4 @@
-import PostCard from "@/src/entities/post/postCard/ui/postCard";
+import PostCard from "@/entities/post/postCard/ui/postCard";
 import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
