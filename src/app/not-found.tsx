@@ -6,11 +6,11 @@ export default function NotFound() {
     return (
         <div className="global">
             <section className="flex flex-col items-start gap-y-4">
-                <Button className="w-full">
-                    <Link href="/">
+                <Link href="/">
+                    <Button className="w-full">
                         Return Home
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </section>
         </div>
 );
