@@ -1,6 +1,6 @@
-import { Switch } from "./ui/switch";
+import { Switch } from "@/src/shared/ui/switch";
 
-export default function SwitchPreview() {
+export function SwitchPreview() {
   return (
     <section className="flex flex-col items-start gap-y-4">
       <h1 className="text-title">Switch</h1>

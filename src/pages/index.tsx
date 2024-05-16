@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/src/app/styles/globals.css";
-import { TelegramWebApp } from "@/src/app/provides/TelegramWebApp";
+import { TelegramWebApp } from "@/src/app/providers/TelegramWebApp";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 function HomePage({
-                      children,
-                  }: Readonly<{
+    children,
+}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <div className={inter.className}>
+        <div className={`${inter.className} antialiased`}>
             <TelegramWebApp>
                 {children}
             </TelegramWebApp>
