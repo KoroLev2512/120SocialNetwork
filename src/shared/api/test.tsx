@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 const API_URL = "https://rickandmortyapi.com/api/character";
 
 export default function TestFunction() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<datafromAPI[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const observer = useRef<IntersectionObserver | null>(null);
@@ -24,7 +24,7 @@ export default function TestFunction() {
         fetchData();
     }, [fetchData]);
 
-    const lastElementRef = useCallback(node => {
+    const lastElementRef = useCallback((node: HTMLDivElement | null) => {
         if (loading) return;
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
@@ -35,16 +35,25 @@ export default function TestFunction() {
         if (node) observer.current.observe(node);
     }, [loading]);
 
+    type datafromAPI = {
+        id: number,
+        name: string,
+        image: string,
+        origin: {
+            name: string,
+        }
+    }
+
     return (
         <>
-            {data.map((i, index) => (
+            {data.map(({ id, name, image, origin }: datafromAPI) => (
                 <PostCard
-                    key={i.id}
-                    user={i.name}
-                    usersAvatar={i.image}
+                    key={id}
+                    user={name}
+                    usersAvatar={image}
                     postsAwardInBP={5341}
-                    postsDescription={i.origin.name}
-                    postsImage={i.image}
+                    postsDescription={origin.name}
+                    postsImage={image}
                 />
             ))}
             <div ref={lastElementRef} />
