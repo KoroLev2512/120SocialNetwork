@@ -1,6 +1,6 @@
 import { ExternalLinkIcon, PlusIcon } from "@radix-ui/react-icons";
-import { Button } from "@/src/shared/ui/button";
-import IconTon from "@/src/shared/assets/icons/IconTon";
+import { Button } from "@/shared/ui/button";
+import IconTon from "@/shared/assets/icons/IconTon";
 
 export function ButtonsPreview() {
   return (

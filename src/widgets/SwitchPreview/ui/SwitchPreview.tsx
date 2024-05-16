@@ -1,4 +1,4 @@
-import { Switch } from "@/src/shared/ui/switch";
+import { Switch } from "@/shared/ui/switch";
 
 export function SwitchPreview() {
   return (
