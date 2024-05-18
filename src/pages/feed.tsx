@@ -1,5 +1,5 @@
-import TestFunction from "../shared/api/test";
-import { Button } from "../shared/ui/button";
+import TestFunction from "@/shared/api/test";
+import { Button } from "@/shared/ui/button";
 
 export default function Feed() {
     return (
