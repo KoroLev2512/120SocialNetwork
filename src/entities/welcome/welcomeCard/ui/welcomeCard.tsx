@@ -1,11 +1,8 @@
 import Image from "next/image";
 
 type welcomeCardProps = {
-    user: string,
-    usersAvatar?: string,
-    postsDescription: string,
-    postsImage: string,
-    postsAwardInBP: number,
+    // postsDescription: string,
+    // postsAwardInBP: number,
 }
 
 const WelcomeCard = ({ }: welcomeCardProps) => {
