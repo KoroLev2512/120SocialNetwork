@@ -1,4 +1,3 @@
-import Image from "next/image"
 
 type postCardProps = {
     user: string,
