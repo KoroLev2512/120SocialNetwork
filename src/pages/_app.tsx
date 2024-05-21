@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
+import { AppProps } from "next/app";
+
 import { TelegramWebApp } from "@/app/providers/TelegramWebApp";
-import { Component } from "react";
-import {AppProps} from "next/app";
 
 const inter = Inter({ subsets: ["latin"] });
 
