@@ -1,8 +1,10 @@
 import { Button } from "@/shared/ui/button";
 import { Carousel, CarouselContent, CarouselItem } from "@/shared/ui/carousel";
+import Language from "@/app/lib/icons/Language";
 
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export default function WelcomePage() {
   return (
@@ -39,9 +41,15 @@ const WelcomeCard = () => {
   ];
 
   return (
-    <div className="flex w-full flex-col">
-      <Language />
-      <Carousel className="rounded-b-[14px] bg-white">
+    <div className="flex w-full flex-col bg-white rounded-[14px]">
+        <div className="inline-flex w-full items-center justify-between px-[40px] py-[14px]">
+            <p className="text-secondarybody text-black">Choose language</p>
+            <div className="inline-flex items-center gap-x-2 text-black/40">
+                <p className="text-secondarybody">English</p>
+                <Language />
+            </div>
+        </div>
+      <Carousel className="rounded-b-[14px]">
         <CarouselContent>
           {slides.map((i, index) => {
             return (
@@ -67,28 +75,6 @@ const WelcomeCard = () => {
           })}
         </CarouselContent>
       </Carousel>
-    </div>
-  );
-};
-
-// в будущем преобразуем в реальную кнопку
-const Language = () => {
-  return (
-    <div className="inline-flex w-full items-center justify-between rounded-t-[14px] bg-white px-[40px] py-[14px]">
-      <p className="text-secondarybody text-black">Choose language</p>
-      <div className="inline-flex items-center gap-x-2 text-black/40">
-        <p className="text-secondarybody">English</p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="size-4"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path stroke="currentColor" stroke-width="2" d="m9 4 8 8-8 8" />
-        </svg>
-      </div>
     </div>
   );
 };
