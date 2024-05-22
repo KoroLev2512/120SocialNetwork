@@ -1,105 +1,256 @@
 openapi: 3.0.0
 info:
-  title: Social Media API
+  title: 120 Social Media API
   version: 1.0.0
   description: API for managing a social media application database
-servers:
-  - url: 'https://api.yourdomain.com/v1'
 paths:
-  /users:
+# ------------------User-------------------------
+  /api/user/add:
     post:
-      summary: Create a new user
-      operationId: createUser
+      tags:
+        - User
+      description: |
+        Add user
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: "#/components/schemas/UserAddAtts"
       responses:
-        '201':
-          description: User created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid input provided
-  /users/{userId}:
+        "200":
+          description: User added
+        "400":
+          description: User not added
+  /api/user/get/{user_id}:
     get:
-      summary: Get a user by ID
-      operationId: getUserById
+      tags:
+        - User
+      description: |
+        Get user
       parameters:
-        - name: userId
+        - description: User ID
           in: path
+          name: user_id
           required: true
           schema:
             type: integer
-            format: int64
+            format: id
+          example: "12"
       responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-  /posts:
+        "200":
+          description: User data
+        "400":
+          description: Error
+  /api/user/update:
     post:
-      summary: Create a new post
-      operationId: createPost
+      tags:
+        - User
+      description: |
+        Update user
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Post'
+              $ref: "#/components/schemas/UserUpdate"
       responses:
-        '201':
-          description: Post created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Post'
-        '400':
-          description: Invalid input provided
+        "200":
+          description: User updated
+        "400":
+          description: User not updated
+  /api/user/delete/{user_id}:
+    delete:
+      tags:
+        - User
+      description: |
+        Delete user by ID
+      parameters:
+        - description: User ID
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            format: id
+          example: "12"
+      responses:
+        "200":
+          description: User deleted
+        "400":
+          description: User not deleted
+
+  # ------------------Post-------------------------
+  /api/post/add:
+    post:
+      tags:
+        - Post
+      description: |
+        Add post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostAddAtts"
+      responses:
+        "200":
+          description: Post added
+        "400":
+          description: v not added
+  /api/post/get/{post_id}:
+    get:
+      tags:
+        - Post
+      description: |
+        Get post
+      parameters:
+        - description: Post ID
+          in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+            format: id
+          example: "12"
+      responses:
+        "200":
+          description: Post data
+        "400":
+          description: Error
+  /api/post/get_all:
+    get:
+      tags:
+        - Post
+      description: |
+        Get all posts
+
+      responses:
+        "200":
+          description: Post data
+        "400":
+          description: Error
+  /api/post/update:
+    post:
+      tags:
+        - Post
+      description: |
+        Update post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostUpdate"
+      responses:
+        "200":
+          description: Post updated
+        "400":
+          description: Post not updated
+  /api/post/delete/{post_id}:
+    delete:
+      tags:
+        - Post
+      description: |
+        Delete post
+      parameters:
+        - description: Post ID
+          in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+            format: id
+          example: "12"
+      responses:
+        "200":
+          description: Post deleted
+        "400":
+          description: Post not deleted
 
 components:
   schemas:
-    User:
+# -------------user_schemas-----------
+    UserAddAtts:
       type: object
       required:
+        - user_id
+        - user_telegram_id
         - username
+        - user_first_name
+        - user_second_name
+        - wallet
+        - photo
+        - language
+        - time_registration
       properties:
-        id:
+        user_id:
           type: integer
-          format: int64
-          readOnly: true
-        telegram_id:
-          type: integer
-          format: int64
+        user_telegram_id:
+           type: integer
         username:
           type: string
-        wallet:
+        user_first_name:
           type: string
-        profile_photo:
+        user_second_name:
+          type: string
+        wallet:
+          type: integer
+        photo:
+          type: string
+        language:
           type: string
         time_registration:
           type: string
           format: date-time
-    Post:
+      example:
+        user_id: 120
+        user_telegram_id: 333333
+        username: Nik
+        user_first_name: Ivan
+        user_second_name: Ivanov
+        wallet: 2024
+        photo: https://yandex-disk/4288423
+        language: russian
+        time_registration: 20.05.2024
+
+    UserUpdate:
       type: object
-      required:
-        - user_id
       properties:
-        id:
-          type: integer
-          format: int64
-          readOnly: true
+        user_data_to_update:
+          type: object
+          items:
+            $ref: "#/components/schemas/UserAddAtts"
         user_id:
           type: integer
-          format: int64
+          example: 12
+      example:
+        user_data_to_update:
+          user_id: 120
+          user_telegram_id: 333333
+          username: Nik
+          user_first_name: Ivan
+          user_second_name: Ivanov
+          wallet: 2024
+          photo: https://yandex-disk/4288423
+          language: russian
+          time_registration: 20.05.2024 20:05
+        user_id: 12
+
+# -------------post_schemas-----------
+    PostAddAtts:
+      type: object
+      required:
+        - post_id
+        - user_id
+        - control_id
+        - balance_sheet_id
+        - tag_id
+        - link
+        - time_creation
+        - description
+        - image
+      properties:
+        post_id:
+          type: integer
+        user_id:
+          type: integer
         control_id:
           type: boolean
         balance_sheet_id:
@@ -109,6 +260,37 @@ components:
         link:
           type: string
         time_creation:
-          type: string
+          type: integer
           format: date-time
-
+        image:
+          type: string
+      example:
+        post_id: 1332
+        user_id: 120
+        control_id: true
+        balance_sheet_id: 0
+        tag_id: 3456
+        link: https://vk.com/lololoshka
+        time_registration: 20.05.2024 20:05
+        image: /images/lol/lal.jpeg
+    PostUpdate:
+      type: object
+      properties:
+        post_data_to_update:
+          type: object
+          items:
+            $ref: "#/components/schemas/UserAddAtts"
+        post_id:
+          type: integer
+          example: 52
+      example:
+        post_data_to_update:
+          post_id: 1332
+          user_id: 120
+          control_id: true
+          balance_sheet_id: 0
+          tag_id: 3456
+          link: https://vk.com/lololoshka
+          time_registration: 20.05.2024 20:05
+          image: /images/lol/lal.jpeg
+        post_id: 52
