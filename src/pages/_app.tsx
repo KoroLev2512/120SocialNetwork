@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
 import { AppProps } from "next/app";
+import { NavigationBar } from "@/widgets/NavigationBar";
 
 import { TelegramWebApp } from "@/app/providers/TelegramWebApp";
 
@@ -17,6 +18,7 @@ function HomePage({ Component, pageProps }: AppProps) {
         <div className={`${inter.className} antialiased`}>
             <TelegramWebApp>
                 <Component {...pageProps} />
+                <NavigationBar/>
             </TelegramWebApp>
         </div>
     );
