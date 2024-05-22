@@ -6,9 +6,6 @@ import React from "react";
 export default function WelcomePage() {
   return (
     <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-[#F7F9FB] px-8 pt-12">
-      <div className="absolute left-0 top-0 flex flex-col text-black/20">
-
-      </div>
       <div className="flex flex-col items-center">
         <h1 className="text-largetitle font-medium">Hello there</h1>
         <h1 className="text-title font-normal">Let's get started!</h1>
