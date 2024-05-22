@@ -18,7 +18,6 @@ function HomePage({ Component, pageProps }: AppProps) {
         <div className={`${inter.className} antialiased`}>
             <TelegramWebApp>
                 <Component {...pageProps} />
-                <NavigationBar/>
             </TelegramWebApp>
         </div>
     );

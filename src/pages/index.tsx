@@ -7,7 +7,7 @@ export default function WelcomePage() {
   return (
     <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-[#F7F9FB] px-8 pt-12">
       <div className="absolute left-0 top-0 flex flex-col text-black/20">
-        <Link href={"/profile"}>profile</Link>
+
       </div>
       <div className="flex flex-col items-center">
         <h1 className="text-largetitle font-medium">Hello there</h1>
@@ -18,7 +18,11 @@ export default function WelcomePage() {
         talented people, find new paths for self-realization and earning!
       </p>
       <WelcomeCard />
-      <Button className="w-full max-w-[284px]">Continue</Button>
+      <Button className="w-full max-w-[284px]">
+          <Link href={"/profile"}>
+                Continue
+          </Link>
+      </Button>
     </main>
   );
 };
