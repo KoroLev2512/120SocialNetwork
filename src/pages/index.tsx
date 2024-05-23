@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui/button";
-import WelcomeCard from "@/entities/welcome/welcomeCard/ui/welcomeCard"
+import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard"
 import Link from "next/link";
 import React from "react";
 
