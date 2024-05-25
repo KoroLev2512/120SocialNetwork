@@ -1,9 +1,10 @@
 import SQLiteUtils
 from flask import Flask, request, jsonify
 from flask_restplus import Api, Resource, fields
-app = Flask("120BlockApp")
 
-db = SQLiteUtils.Database('your_database.db')
+app = Flask(__name__)
+
+db = SQLiteUtils.Database('userdata.db')
 
 @app.route('/user', methods=['POST'])
 def add_user():

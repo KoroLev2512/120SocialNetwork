@@ -2,7 +2,7 @@ import SQLiteUtils
 from flask import Flask, request, jsonify
 
 app = Flask("120BlockApp")
-db = SQLiteUtils.Database('your_database.db')
+db = SQLiteUtils.Database('userdata.db')
 
 @app.route('/user', methods=['POST'])
 def add_user():
