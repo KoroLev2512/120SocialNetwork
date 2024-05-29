@@ -1,10 +1,9 @@
 import { Button } from "@/shared/ui/button";
-import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard"
+import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
 import Link from "next/link";
-import React from "react";
 
-export default function WelcomePage() {
-  return (
+const WelcomePage: React.FC<{}> = () => {
+  return(
     <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-[#F7F9FB] px-8 pt-12">
       <div className="flex flex-col items-center">
         <h1 className="text-largetitle font-medium">Hello there</h1>
@@ -15,11 +14,11 @@ export default function WelcomePage() {
         talented people, find new paths for self-realization and earning!
       </p>
       <WelcomeCard />
-      <Button className="w-full max-w-[284px]">
-          <Link href={"/profile"}>
-                Continue
-          </Link>
-      </Button>
+      <Link className="max-w-[284px] w-full" href={"/feed"}>
+        <Button className="w-full">Continue</Button>
+      </Link>
     </main>
-  );
-};
+  )
+}
+
+export default WelcomePage;

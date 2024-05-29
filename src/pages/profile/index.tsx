@@ -2,7 +2,7 @@ import { cn } from "@/app/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 interface ProfilePageTempProps {
   username: string;
@@ -45,58 +45,54 @@ const props: ProfilePageTempProps = {
   ],
 };
 
-export default function ProfilePage() {
+export default function Profile() {
   return (
-      <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-[#F7F9FB]">
-        <div className="absolute left-0 top-0 flex flex-col text-black/20">
-          <Link href={"/feed"}>
-            feed
-          </Link>
-        </div>
-        <section
-            className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px]">
-          <div className="inline-flex items-center gap-x-4">
-            <Avatar className="size-[74px]">
-              <AvatarImage alt={`@${props.username}`} src={props.avatar}/>
-              <AvatarFallback>TS</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <p className="text-secondarybody font-semibold">
-                @{props.username}
-              </p>
-              <p className="text-secondarybody font-medium text-black/60">
-                8 posts
-              </p>
-            </div>
+    <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-[#F7F9FB]">
+      <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px]">
+        <div className="inline-flex items-center gap-x-4">
+          <Avatar className="size-[74px]">
+            <AvatarImage alt={`@${props.username}`} src={props.avatar} />
+            <AvatarFallback>TS</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <p className="text-secondarybody font-semibold">
+              @{props.username}
+            </p>
+            <p className="text-secondarybody font-medium text-black/60">
+              8 posts
+            </p>
           </div>
+        </div>
+        <Link href="/profile/wallet">
           <div className="inline-flex items-center gap-x-1.5">
             <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
-              {props.currency} <IconBlock/>
+              {props.currency} <IconBlock />
             </p>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 text-black/40"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-4 text-black/40"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
             >
-              <path stroke="currentColor" stroke-width="2" d="m9 4 8 8-8 8"/>
+              <path stroke="currentColor" stroke-width="2" d="m9 4 8 8-8 8" />
             </svg>
           </div>
-        </section>
-        <Posts/>
-      </main>
+        </Link>
+      </section>
+      <Posts />
+    </main>
   );
 }
 
 const Posts = () => {
   return (
-      <>
-        {props.posts ? (
-            <section className="grid w-full grid-cols-3">
-              {Object.values(props.posts).map((i, index) => (
-                  <PostCard key={index} image={i.image} reward={i.reward} />
+    <>
+      {props.posts ? (
+        <section className="grid w-full grid-cols-3">
+          {Object.values(props.posts).map((i, index) => (
+            <PostCard key={index} image={i.image} reward={i.reward} />
           ))}
         </section>
       ) : (
@@ -122,10 +118,10 @@ const PostCard = ({ image, reward }: PostCardTempProps) => {
     <div className="relative aspect-square">
       {reward ? (
         <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-1.5 py-0.5 text-secondarybody font-medium">
-          {reward} <IconBlock className="size-4" />
+          +{reward} <IconBlock className="size-4" />
         </div>
       ) : (
-        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-1.5 py-0.5 text-secondarybody font-medium">
+        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-2 py-0.5 text-secondarybody font-medium">
           Pending...
         </div>
       )}
