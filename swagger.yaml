@@ -166,7 +166,7 @@ paths:
 
 components:
   schemas:
-# -------------user_schemas-----------
+# --------------------user_schemas----------------------
     UserAddAtts:
       type: object
       required:
@@ -233,7 +233,7 @@ components:
           time_registration: 20.05.2024 20:05
         user_id: 12
 
-# -------------post_schemas-----------
+# --------------------post_schemas---------------------
     PostAddAtts:
       type: object
       required:
