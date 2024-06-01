@@ -1,1 +1,1 @@
-export { ButtonsPreview } from "./ui/ButtonsPreview"
+export { ButtonsPreview } from "./ui/ButtonsPreview";

@@ -4,7 +4,7 @@ import "@/app/styles/globals.css";
 import { AppProps } from "next/app";
 import { NavigationBar } from "@/widgets/NavigationBar";
 
-import { TelegramWebApp } from "@/app/providers";
+import { WebAppProvider } from "@/app/providers/WebAppProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 
 function HomePage({ Component, pageProps }: AppProps) {
   return (
+    <WebAppProvider>
       <div className={`${inter.className} antialiased max-w-[420px]`}>
-        <TelegramWebApp>
-            <Component {...pageProps} />
-            <NavigationBar />
-        </TelegramWebApp>
+        <Component {...pageProps} />
+        <NavigationBar />
       </div>
+    </WebAppProvider>
   );
 }
 

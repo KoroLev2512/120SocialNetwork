@@ -1,10 +1,17 @@
+"use client";
+
 import { Button } from "@/shared/ui/button";
 import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
 import Link from "next/link";
+import { useEffect } from "react";
 
-const WelcomePage: React.FC<{}> = () => {
-  return(
-    <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-[#F7F9FB] px-8 pt-12">
+const WelcomePage = () => {
+  useEffect(() => {
+    window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.setHeaderColor("#FFFFFF");
+  }, []);
+  return (
+    <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-[#F2F2F7] px-8 pt-12">
       <div className="flex flex-col items-center">
         <h1 className="text-largetitle font-medium">Hello there</h1>
         <h1 className="text-title font-normal">Let's get started!</h1>
@@ -18,7 +25,7 @@ const WelcomePage: React.FC<{}> = () => {
         <Button className="w-full">Continue</Button>
       </Link>
     </main>
-  )
-}
+  );
+};
 
 export default WelcomePage;

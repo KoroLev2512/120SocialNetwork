@@ -1,1 +1,1 @@
-export { AccordionPreview } from "./ui/AccordionPreview"
+export { AccordionPreview } from "./ui/AccordionPreview";
