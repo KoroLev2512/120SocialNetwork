@@ -47,7 +47,7 @@ const props: ProfilePageTempProps = {
 
 export default function Profile() {
   return (
-    <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-[#F7F9FB]">
+    <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-[#F2F2F7]">
       <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px]">
         <div className="inline-flex items-center gap-x-4">
           <Avatar className="size-[74px]">

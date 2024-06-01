@@ -1,3 +1,6 @@
+'use client'
+
+import Action from "@/shared/ui/action";
 import { Switch } from "@/shared/ui/switch";
 import { BackButton } from "@zakarliuka/react-telegram-web-tools";
 import Link from "next/link";
@@ -5,100 +8,31 @@ import { useRouter } from "next/router";
 import React from "react";
 import { ReactNode } from "react";
 
-// как этот компонент реализовать красиво
-
 export default function Settings() {
   const router = useRouter();
+  
   return (
     <main className="bg-[#F2F2F7] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
         <BackButton onClick={() => router.back()} />
         <h1 className="text-largetitle">Settings</h1>
         <SettingsGroup title="personal">
-            <Link href={"/settings/profile"} className="px-[18px] py-[9px] w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <div className="inline-flex items-center gap-x-2">
-                    <div className="size-[28px] rounded-full bg-black/40" />
-                    <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Edit Profile</p>
-                </div>
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_776_644)">
-                <path d="M1.68555 2.03857L7.16404 7.51706L1.68555 12.9956" stroke="#C8C7CB" stroke-width="2.1914" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_776_644">
-                <rect width="7.66988" height="13.1484" fill="white" transform="translate(0.589844 0.942871)"/>
-                </clipPath>
-                </defs>
-                </svg>
+            <Link href="/settings/profile">
+                <Action title="Edit Profile" leftElement={<div className="size-[28px] rounded-full bg-black/20" />} rightArrow />
             </Link>
         </SettingsGroup>
         <SettingsGroup title="customization">
-            <Link href={"/settings"} className="px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Change Language</p>
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_776_644)">
-                <path d="M1.68555 2.03857L7.16404 7.51706L1.68555 12.9956" stroke="#C8C7CB" stroke-width="2.1914" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_776_644">
-                <rect width="7.66988" height="13.1484" fill="white" transform="translate(0.589844 0.942871)"/>
-                </clipPath>
-                </defs>
-                </svg>
+            <Link href="/settings/language">
+                <Action title="Change Language" rightArrow />
             </Link>
-            <Link href={"/settings"} className="px-[18px] max-h-[67px] py-1.5 w-full justify-between items-center inline-flex *:select-none bg-white">
-                <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Dark Mode</p>
-                <Switch />
-            </Link>
+            <Action title="Dark Mode" rightElement={<Switch />} />
         </SettingsGroup>
         <SettingsGroup title="help & support">
-            <Link href={"/settings/faq"} className="px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">FAQ</p>
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_776_644)">
-                <path d="M1.68555 2.03857L7.16404 7.51706L1.68555 12.9956" stroke="#C8C7CB" stroke-width="2.1914" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_776_644">
-                <rect width="7.66988" height="13.1484" fill="white" transform="translate(0.589844 0.942871)"/>
-                </clipPath>
-                </defs>
-                </svg>
+            <Link href="/settings/faq">
+                <Action title="FAQ" rightArrow />
             </Link>
-            <Link href={"/settings"} className="px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Referrals</p>
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_776_644)">
-                <path d="M1.68555 2.03857L7.16404 7.51706L1.68555 12.9956" stroke="#C8C7CB" stroke-width="2.1914" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_776_644">
-                <rect width="7.66988" height="13.1484" fill="white" transform="translate(0.589844 0.942871)"/>
-                </clipPath>
-                </defs>
-                </svg>
-            </Link>
-            <Link href={"/settings"} className="px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Community Chat</p>
-                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_776_644)">
-                <path d="M1.68555 2.03857L7.16404 7.51706L1.68555 12.9956" stroke="#C8C7CB" stroke-width="2.1914" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_776_644">
-                <rect width="7.66988" height="13.1484" fill="white" transform="translate(0.589844 0.942871)"/>
-                </clipPath>
-                </defs>
-                </svg>
-            </Link>
-            <Link href={"/settings"} className="px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white">
-                <div className="inline-flex items-center gap-x-2">
-                    <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">Support</p>
-                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.57397 3.03613H4.64897C4.22897 3.03613 4.01897 3.03613 3.85847 3.11788C3.71736 3.18979 3.60263 3.30452 3.53072 3.44563C3.44897 3.60613 3.44897 3.81613 3.44897 4.23613V14.2111C3.44897 14.6311 3.44897 14.8411 3.53072 15.0016C3.60263 15.1427 3.71736 15.2575 3.85847 15.3294C4.01897 15.4111 4.22897 15.4111 4.64897 15.4111H14.624C15.044 15.4111 15.254 15.4111 15.4145 15.3294C15.5556 15.2575 15.6703 15.1427 15.7422 15.0016C15.824 14.8411 15.824 14.6311 15.824 14.2111V11.2861M10.949 3.03613H15.824M15.824 3.03613V7.91113M15.824 3.03613L8.88647 9.97363" stroke="#037EE5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M7.57397 3.03613H4.64897C4.22897 3.03613 4.01897 3.03613 3.85847 3.11788C3.71736 3.18979 3.60263 3.30452 3.53072 3.44563C3.44897 3.60613 3.44897 3.81613 3.44897 4.23613V14.2111C3.44897 14.6311 3.44897 14.8411 3.53072 15.0016C3.60263 15.1427 3.71736 15.2575 3.85847 15.3294C4.01897 15.4111 4.22897 15.4111 4.64897 15.4111H14.624C15.044 15.4111 15.254 15.4111 15.4145 15.3294C15.5556 15.2575 15.6703 15.1427 15.7422 15.0016C15.824 14.8411 15.824 14.6311 15.824 14.2111V11.2861M10.949 3.03613H15.824M15.824 3.03613V7.91113M15.824 3.03613L8.88647 9.97363" stroke="#037EE5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-            </Link>
+            <Action title="Referrals" rightArrow />
+            <Action title="Community Chat" rightArrow />
+            <Action title="Support" leftSecondaryElement={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5 text-[#037EE5]"><path fillRule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clipRule="evenodd" /><path fillRule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clipRule="evenodd" /></svg>} />
         </SettingsGroup>
     </main>
   );
