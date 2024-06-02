@@ -54,7 +54,7 @@ const config = {
       },
       colors: {
         TONColor: "#0098EA",
-        tg_theme_secondary_bg_color: "var(--tg-theme-secondary-bg-color)"
+        tg_theme_secondary_bg_color: "var(--tg-theme-secondary-bg-color)",
       },
       keyframes: {
         "accordion-down": {

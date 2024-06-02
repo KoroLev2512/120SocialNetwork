@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { ChevronDownIcon, MinusIcon, PlusIcon } from "@radix-ui/react-icons";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/solid";
 
 import { cn } from "@/app/lib/utils";
 
@@ -14,7 +14,10 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("px-[18px]", className)}
+    className={cn(
+      "px-[18px] active:bg-[#E5E5EA] transition-colors duration-100",
+      className,
+    )}
     {...props}
   />
 ));
@@ -28,7 +31,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-3 text-[18px] tracking-[-0.02em] text-black font-medium transition-all group",
+        "flex flex-1 items-center justify-between  py-3 text-[18px] tracking-[-0.02em] text-black font-medium group",
         className,
       )}
       {...props}
@@ -47,7 +50,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-secondarybody font-medium text-black/60 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="overflow-hidden  text-secondarybody font-medium text-black/60 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

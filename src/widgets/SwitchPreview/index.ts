@@ -1,1 +1,1 @@
-export { SwitchPreview } from "./ui/SwitchPreview"
+export { SwitchPreview } from "./ui/SwitchPreview";
