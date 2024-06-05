@@ -21,7 +21,6 @@ const Header = ({ title }: { title: string }) => {
 export default function Home() {
   return (
     <main className="w-full flex flex-col gap-y-16 p-6 items-center mx-auto bg-[#F2F2F7]">
-      <a href="/feed">feed page</a>
       <section className="flex flex-col gap-y-6 w-full">
         <Header title="Typography" />
         <div className="flex flex-col gap-y-9">

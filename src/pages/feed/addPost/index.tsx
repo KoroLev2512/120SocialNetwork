@@ -12,8 +12,15 @@ export default function WelcomePage() {
                     <AddIcon/>
                 </div>
             </div>
-            <div className="flex flex-col items-center w-full bg-white py-[24px] min-h-[350px] max-w-[430px]">
-                bdvdfs
+            <div className="flex flex-col items-left w-full bg-white my-[24px] px-[25px] min-h-[70px] max-w-[430px]">
+                <div className="text-[12px] text-[#8D8D8F] my-[14px]">
+                Description
+                </div>
+            </div>
+            <div className="flex flex-col items-left w-full bg-white my-[24px] px-[25px] min-h-[70px] max-w-[430px]">
+                <div className="text-[12px] text-[#8D8D8F] my-[14px]">
+                    URL to existing post
+                </div>
             </div>
         </main>
     );
