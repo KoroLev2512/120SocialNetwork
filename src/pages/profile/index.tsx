@@ -47,8 +47,8 @@ const props: ProfilePageTempProps = {
 
 export default function Profile() {
   return (
-    <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-[#F2F2F7]">
-      <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px]">
+    <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
+      <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white dark:bg-app_gray_dark-300 px-8 py-[14px]">
         <div className="inline-flex items-center gap-x-4">
           <Avatar className="size-[74px]">
             <AvatarImage alt={`@${props.username}`} src={props.avatar} />
@@ -58,7 +58,7 @@ export default function Profile() {
             <p className="text-secondarybody font-semibold">
               @{props.username}
             </p>
-            <p className="text-secondarybody font-medium text-black/60">
+            <p className="text-secondarybody font-medium text-app_gray_light-300">
               8 posts
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Profile() {
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-4 text-black/40"
+              className="size-4 text-app_gray_light-300"
               width="24"
               height="24"
               fill="none"
@@ -96,8 +96,8 @@ const Posts = () => {
           ))}
         </section>
       ) : (
-        <div className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-black/40">
-          <div className="size-20 rounded-[12px] border-[4px] border-black/40" />
+        <div className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
+          <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300" />
           <div className="flex flex-col items-center">
             <p className="text-body">No posts yet!</p>
             <p className="text-secondarybody">Setup your profile first</p>
@@ -117,11 +117,11 @@ const PostCard = ({ image, reward }: PostCardTempProps) => {
   return (
     <div className="relative aspect-square">
       {reward ? (
-        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-1.5 py-0.5 text-secondarybody font-medium">
+        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-1.5 py-0.5 text-secondarybody font-medium">
           +{reward} <IconBlock className="size-4" />
         </div>
       ) : (
-        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-2 py-0.5 text-secondarybody font-medium">
+        <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-2 py-0.5 text-secondarybody font-medium">
           Pending...
         </div>
       )}

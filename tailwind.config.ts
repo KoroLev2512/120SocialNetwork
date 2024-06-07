@@ -8,8 +8,24 @@ const config = {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+  darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        app_gray_light: {
+          100: "#F7F9FB",
+          200: "#D9D9D9",
+          300: "#8D8D8F"
+        },
+        app_gray_dark: {
+          100: "#292929",
+          200: "#1B1B1B",
+          300: "#111111"
+        },
+        app_ton: "#0098EA",
+        app_blue: "#007AFF", 
+        app_separator: "#C8C7CB"
+      },
       fontSize: {
         hugetitle: [
           "64px",
@@ -51,10 +67,6 @@ const config = {
             fontWeight: "400",
           },
         ],
-      },
-      colors: {
-        TONColor: "#0098EA",
-        tg_theme_secondary_bg_color: "var(--tg-theme-secondary-bg-color)",
       },
       keyframes: {
         "accordion-down": {

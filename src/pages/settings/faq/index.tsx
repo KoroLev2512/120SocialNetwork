@@ -34,7 +34,7 @@ export default function SettingsFAQ() {
   ];
 
   return (
-    <main className="bg-[#F2F2F7] max-w-[420px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+    <main className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[420px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
       <BackButton onClick={() => router.back()} />
       <h1 className="text-largetitle text-center">
         Frequently Asked Questions
@@ -42,17 +42,17 @@ export default function SettingsFAQ() {
       <Accordion
         type="single"
         collapsible
-        className="w-full rounded-[10px] overflow-hidden bg-white"
+        className="w-full rounded-[10px] overflow-hidden bg-white dark:bg-app_gray_dark-200"
       >
         {accordionItems.map((i, index) => {
           return (
             <div key={index}>
               <AccordionItem value={i.value}>
-                <AccordionTrigger>{i.title}</AccordionTrigger>
-                <AccordionContent>{i.content}</AccordionContent>
+                <AccordionTrigger className="text-black dark:text-white">{i.title}</AccordionTrigger>
+                <AccordionContent className="text-app_gray_light-300">{i.content}</AccordionContent>
               </AccordionItem>
               {index < accordionItems.length - 1 && (
-                <div className="ml-[18px] h-[0.5px] bg-[#C8C7CB]" />
+                <div className="ml-[18px] h-[0.5px] bg-app_gray_light-300/25 dark:bg-app_gray_light-300/25" />
               )}
             </div>
           );

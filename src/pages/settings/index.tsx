@@ -3,6 +3,7 @@
 import Action from "@/shared/ui/action";
 import { Switch } from "@/shared/ui/switch";
 import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -10,9 +11,19 @@ import { ReactNode } from "react";
 
 export default function Settings() {
   const router = useRouter();
+  const { setTheme } = useTheme()
+  const handleCheckedChange = (checked: boolean) => {
+    if (checked) {
+      window.Telegram.WebApp.setHeaderColor("#111111");
+      setTheme("dark")
+    } else {
+      window.Telegram.WebApp.setHeaderColor("#F7F9FB");
+      setTheme("light")
+    };
+  }
 
   return (
-    <main className="bg-[#F2F2F7] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+    <main className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
       <BackButton onClick={() => router.back()} />
       <h1 className="text-largetitle">Settings</h1>
       <SettingsGroup title="personal">
@@ -30,7 +41,7 @@ export default function Settings() {
         <Link href="/settings/language">
           <Action title="Change Language" rightArrow />
         </Link>
-        <Action title="Dark Mode" rightElement={<Switch />} />
+        <Action title="Dark Mode" rightElement={<Switch onCheckedChange={handleCheckedChange} />} />
       </SettingsGroup>
       <SettingsGroup title="help & support">
         <Link href="/settings/faq">
@@ -45,7 +56,7 @@ export default function Settings() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="size-5 text-[#037EE5]"
+              className="size-5 text-app_blue"
             >
               <path
                 fillRule="evenodd"
@@ -76,17 +87,17 @@ export const SettingsGroup = ({ children, title }: SettingsGroupProps) => {
     .flatMap((child, index) => [
       child,
       index < array.length - 1 && (
-        <div className="ml-[18px] h-[0.5px] bg-[#C8C7CB]" key={`${index}`} />
+        <div className="ml-[18px] h-[0.5px] bg-[#C8C7CB] dark:bg-app_gray_light-300/25" key={`${index}`} />
       ),
     ])
     .filter(Boolean);
 
   return (
     <div className="flex flex-col w-full">
-      <div className="py-1.5 uppercase pl-[18px] flex text-[13px] font-regular leading-[18px] tracking-[-0.08px] text-[#8E8E93]">
+      <div className="py-1.5 uppercase pl-[18px] flex text-[13px] font-regular leading-[18px] tracking-[-0.08px] text-app_gray_light-300">
         {title}
       </div>
-      <div className="flex flex-col bg-white rounded-[10px] overflow-hidden">
+      <div className="flex flex-col bg-white dark:bg-app_gray_dark-200 rounded-[10px] overflow-hidden">
         {arraywithseparators}
       </div>
     </div>

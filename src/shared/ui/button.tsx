@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-body text-white rounded-[12px] bg-TONColor active:bg-TONColor/80 duration-100",
+          "text-body text-white rounded-[12px] bg-app_ton active:bg-app_ton/80 duration-100",
         link: "text-secondarybody font-normal text-[#037EE5] active:text-[#037EE5]/80 gap-x-1.5 duration-100",
         underline:
           "text-secondarybody font-normal text-black/40 underline active:text-black/60 duration-100",
