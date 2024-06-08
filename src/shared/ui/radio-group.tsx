@@ -31,7 +31,7 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "overflow-hidden px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white",
+        "overflow-hidden px-[18px] py-3 w-full justify-between items-center inline-flex active:bg-[#E5E5EA] dark:active:bg-app_gray_dark-100 transition-colors duration-100 *:select-none bg-white dark:bg-app_gray_dark-200",
         className,
       )}
       {...props}
@@ -39,11 +39,10 @@ const RadioGroupItem = React.forwardRef<
       <div className="flex flex-col items-start -space-y-0.5">
         <p className="text-[18px] tracking-[-0.04em] font-normal">{title}</p>
         {secondaryTitle && (
-          <p className="text-[14px] tracking-[-0.04em] font-normal text-black/40">
+          <p className="text-[14px] tracking-[-0.04em] font-normal text-app_gray_light-300">
             {secondaryTitle}
           </p>
         )}
-        {secondaryTitle && <p className="text-[14px] tracking-[-0.04em] font-normal text-black/40">{secondaryTitle}</p>}
       </div>
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
         <CheckCircleIcon className="size-[28px] text-[#34C759]" />

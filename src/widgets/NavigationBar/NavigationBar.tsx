@@ -7,14 +7,14 @@ export const NavigationBar = () => {
   const router = useRouter();
 
   return router.pathname != "/" ? (
-    <nav className="w-full bg-white border-t border-black/15 py-2.5 px-[54px] justify-between inline-flex items-center sticky bottom-0 max-w-[420px] mx-auto max-h-screen">
+    <nav className="w-full bg-white border-t border-black/15 dark:bg-app_gray_dark-300 dark:border-app_gray_dark-100 py-2.5 px-[54px] justify-between inline-flex items-center sticky bottom-0 max-w-[420px] mx-auto max-h-screen">
       <Link
         href={"/profile"}
         className={cn(
           "flex flex-col items-center gap-y-1",
           router.pathname.startsWith("/profile")
             ? "text-[#007AFF]"
-            : "text-black/40",
+            : "text-app_gray_light-300",
         )}
       >
         {/* позже сделать чтобы иконка менялась в случае если у юзера есть аватарка */}
@@ -25,7 +25,7 @@ export const NavigationBar = () => {
         href={"/feed"}
         className={cn(
           "flex flex-col items-center gap-y-1",
-          router.pathname === "/feed" ? "text-[#007AFF]" : "text-black/40",
+          router.pathname === "/feed" ? "text-[#007AFF]" : "text-app_gray_light-300",
         )}
       >
         <CameraIcon className="size-8" />
@@ -37,7 +37,7 @@ export const NavigationBar = () => {
           "flex flex-col items-center gap-y-1",
           router.pathname.startsWith("/settings")
             ? "text-[#007AFF]"
-            : "text-black/40",
+            : "text-app_gray_light-300",
         )}
       >
         <CogIcon className="size-8" />

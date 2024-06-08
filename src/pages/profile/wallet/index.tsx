@@ -32,9 +32,9 @@ export default function ProfileWallet() {
     },
   ];
   return (
-    <main className="mx-auto flex h-screen w-full max-w-[420px] pt-6 px-10 flex-col items-center bg-[#F2F2F7]">
+    <main className="mx-auto flex h-screen w-full max-w-[420px] pt-6 px-10 flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
       <BackButton onClick={() => router.back()} />
-      <div className="px-4 mb-[18px] py-1.5 inline-flex gap-x-1 items-center rounded-full bg-TONColor">
+      <div className="px-4 mb-[18px] py-1.5 inline-flex gap-x-1 items-center rounded-full bg-app_ton">
         <p className="text-secondarybody font-semibold text-white">
           0xd75Evn534f...
         </p>
@@ -53,12 +53,12 @@ export default function ProfileWallet() {
       </div>
       <div className="flex flex-col items-center">
         <p className="text-hugetitle">139 Block</p>
-        <p className="text-secondarybody text-black/40">≈0,00178 TON</p>
+        <p className="text-secondarybody text-app_gray_light-300">≈0,00178 TON</p>
       </div>
       <Button className="text-body text-white py-4 w-full rounded-[16px] mt-[28px]">
         Connect Wallet To Withdraw
       </Button>
-      <div className="rounded-[10px] bg-white w-full flex flex-col gap-y-4 p-4 mt-6">
+      <div className="rounded-[10px] bg-white dark:bg-app_gray_dark-200 w-full flex flex-col gap-y-4 p-4 mt-6">
         {earnings.map((i, index) => {
           return (
             <>
@@ -75,13 +75,13 @@ export default function ProfileWallet() {
                   <p className="text-secondarybody font-semibold">
                     +{i.earned} Blocks
                   </p>
-                  <p className="text-[14px] text-black/40 font-regular tracking-[-0.04em]">
+                  <p className="text-[14px] text-app_gray_light-300 font-regular tracking-[-0.04em]">
                     {i.post.description}
                   </p>
                 </div>
               </div>
               {index < earnings.length - 1 && (
-                <div className="w-full h-[1px] bg-[#C8C7CB]" />
+                <div className="w-full h-[1px] bg-app_gray_light-300/25 dark:bg-app_gray_light-300/25" />
               )}
             </>
           );

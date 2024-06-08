@@ -5,6 +5,7 @@ import { AppProps } from "next/app";
 import { NavigationBar } from "@/widgets/NavigationBar";
 
 import { WebAppProvider } from "@/app/providers/WebAppProvider";
+import { ThemeProvider } from "@/app/providers/ThemesProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
 function HomePage({ Component, pageProps }: AppProps) {
   return (
     <WebAppProvider>
-      <div className={`${inter.className} antialiased max-w-[420px]`}>
-        <Component {...pageProps} />
-        <NavigationBar />
-      </div>
+      <ThemeProvider attribute="class">
+        <div className={`${inter.className} antialiased max-w-[420px]`}>
+          <Component {...pageProps} />
+          <NavigationBar />
+        </div>
+      </ThemeProvider>
     </WebAppProvider>
   );
 }
