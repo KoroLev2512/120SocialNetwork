@@ -15,7 +15,7 @@ const AccordionItem = React.forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "px-[18px] active:bg-[#E5E5EA] transition-colors duration-100",
+      "px-[18px] active:bg-[#E5E5EA] dark:active:bg-app_gray_dark-100 transition-colors duration-100",
       className,
     )}
     {...props}
@@ -37,8 +37,8 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <PlusIcon className="h-5 w-5 shrink-0 text-[#007AFF] transition-transform duration-200 group-data-[state=open]:hidden" />
-      <MinusIcon className="h-5 w-5 shrink-0 text-[#007AFF] transition-transform duration-200 group-data-[state=closed]:hidden" />
+      <PlusIcon className="h-5 w-5 shrink-0 text-app_blue transition-transform duration-200 group-data-[state=open]:hidden" />
+      <MinusIcon className="h-5 w-5 shrink-0 text-app_blue transition-transform duration-200 group-data-[state=closed]:hidden" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -50,7 +50,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden  text-secondarybody font-medium text-black/60 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="overflow-hidden  text-secondarybody font-medium text-app_gray_light-300 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
