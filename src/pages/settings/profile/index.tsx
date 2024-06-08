@@ -3,6 +3,7 @@ import { SettingsGroup } from "..";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 import { BackButton } from "@zakarliuka/react-telegram-web-tools";
 import Action from "@/shared/ui/action";
+import { SecondaryInput } from "@/shared/ui/input";
 
 export default function SettingsProfile() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function SettingsProfile() {
       </div>
       <SettingsGroup>
         <Action title="Change Profile Picture" leftElement={<PhotoIcon className="size-[28px] text-app_blue" />} />
+        <SecondaryInput label="Username" placeholder="@shawnwx" />
       </SettingsGroup>
     </main>
   );

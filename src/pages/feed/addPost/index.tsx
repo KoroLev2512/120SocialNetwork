@@ -1,9 +1,10 @@
 import React from "react";
 import AddIcon from "@/shared/assets/icons/AddIcon";
+import { DefaultInput } from "@/shared/ui/input";
 
 export default function WelcomePage() {
     return (
-        <main className="flex h-screen w-full flex-col items-center bg-gray-100">
+        <main className="flex h-screen w-full flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
             <div className="flex flex-col items-center py-[24px]">
                 <h1 className="text-title font-bold">Add up to 3 photos</h1>
             </div>
@@ -12,15 +13,9 @@ export default function WelcomePage() {
                     <AddIcon/>
                 </div>
             </div>
-            <div className="flex flex-col items-left w-full bg-white my-[24px] px-[25px] min-h-[70px] max-w-[430px]">
-                <div className="text-[12px] text-[#8D8D8F] my-[14px]">
-                Description
-                </div>
-            </div>
-            <div className="flex flex-col items-left w-full bg-white my-[24px] px-[25px] min-h-[70px] max-w-[430px]">
-                <div className="text-[12px] text-[#8D8D8F] my-[14px]">
-                    URL to existing post
-                </div>
+            <div className="w-full flex flex-col gap-y-4 mt-6">
+                <DefaultInput placeholder="Blah blah blah" label="Description" />
+                <DefaultInput placeholder="https://" className="placeholder:text-app_blue" label="URL to the post" />
             </div>
         </main>
     );
