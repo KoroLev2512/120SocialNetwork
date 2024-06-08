@@ -1,9 +1,8 @@
 "use client";
 
 import Action from "@/shared/ui/action";
-import { Switch } from "@/shared/ui/switch";
+import ThemeSwitch from "@/widgets/ThemeSwitch/ui/themeSwitch";
 import { BackButton } from "@zakarliuka/react-telegram-web-tools";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,16 +10,6 @@ import { ReactNode } from "react";
 
 export default function Settings() {
   const router = useRouter();
-  const { setTheme } = useTheme()
-  const handleCheckedChange = (checked: boolean) => {
-    if (checked) {
-      window.Telegram.WebApp.setHeaderColor("#111111");
-      setTheme("dark")
-    } else {
-      window.Telegram.WebApp.setHeaderColor("#F7F9FB");
-      setTheme("light")
-    };
-  }
 
   return (
     <main className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
@@ -41,7 +30,7 @@ export default function Settings() {
         <Link href="/settings/language">
           <Action title="Change Language" rightArrow />
         </Link>
-        <Action title="Dark Mode" rightElement={<Switch onCheckedChange={handleCheckedChange} />} />
+        <Action title="Dark Mode" rightElement={<ThemeSwitch />} />
       </SettingsGroup>
       <SettingsGroup title="help & support">
         <Link href="/settings/faq">

@@ -2,7 +2,6 @@
 
 import { Button } from "@/shared/ui/button";
 import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
-import { useThemeParams } from "@zakarliuka/react-telegram-web-tools";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect } from "react";

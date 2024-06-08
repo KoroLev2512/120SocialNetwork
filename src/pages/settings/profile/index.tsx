@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { SettingsGroup } from "..";
 import { PhotoIcon } from "@heroicons/react/24/solid";
