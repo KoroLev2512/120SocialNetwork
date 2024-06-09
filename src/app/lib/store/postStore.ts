@@ -5,7 +5,7 @@ import {create} from "zustand";
 import {devtools} from "zustand/middleware";
 import {immer} from "zustand/middleware/immer";
 
-export const useNewsStore = create<PostsStore>()(devtools(immer((set) => ({
+export const usePostsStore = create<PostsStore>()(devtools(immer((set) => ({
     posts: null,
     isLoading: false,
     getPosts: async () => {

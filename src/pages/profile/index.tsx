@@ -2,20 +2,20 @@ import { cn } from "@/app/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
+import AvatarIcon from "@/app/lib/icons/AvatarIcon";
 
 interface ProfilePageTempProps {
-  username: string;
-  avatar: string;
+  username: string | null;
+  avatar: string | null;
   connectedWallet?: boolean;
   currency: number;
   posts?: Object;
 }
 
 const props: ProfilePageTempProps = {
-  username: "waskoaswella",
-  avatar:
-    "https://i.pinimg.com/736x/c9/a8/26/c9a8260a3774452561196a617a833217.jpg",
+  username: null,
+  avatar: null,
   currency: 139,
   connectedWallet: true,
   posts: [
@@ -51,8 +51,13 @@ export default function Profile() {
       <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white dark:bg-app_gray_dark-300 px-8 py-[14px]">
         <div className="inline-flex items-center gap-x-4">
           <Avatar className="size-[74px]">
-            <AvatarImage alt={`@${props.username}`} src={props.avatar} />
-            <AvatarFallback>TS</AvatarFallback>
+            <AvatarImage
+                alt={`@${props.username}`}
+                src={props.avatar}
+            />
+            <AvatarFallback>
+              <AvatarIcon/>
+            </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
             <p className="text-secondarybody font-semibold">
@@ -66,7 +71,8 @@ export default function Profile() {
         <Link href="/profile/wallet">
           <div className="inline-flex items-center gap-x-1.5">
             <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
-              {props.currency} <IconBlock />
+              {props.currency}
+              <IconBlock />
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +82,11 @@ export default function Profile() {
               fill="none"
               viewBox="0 0 24 24"
             >
-              <path stroke="currentColor" stroke-width="2" d="m9 4 8 8-8 8" />
+              <path
+                  stroke="currentColor"
+                  stroke-width="2"
+                  d="m9 4 8 8-8 8"
+              />
             </svg>
           </div>
         </Link>
@@ -99,8 +109,12 @@ const Posts = () => {
         <div className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
           <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300" />
           <div className="flex flex-col items-center">
-            <p className="text-body">No posts yet!</p>
-            <p className="text-secondarybody">Setup your profile first</p>
+            <p className="text-body">
+              No posts yet!
+            </p>
+            <p className="text-secondarybody">
+              Setup your profile first
+            </p>
           </div>
         </div>
       )}

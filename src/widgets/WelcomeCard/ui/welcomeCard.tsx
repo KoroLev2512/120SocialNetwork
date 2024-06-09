@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Language from "@/app/lib/icons/Language";
+import Language from "@/app/lib/icons/LanguageIcon";
 import { Carousel, CarouselContent, CarouselItem } from "@/shared/ui/carousel";
 
 type welcomeCardProps = {
