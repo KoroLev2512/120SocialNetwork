@@ -19,7 +19,7 @@ const WelcomePage = () => {
   return (
     <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-12">
       <div className="flex flex-col items-center">
-        <h1 className="text-largetitle font-medium">Hello there {theme.theme}</h1>
+        <h1 className="text-largetitle font-medium">Hello there</h1>
         <h1 className="text-title font-normal">Let's get started!</h1>
       </div>
       <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300">
