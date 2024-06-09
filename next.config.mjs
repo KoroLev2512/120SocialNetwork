@@ -9,7 +9,7 @@ const nextConfig = {
   },
   // trailingSlash: true,
   // output: "standalone",
-  // reactStrictMode: false,
+  // reactStrictMode: true,
   // swcMinify: true,
 };
 
