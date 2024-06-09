@@ -5,3 +5,7 @@
 img {
   @apply pointer-events-none select-none;
 }
+
+input {
+  -webkit-border-radius: 0px;
+}
