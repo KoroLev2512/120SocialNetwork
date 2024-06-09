@@ -1,5 +1,5 @@
-export const FETCH_POSTS = "/news";
-export const GET_NEWS = (id: number) => "/news/" + id;
-export const ADD_NEWS = "/news";
-export const UPDATE_NEWS = "/news";
-export const DELETE_NEWS = "/news";
+export const FETCH_POSTS = "/posts";
+export const GET_POSTS = (id: number) => "/posts/" + id;
+export const ADD_POSTS = "/posts";
+export const UPDATE_POSTS = "/posts";
+export const DELETE_POSTS = "/posts";
