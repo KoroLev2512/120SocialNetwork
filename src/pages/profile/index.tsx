@@ -5,15 +5,22 @@ import Link from "next/link";
 import React from "react";
 import AvatarIcon from "@/app/lib/icons/AvatarIcon";
 
+interface Post {
+  image: string;
+  reward?: number;
+}
+
 interface ProfilePageTempProps {
+  id: number;
   username: string | null;
   avatar: string | null;
   connectedWallet?: boolean;
   currency: number;
-  posts?: Object;
+  posts?: Post[];
 }
 
 const props: ProfilePageTempProps = {
+  id: 1,
   username: null,
   avatar: null,
   currency: 139,
@@ -53,7 +60,7 @@ export default function Profile() {
           <Avatar className="size-[74px]">
             <AvatarImage
                 alt={`@${props.username}`}
-                src={props.avatar}
+                src={props.avatar || '/avatar.png'}
             />
             <AvatarFallback>
               <AvatarIcon/>
@@ -61,10 +68,10 @@ export default function Profile() {
           </Avatar>
           <div className="flex flex-col">
             <p className="text-secondarybody font-semibold">
-              @{props.username}
+              @{props.username ?? 'user_' + props.id}
             </p>
             <p className="text-secondarybody font-medium text-app_gray_light-300">
-              8 posts
+              {props.posts ? props.posts.length : 0} posts
             </p>
           </div>
         </div>
