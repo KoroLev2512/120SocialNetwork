@@ -115,6 +115,26 @@ paths:
           description: Post data
         "400":
           description: Error
+  /api/post/get/{user_id}:
+    get:
+      tags:
+        - Post
+      description: |
+        Get all posts from one user with {user_id}
+      parameters:
+        - description: Post ID
+          in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+            format: id
+          example: "12"
+      responses:
+        "200":
+          description: Post data
+        "400":
+          description: Error
   /api/post/get_all:
     get:
       tags:
