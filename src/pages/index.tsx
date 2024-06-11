@@ -16,6 +16,7 @@ const WelcomePage = () => {
       window.Telegram.WebApp.setHeaderColor("#111111")
     }
   }, []);
+
   return (
     <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-12">
       <div className="flex flex-col items-center">

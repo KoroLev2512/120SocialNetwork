@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 
 const API_URL = "https://rickandmortyapi.com/api/character";
 
-export default function TestFunction() {
+export default function TestPostFunction() {
   const [data, setData] = useState<datafromAPI[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
