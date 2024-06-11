@@ -1,11 +1,7 @@
 import React from "react";
-import { getSvgOptions } from "@/app/lib/utils";
 import { IconProps } from "./types";
 
 const LanguageIcon = ({ height = 24, width = 24, rotation = 0 }: IconProps) => {
-  const svgOptions = getSvgOptions({
-    rotationDegree: rotation,
-  });
 
   return (
     <svg

@@ -2,7 +2,7 @@ import React from "react";
 import { getSvgOptions } from "@/app/lib/utils";
 import { IconProps } from "./types";
 
-const AvatarIcon = ({ height = 76, width = 76, rotation = 0 }: IconProps) => {
+export const AvatarIcon = ({ height = 75, width = 75, rotation = 0 }: IconProps) => {
     const svgOptions = getSvgOptions({
         rotationDegree: rotation,
     });
@@ -11,7 +11,7 @@ const AvatarIcon = ({ height = 76, width = 76, rotation = 0 }: IconProps) => {
         <svg xmlns="http://www.w3.org/2000/svg"
              width={width}
              height={height}
-             viewBox="0 0 76 76"
+             viewBox="0 0 75 75"
              fill="none"
         >
             <path
@@ -28,5 +28,3 @@ const AvatarIcon = ({ height = 76, width = 76, rotation = 0 }: IconProps) => {
         </svg>
     );
 };
-
-export default AvatarIcon;

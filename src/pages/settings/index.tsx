@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { ReactNode } from "react";
+import {AvatarIcon} from "@/app/lib/icons/AvatarIcon";
 
 export default function Settings() {
   const router = useRouter();
@@ -20,7 +21,9 @@ export default function Settings() {
           <Action
             title="Edit Profile"
             leftElement={
-              <div className="size-[28px] rounded-full bg-black/20" />
+              <div className="size-[28px] rounded-full bg-black/20">
+                  <AvatarIcon height={28} width={28} rotation={0}/>
+              </div>
             }
             rightArrow
           />

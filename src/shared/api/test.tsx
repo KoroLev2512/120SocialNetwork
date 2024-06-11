@@ -13,12 +13,13 @@ export default function TestFunction() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${API_URL}?page=${page}`);
+      // const response = await axios.get(`${process.env.API_PATH}/post/get/get_all`);
+      const response = await axios.get(`${API_URL}/`);
       setData((prevData) => [...prevData, ...response.data.results]);
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, [setLoading, setData]);
 
   useEffect(() => {
     fetchData();
