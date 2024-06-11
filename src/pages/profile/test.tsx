@@ -1,4 +1,3 @@
-import PostCard from "@/widgets/PostCard/ui/postCard";
 import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
