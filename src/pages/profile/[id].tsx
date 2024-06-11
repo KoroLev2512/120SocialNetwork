@@ -1,39 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
 
 interface User {
     first_name: string;
-    id: string;
-    language: string,
-    profile_photo: string,
-    second_name: string,
-    telegram_id: string,
-    username: string,
-    wallet: string,
+    id: number;
+    language: string;
+    profile_photo: string;
+    second_name: string;
+    telegram_id: string;
+    username: string;
+    wallet: string;
 }
 
-const UserProfile: React.FC = () => {
-    const [user, setUser] = useState<User | null>(null);
-    const [error, setError] = useState<string | null>(null);
-    const router = useRouter();
-    const { id } = router.query;
+interface UserProfileProps {
+    user: User | null;
+    error: string | null;
+}
 
-    useEffect(() => {
-        if (id) {
-            const fetchUserData = async () => {
-                try {
-                    const response = await axios.get(`http://95.163.231.244:3000/api/user/get/1`);
-                    setUser(response.data);
-                } catch (err) {
-                    setError('Error fetching user data');
-                    console.error(err);
-                }
-            };
-            fetchUserData();
-        }
-    }, [id]);
-
+const UserProfile: React.FC<UserProfileProps> = ({ user, error }) => {
     if (error) {
         return <div>{error}</div>;
     }
@@ -49,6 +34,27 @@ const UserProfile: React.FC = () => {
             <p><strong>Name:</strong> {user.first_name}</p>
         </div>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { id } = context.params as { id: string };
+    try {
+        const response = await axios.get(`http://95.163.231.244:3000/api/user/get/${id}`);
+        return {
+            props: {
+                user: response.data,
+                error: null
+            }
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            props: {
+                user: null,
+                error: 'Error fetching user data'
+            }
+        };
+    }
 };
 
 export default UserProfile;
