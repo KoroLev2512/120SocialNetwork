@@ -38,35 +38,35 @@
     id=1
         user_id=1
         transaction_id=1
-        photo_id=
+        photo_id=8
         amount=100
         time=1718137762.6245859
     
     id=2
         user_id=2
         transaction_id=1
-        photo_id=
+        photo_id=8
         amount=150
         time=1718157762.6245859
     
     id=3
         user_id=3
         transaction_id=1
-        photo_id=
+        photo_id=8
         amount=10
         time=1718135762.6245859
     
     id=4
         user_id=4
         transaction_id=1
-        photo_id=
+        photo_id=8
         amount=20
         time=1718237762.6245859
     
     id=5
         user_id=5
         transaction_id=1
-        photo_id=
+        photo_id=8
         amount=200
         time=1718137162.6245859
 
@@ -130,3 +130,7 @@
     id=7
         post_id=5
         image=120SocialNetwork/photo/IMG_4026.JPG
+    
+    id=8
+        post_id=NULL
+        image=120SocialNetwork/photo/image.png
