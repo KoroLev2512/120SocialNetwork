@@ -1,0 +1,132 @@
+#posts
+    id=1
+        user_id=1
+        control=True
+        balance_sheet_id=1
+        link= NULL
+        time_creation=1718137762.6245859
+    
+    id=2
+        user_id=1
+        control=True
+        balance_sheet_id=1
+        link= https://t.me/block_120/28
+        time_creation=1718157762.6245859
+    
+    id=3
+        user_id=2
+        control=True
+        balance_sheet_id=1
+        link= NULL
+        time_creation=1718135762.6245859
+    
+    id=4
+        user_id=3
+        control=True
+        balance_sheet_id=1
+        link= NULL
+        time_creation=1718237762.6245859
+    
+    id=5
+        user_id=4
+        control=True
+        balance_sheet_id=1
+        link=https://t.me/block_120/26
+        time_creation=1718137162.6245859
+
+#balance_sheet
+    id=1
+        user_id=1
+        transaction_id=1
+        photo_id=
+        amount=100
+        time=1718137762.6245859
+    
+    id=2
+        user_id=2
+        transaction_id=1
+        photo_id=
+        amount=150
+        time=1718157762.6245859
+    
+    id=3
+        user_id=3
+        transaction_id=1
+        photo_id=
+        amount=10
+        time=1718135762.6245859
+    
+    id=4
+        user_id=4
+        transaction_id=1
+        photo_id=
+        amount=20
+        time=1718237762.6245859
+    
+    id=5
+        user_id=5
+        transaction_id=1
+        photo_id=
+        amount=200
+        time=1718137162.6245859
+
+#transaction_type
+    id=1
+        title=block for post
+
+#tags
+    id=1
+        post_id=1
+        title=graffiti
+    
+    id=2
+        post_id=1
+        title=street
+    
+    id=3
+        post_id=2
+        title=street
+    
+    id=4
+        post_id=2
+        title=swag
+    
+    id=5
+        post_id=3
+        title=skate
+    
+    id=6
+        post_id=4
+        title=can
+    
+    id=7
+        post_id=4
+        title=live
+#photo
+    id=1
+        post_id=1
+        image=120SocialNetwork/photo/IMG_1012.JPG
+    
+    id=2
+        post_id=1
+        image=120SocialNetwork/photo/IMG_1011.JPG
+    
+    id=3
+        post_id=1
+        image=120SocialNetwork/photo/camphoto_1903590565.JPG
+    
+    id=4
+        post_id=2
+        image=120SocialNetwork/photo/IMG_4009.jpg
+
+    id=5
+        post_id=3
+        image=120SocialNetwork/photo/IMG_4012.jpg
+    
+    id=6
+        post_id=4
+        image=120SocialNetwork/photo/IMG_4015.JPG
+    
+    id=7
+        post_id=5
+        image=120SocialNetwork/photo/IMG_4026.JPG
