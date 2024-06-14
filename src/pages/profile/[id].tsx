@@ -47,7 +47,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, error }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const {id} = context.params as { id: string };
     try {
-        const response = await axios.get(`http://95.163.231.244:3000/api/user/get/${id}`);
+        const response = await axios.get(`${process.env.API_PATH}/user/get/${id}`);
         return {
             props: {
                 user: response.data,
