@@ -105,32 +105,32 @@
 #photo
     id=1
         post_id=1
-        image=120SocialNetwork/photo/IMG_1012.JPG
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_1011.JPG
     
     id=2
         post_id=1
-        image=120SocialNetwork/photo/IMG_1011.JPG
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_1012.JPG
     
     id=3
         post_id=1
-        image=120SocialNetwork/photo/camphoto_1903590565.JPG
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_4009.jpg
     
     id=4
         post_id=2
-        image=120SocialNetwork/photo/IMG_4009.jpg
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_4012.jpg
 
     id=5
         post_id=3
-        image=120SocialNetwork/photo/IMG_4012.jpg
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_4015.JPG
     
     id=6
         post_id=4
-        image=120SocialNetwork/photo/IMG_4015.JPG
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/IMG_4026.JPG
     
     id=7
         post_id=5
-        image=120SocialNetwork/photo/IMG_4026.JPG
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/camphoto_1903590565.JPG
     
     id=8
         post_id=NULL
-        image=120SocialNetwork/photo/image.png
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/image.png
