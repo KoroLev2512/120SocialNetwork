@@ -1,5 +1,5 @@
 import { Button } from "@/shared/ui/button";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 import Image from "next/image";
 import { useRouter } from "next/router";
 

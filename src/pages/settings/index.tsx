@@ -2,7 +2,7 @@
 
 import Action from "@/shared/ui/action";
 import ThemeSwitch from "@/widgets/ThemeSwitch/ui/themeSwitch";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
