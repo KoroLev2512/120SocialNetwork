@@ -97,7 +97,7 @@ export default function Profile() {
                         >
                             <path
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 d="m9 4 8 8-8 8"
                             />
                         </svg>
@@ -185,7 +185,12 @@ const IconBlock = ({className}: { className?: string }) => {
                 width="26"
                 height="26"
             >
-                <circle cx="13" cy="13" r="12.5" fill="#D9D9D9"/>
+                <circle
+                    cx="13"
+                    cy="13"
+                    r="12.5"
+                    fill="#D9D9D9"
+                />
             </mask>
             <g mask="url(#mask0_638_3040)">
                 <path

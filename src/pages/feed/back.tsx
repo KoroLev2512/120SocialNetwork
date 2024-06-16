@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 
 interface Post {
-    post_id: number;
+    id: number;
     user_id: number;
     control_id: string;
     balance_sheet_id: string;
@@ -13,42 +13,45 @@ interface Post {
     image: string;
 }
 
-interface PostProps {
-    post: Post | null;
+interface PostsProps {
+    posts: Post[] | null;
     error: string | null;
 }
 
-const PostList: React.FC<PostProps> = ({post, error }) => {
+const Posts: React.FC<PostsProps> = ({ posts, error }) => {
     if (error) {
         return <div>{error}</div>;
     }
 
-    if (!post) {
+    if (!posts) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div>
-            <h1>Post list</h1>
-            <p><strong>ID:</strong> {post.post_id}</p>
-            <p><strong>User_ID:</strong> {post.user_id}</p>
-            <p><strong>Control_ID:</strong> {post.control_id}</p>
-            <p><strong>Balance:</strong> {post.balance_sheet_id}</p>
-            <p><strong>Tag_ID:</strong> {post.tag_id}</p>
-            <p><strong>Link:</strong> {post.link}</p>
-            <p><strong>Image:</strong> {post.image}</p>
-            <p><strong>Time creation:</strong> {new Date(post.time_creation).toLocaleString()}</p>
+        <div className="relative w-full h-full mx-[28px] my-[20px]">
+            <h1>Posts</h1>
+            {posts.map(post => (
+                <div key={post.id} className="post">
+                    <p><strong>ID:</strong> {post.id}</p>
+                    <p><strong>User_ID:</strong> {post.user_id}</p>
+                    <p><strong>Control_ID:</strong> {post.control_id}</p>
+                    <p><strong>Balance:</strong> {post.balance_sheet_id}</p>
+                    <p><strong>Tag_ID:</strong> {post.tag_id}</p>
+                    <p><strong>Link:</strong> {post.link}</p>
+                    <p><strong>Image:</strong> {post.image}</p>
+                    <p><strong>Time creation:</strong> {new Date(post.time_creation).toLocaleString()}</p>
+                </div>
+            ))}
         </div>
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const {id} = context.params as { id: string };
+export const getServerSideProps: GetServerSideProps = async () => {
     try {
-        const response = await axios.get(`${process.env.API_PATH}/post/get_all/}`);
+        const response = await axios.get(`${process.env.API_PATH}/post/get_all`);
         return {
             props: {
-                post: response.data,
+                posts: response.data,
                 error: null
             }
         };
@@ -56,11 +59,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         console.error(error);
         return {
             props: {
-                post: null,
-                error: 'Error fetching post data'
+                posts: null,
+                error: 'Error fetching posts data'
             }
         };
     }
 };
 
-export default PostList;
+export default Posts;

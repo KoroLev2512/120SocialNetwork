@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef, useState} from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import { Button } from "@/shared/ui/button";
-import { DefaultInput } from "@/shared/ui/input";
+import {useRouter} from 'next/router';
+import {Button} from "@/shared/ui/button";
+import {DefaultInput} from "@/shared/ui/input";
 
 interface User {
     id?: number;

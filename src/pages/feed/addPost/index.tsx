@@ -1,6 +1,6 @@
 import React from "react";
 import AddIcon from "@/shared/assets/icons/AddIcon";
-import { DefaultInput } from "@/shared/ui/input";
+import {DefaultInput} from "@/shared/ui/input";
 
 export default function WelcomePage() {
     return (
@@ -14,8 +14,8 @@ export default function WelcomePage() {
                 </div>
             </div>
             <div className="w-full flex flex-col gap-y-4 mt-6">
-                <DefaultInput placeholder="Blah blah blah" label="Description" />
-                <DefaultInput placeholder="https://" className="placeholder:text-app_blue" label="URL to the post" />
+                <DefaultInput placeholder="Blah blah blah" label="Description"/>
+                <DefaultInput placeholder="https://" className="placeholder:text-app_blue" label="URL to the post"/>
             </div>
         </main>
     );

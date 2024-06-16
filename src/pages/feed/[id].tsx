@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { GetServerSideProps } from 'next';
+import {GetServerSideProps} from 'next';
 
 interface Post {
-    post_id: number;
+    id: number;
     user_id: number;
     control_id: string;
     balance_sheet_id: string;
@@ -30,7 +30,7 @@ const Post: React.FC<PostProps> = ({post, error}) => {
     return (
         <div className="relative w-full h-full mx-[28px] my-[20px]">
             <h1>Post</h1>
-            <p><strong>ID:</strong> {post.post_id}</p>
+            <p><strong>ID:</strong> {post.id}</p>
             <p><strong>User_ID:</strong> {post.user_id}</p>
             <p><strong>Control_ID:</strong> {post.control_id}</p>
             <p><strong>Balance:</strong> {post.balance_sheet_id}</p>
