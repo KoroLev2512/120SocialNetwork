@@ -3,9 +3,10 @@ import axios from "axios";
 import React, {useState, useEffect, useRef, useCallback} from "react";
 
 const API_URL = "https://rickandmortyapi.com/api/character";
+// const API_URL = "http://95.163.231.244:3000/api/post/get_all";
 
 export default function TestPostFunction() {
-    const [data, setData] = useState<datafromAPI[]>([]);
+    const [data, setData] = useState<Post[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const observer = useRef<IntersectionObserver | null>(null);
@@ -13,7 +14,7 @@ export default function TestPostFunction() {
     const fetchData = useCallback(async () => {
         setLoading(true);
         try {
-            // const response = await axios.get(`${process.env.API_PATH}/post/get/get_all`);
+            // const response = await axios.get(`${process.env.API_PATH}/post/get_all`);
             const response = await axios.get(`${API_URL}/`);
             setData((prevData) => [...prevData, ...response.data.results]);
         } finally {
@@ -39,6 +40,17 @@ export default function TestPostFunction() {
         [loading],
     );
 
+    type Post = {
+        id: number;
+        user_id: number;
+        control_id: string;
+        balance_sheet_id: string;
+        tag_id: string;
+        link: string;
+        time_creation: string;
+        image: string;
+    };
+
     type datafromAPI = {
         id: number;
         name: string;
@@ -50,13 +62,22 @@ export default function TestPostFunction() {
 
     return (
         <>
-            {data.map(({id, name, image, origin}: datafromAPI) => (
+            {/*{data.map((post: Post) => (*/}
+            {/*    <PostCard*/}
+            {/*        key={post.id}*/}
+            {/*        user={`User ID: ${post.user_id}`}*/}
+            {/*        usersAvatar={post.image}*/}
+            {/*        postsAwardInBP={5341}*/}
+            {/*        postsDescription={post.control_id}*/}
+            {/*        postsImage={post.image}*/}
+            {/*    />*/}
+            {data.map(({id, user_id, image, control_id}: Post) => (
                 <PostCard
                     key={id}
-                    user={name}
+                    user={`User ID: ${user_id}`}
                     usersAvatar={image}
                     postsAwardInBP={5341}
-                    postsDescription={origin.name}
+                    postsDescription={control_id}
                     postsImage={image}
                 />
             ))}
