@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/shared/ui/accordion";
 import { Button } from "@/shared/ui/button";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

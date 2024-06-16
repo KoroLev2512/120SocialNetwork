@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { RadioGroup, RadioGroupItem } from "@/shared/ui/radio-group";
 import { SettingsGroup } from "..";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 
 export default function SettingsLanguage() {
   const router = useRouter();
