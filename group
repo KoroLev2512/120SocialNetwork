@@ -1,38 +1,60 @@
+#users
+    id=1
+        telegram_id=487961820
+        wallet=NULL
+        username=vityooook
+        profile_photo=9
+        time_registration=1718616104
+
+    id=2
+        telegram_id=6714944823
+        wallet=NULL
+        username=something_djd
+        profile_photo=10
+        time_registration=1718616104
+
+    id=3
+        telegram_id=6931104737
+        wallet=NULL
+        username=default(block_user)
+        profile_photo=11
+        time_registration=1718616104
+
 #posts
     id=1
         user_id=1
         control=True
         balance_sheet_id=1
-        link= NULL
-        time_creation=1718137762.6245859
+        link=NULL
+        time_creation=1718137762
     
     id=2
         user_id=1
         control=True
         balance_sheet_id=1
-        link= https://t.me/block_120/28
-        time_creation=1718157762.6245859
+        link=https://t.me/block_120/28
+        time_creation=1718157762
     
     id=3
         user_id=2
         control=True
         balance_sheet_id=1
-        link= NULL
-        time_creation=1718135762.6245859
+        link=NULL
+        time_creation=1718135762
     
     id=4
         user_id=3
         control=True
         balance_sheet_id=1
-        link= NULL
-        time_creation=1718237762.6245859
+        link=NULL
+        time_creation=1718237762
     
     id=5
         user_id=4
         control=True
         balance_sheet_id=1
         link=https://t.me/block_120/26
-        time_creation=1718137162.6245859
+        time_creation=1718137162
 
 #balance_sheet
     id=1
@@ -40,35 +62,35 @@
         transaction_id=1
         photo_id=8
         amount=100
-        time=1718137762.6245859
+        time=1718137762
     
     id=2
         user_id=2
         transaction_id=1
         photo_id=8
         amount=150
-        time=1718157762.6245859
+        time=1718157762
     
     id=3
         user_id=3
         transaction_id=1
         photo_id=8
         amount=10
-        time=1718135762.6245859
+        time=1718135762
     
     id=4
         user_id=4
         transaction_id=1
         photo_id=8
         amount=20
-        time=1718237762.6245859
+        time=1718237762
     
     id=5
         user_id=5
         transaction_id=1
         photo_id=8
         amount=200
-        time=1718137162.6245859
+        time=1718137162
 
 #transaction_type
     id=1
@@ -134,3 +156,15 @@
     id=8
         post_id=NULL
         image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/image.png
+
+    id=9
+        post_id=NULL
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/Screenshot%202024-06-17%20at%2012.06.41.png
+
+    id=10
+        post_id=NULL
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/Screenshot%202024-06-17%20at%2012.07.30.png
+
+    id=11
+        post_id=NULL
+        image=https://github.com/120-block/120SocialNetwork/blob/dataset/photo/Screenshot%202024-06-17%20at%2012.08.22.png
