@@ -91,6 +91,10 @@ const AddUser: React.FC = () => {
                     <label>Profile Photo:</label>
                     <DefaultInput className={"border-2"} placeholder="0" type="text" name="profile_photo" required/>
                 </div>
+                <div>
+                    <label>Time Registration:</label>
+                    <DefaultInput className={"border-2"} placeholder="01.06.2024, 16:34:07" type="text" name="time_registration" required/>
+                </div>
                 <div className={"flex justify-center"}>
                     <Button className={"flex my-[20px]"}>
                         Add User

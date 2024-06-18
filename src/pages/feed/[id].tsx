@@ -36,7 +36,11 @@ const Post: React.FC<PostProps> = ({post, error}) => {
             <p><strong>Balance:</strong> {post.balance_sheet_id}</p>
             <p><strong>Tag_ID:</strong> {post.tag_id}</p>
             <p><strong>Link:</strong> {post.link}</p>
-            <p><strong>Image:</strong> {post.image}</p>
+            <p><strong>Image:</strong></p>
+                <img
+                    src={post.image}
+                    alt="Post"
+                />
             <p><strong>Time creation:</strong> {new Date(post.time_creation).toLocaleString()}</p>
         </div>
     );
