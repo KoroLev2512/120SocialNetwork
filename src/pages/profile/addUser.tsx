@@ -61,74 +61,75 @@
 //
 // export default AddUser;
 
-import axios from 'axios';
-
-async function addUser() {
-    const user = {
-        user_id: 3,
-        user_telegram_id: 83489274,
-        username: 'Лошок',
-        user_first_name: 'Блюдце',
-        user_second_name: 'Хуюдце',
-        wallet: '',
-        photo: '',
-        language: 'ru',
-        time_registration: new Date('2024-06-01T13:34:07.460543').toISOString() // Преобразование в строку ISO 8601
-    };
-
-    try {
-        const response = await axios.post(`${process.env.API_PATH}/user/add`, user);
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-addUser()
-    .then(response => {
-        console.log('User added successfully', response);
-    })
-    .catch(error => {
-        console.error('Error adding user', error);
-    });
-
-// import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 //
-// const AddUserPage: React.FC = () => {
-//     const [result, setResult] = useState<string | null>(null);
+// async function addUser() {
+//     const user = {
+//         user_id: 3,
+//         user_telegram_id: 83489274,
+//         username: 'Лошок',
+//         user_first_name: 'Блюдце',
+//         user_second_name: 'Хуюдце',
+//         wallet: '',
+//         photo: '',
+//         language: 'ru',
+//         time_registration: new Date('2024-06-01T13:34:07.460543').toISOString() // Преобразование в строку ISO 8601
+//     };
 //
-//     async function addUser() {
-//         const user = {
-//             user_id: 4,
-//             user_telegram_id: 83489274,
-//             username: 'Лошок',
-//             user_first_name: 'Блюдце',
-//             user_second_name: 'Хуюдце',
-//             wallet: '',
-//             photo: '',
-//             language: 'ru',
-//             time_registration: new Date('2024-06-01T13:34:07.460543').toISOString() // Преобразование в строку ISO 8601
-//         };
-//
-//         try {
-//             const response = await axios.post(`${process.env.API_PATH}/user/add`, user);
-//             setResult(JSON.stringify(response.data));
-//         } catch (error) {
-//             console.error(error);
-//             setResult('Error adding user');
-//         }
+//     try {
+//         const response = await axios.post(`${process.env.API_PATH}/user/add`, user);
+//         console.log(response.data);
+//     } catch (error) {
+//         console.error(error);
 //     }
+// }
 //
-//     useEffect(() => {
-//         addUser();
-//     }, []);
-//
-//     return (
-//         <div>
-//             {result && <p>{result}</p>}
-//         </div>
-//     );
-// };
-//
-// export default AddUserPage;
+// addUser()
+//     .then(response => {
+//         console.log('User added successfully', response);
+//     })
+//     .catch(error => {
+//         console.error('Error adding user', error);
+//     });
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const AddUserPage: React.FC = () => {
+    const [result, setResult] = useState<string | null>(null);
+
+    async function addUser() {
+        const user = {
+            user_id: 5,
+            user_telegram_id: 9999999,
+            username: 'AlexBug',
+            user_first_name: 'Alex',
+            user_second_name: 'Buggies',
+            wallet: '1qwoa2045kasd10koaskd12ekf4',
+            photo: '',
+            language: 'en',
+            time_registration: new Date('2024-06-01T13:34:07.999999').toISOString() // Преобразование в строку ISO 8601
+        };
+
+        try {
+            const response = await axios.post(`${process.env.API_PATH}/user/add`, user);
+            setResult(JSON.stringify(response.data));
+            setResult('User added successfully');
+        } catch (error) {
+            console.error(error);
+            setResult('Error adding user');
+        }
+    }
+
+    useEffect(() => {
+        addUser();
+    }, []);
+
+    return (
+        <div>
+            {result && <p>{result}</p>}
+        </div>
+    );
+};
+
+export default AddUserPage;
