@@ -8,7 +8,7 @@ import { PostsProps } from "@/shared/api/posts/types";
 
 const Index: React.FC<PostsProps> = ({posts, error}) => {
     return (
-        <main className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 flex flex-col gap-y-[18px] w-full items-center px-6 pt-4">
+        <main className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 flex flex-col gap-y-[18px] w-full items-center pb-24 px-6 pt-4">
             <Link href={"/feed/addPost"} className="w-full max-w-[500px]">
                 <Button className="w-full">
                     + Add new post
