@@ -13,7 +13,7 @@ export default function Settings() {
   const router = useRouter();
 
   return (
-    <main className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+    <main className="flex bg-app_gray_light-100 pb-24 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
       <BackButton onClick={() => router.back()} />
       <h1 className="text-largetitle">Settings</h1>
       <SettingsGroup title="personal">
