@@ -3,7 +3,7 @@
 import {Button} from "@/shared/ui/button";
 import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
 import {useTheme} from "next-themes";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Link from "next/link";
 import axios from "axios";
 import {GetServerSideProps} from "next";
@@ -38,7 +38,7 @@ const WelcomePage: React.FC<UserStore> = ()  => {
                         break;
                     case 400:
                         console.log('User have not id:', responseData);
-                        await axios.post(`${process.env.API_PATH}/user/add_not_exists`, {
+                        await axios.post(`http://localhost:3001/api/user/add_not_exists`, {
                             telegram_id: user.id,
                             username: user.username,
                             user_first_name: user.first_name || null,

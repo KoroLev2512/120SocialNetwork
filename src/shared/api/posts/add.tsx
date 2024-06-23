@@ -15,7 +15,7 @@ export async function addPost(props: { image: string, description: string[], lin
     };
 
     try {
-        const response = await axios.post(`http://localhost:3001/add/post/add`, postProps, {
+        const response = await axios.post(`http://localhost:3001/api/post/add`, postProps, {
             headers: {
               'Content-Type': 'application/json'
             }
