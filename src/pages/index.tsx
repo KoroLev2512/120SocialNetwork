@@ -3,10 +3,10 @@
 import {Button} from "@/shared/ui/button";
 import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
 import {useTheme} from "next-themes";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Link from "next/link";
 import axios from "axios";
-import {GetServerSideProps} from "next";
+// import {GetServerSideProps} from "next";
 import {UserStore} from "@/entities/User/types/userState";
 
 
@@ -38,7 +38,7 @@ const WelcomePage: React.FC<UserStore> = ()  => {
                         break;
                     case 400:
                         console.log('User have not id:', responseData);
-                        await axios.post(`${process.env.API_PATH}/user/add_not_exists`, {
+                        await axios.post(`http://locallhost:3001/user/add_not_exists`, {
                             telegram_id: user.id,
                             username: user.username,
                             user_first_name: user.first_name || null,
@@ -65,42 +65,21 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         console.error('User data not available');
     }
 
-    // const express = require('express');
-    // const axios = require('axios');
-    // const cors = require('cors')
-    // const app = express();
-    // const port = 3001;
-    //
-    // app.use(cors())
-    // app.get('/api/fetchItems/:username', async (req: Request, res: Response) => {
-    //     const { username } = req.params;
-    //     try {
-    //         const response = await axios.get(`https://api.test.test/v2/player?name=${username}`, {
-    //             headers: {
-    //                 Authorization: 'test'
-    //             }
-    //         });
-    //         res.json({ data: response.data, error: null });
-    //     } catch (error) {
-    //         res.json({ data: null, error: "Failed to fetch data." });
-    //     }
-    // });
-
-    // const wallet = '';
-    // try {
-    //     const response = axios.post(`${process.env.API_PATH}/user/add_not_exists`, {
-    //         telegram_id: user.id,
-    //         username: user.username,
-    //         user_first_name: user.first_name || null,
-    //         user_second_name: user.last_name || null,
-    //         wallet: wallet,
-    //         photo: user.photo_url || null,
-    //         language: user.language_code || null,
-    //     });
-    //     console.log('User added', response);
-    // } catch (error) {
-    //     console.error('There was a problem with your POST operation:', error);
-    // }
+    const wallet = '';
+    try {
+        const response = axios.post(`http://localhost:3001/user/add_not_exists`, {
+            telegram_id: user.id,
+            username: user.username,
+            user_first_name: user.first_name || null,
+            user_second_name: user.last_name || null,
+            wallet: wallet,
+            photo: user.photo_url || null,
+            language: user.language_code || null,
+        });
+        console.log('User added', response);
+    } catch (error) {
+        console.error('There was a problem with your POST operation:', error);
+    }
 
     // if (error) {
     //     return <div>{error}</div>;
