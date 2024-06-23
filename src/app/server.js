@@ -14,8 +14,11 @@ app.post('/api/post/add', async (req, res) => {
     try {
         const response = await axios.post(`${process.env.API_PATH}/post/add`, postProps);
         res.json({ data: response.data, error: null });
+        console.log(postProps)
     } catch (error) {
+        console.log(postProps)
         res.json({ data: null, error: error.message });
+        console.log(error)
     }
 });
 
