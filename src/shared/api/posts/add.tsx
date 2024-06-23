@@ -11,18 +11,17 @@ export async function addPost(props: { image: string, description: string[], lin
         tag_id: 1,
         time_creation: "2014-04-05T16:55:26",
         user_id: 1,
-        post_id: 10
+        post_id: 100
     };
 
     try {
-        const response = await axios.post(`${process.env.API_PATH}/post/add`, postProps, {
-            headers: {"Content-Type": "application/json"}
-        });
-        console.log(response.data);
-        alert("Successfully added a new post!")
+        const response = await axios.post(`http://localhost:3001/add/post/add`, postProps, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
         return response.data;
     } catch (error) {
-        alert(error)
-        console.error(error);
+        alert(error);
     }
 }

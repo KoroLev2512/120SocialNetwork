@@ -1,23 +1,34 @@
+require('dotenv').config();
+
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
 const port = 3001;
 
+app.use(cors());
+app.use(express.json());
+
 app.post('/api/post/add', async (req, res) => {
-  try {
     const postProps = req.body;
-    const response = await axios.post('http://95.163.231.244:3000/api/post/add', postProps, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    res.json({ data: response.data, error: null });
-  } catch (error) {
-    res.json({ data: null, error: "Failed to add post." });
-  }
+    try {
+        const response = await axios.post(`${process.env.API_PATH}/post/add`, postProps);
+        res.json({ data: response.data, error: null });
+    } catch (error) {
+        res.json({ data: null, error: error.message });
+    }
+});
+
+app.post('/api/user/add_not_exist', async (req, res) => {
+    const userProps = req.body;
+    try {
+        const response = await axios.post(`${process.env.API_PATH}/user/add_not_exist`, userProps);
+        res.json({ data: response.data, error: null });
+    } catch (error) {
+        res.json({ data: null, error: error.message });
+    }
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
+    console.log(`Server is running on ${port}`);
+});
