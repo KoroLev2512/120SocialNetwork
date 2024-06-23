@@ -1,10 +1,10 @@
 import React from 'react';
 import Posts from "@/shared/api/posts/getAll";
 import { Button } from "@/shared/ui/button";
-import Link from "next/link";
 import {GetServerSideProps} from "next";
 import { fetchPosts } from "@/shared/api/posts/getAll";
 import { PostsProps } from "@/shared/api/posts/types";
+import Link from "next/link";
 
 const Index: React.FC<PostsProps> = ({posts, error}) => {
     return (

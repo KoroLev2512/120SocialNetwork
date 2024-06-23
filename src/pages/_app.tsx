@@ -1,11 +1,12 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
-import "@/app/styles/globals.css";
 import {AppProps} from "next/app";
 import {NavigationBar} from "@/widgets/NavigationBar";
-
 import {WebAppProvider} from "@/app/providers/WebAppProvider";
 import {ThemeProvider} from "@/app/providers/ThemesProvider";
+
+import "@/app/styles/globals.css";
+import {useState} from "react";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 function HomePage({Component, pageProps}: AppProps) {
+
     return (
         <WebAppProvider>
             <ThemeProvider attribute="class">

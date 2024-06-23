@@ -1,25 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { GetServerSideProps } from 'next';
+import {GetServerSideProps} from 'next';
+import {UserStore} from "@/entities/User/types/userState";
 
-interface User {
-    first_name: string;
-    id: number;
-    language: string;
-    profile_photo: string;
-    second_name: string;
-    telegram_id: string;
-    username: string;
-    wallet: string;
-    time_registration: string;
-}
-
-interface UserProfileProps {
-    user: User | null;
-    error: string | null;
-}
-
-const UserProfile: React.FC<UserProfileProps> = ({ user, error }) => {
+const UserProfile: React.FC<UserStore> = ({ user, error }) => {
     if (error) {
         return <div>{error}</div>;
     }
@@ -39,7 +23,6 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, error }) => {
             <p><strong>Language:</strong> {user.language}</p>
             <p><strong>Wallet:</strong> {user.wallet}</p>
             <p><strong>Profile Photo:</strong> {user.profile_photo}</p>
-            <p><strong>Time Registration:</strong> {new Date(user.time_registration).toLocaleString()}</p>
         </div>
     );
 };
@@ -47,7 +30,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user, error }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const {id} = context.params as { id: string };
     try {
-        const response = await axios.get(`${process.env.API_PATH}/user/get/${id}`);
+        const telegram_id = window.Telegram.WebApp.initDataUnsafe?.user.id;
+        const response = await axios.get(`${process.env.API_PATH}/user/get/${telegram_id}`);
         return {
             props: {
                 user: response.data,

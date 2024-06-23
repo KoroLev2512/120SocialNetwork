@@ -68,7 +68,7 @@ export default function WelcomePage() {
     <main className="flex h-screen w-full flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
       <BackButton onClick={() => router.back()} />
       <div className="flex flex-col items-center py-[24px]">
-        <h1 className="text-title font-bold">Add up to 3 photos</h1>
+        <h1 className="text-title font-bold">Add up to photo</h1>
       </div>
       <Form {...form}>
         <form
