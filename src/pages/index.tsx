@@ -38,7 +38,7 @@ const WelcomePage: React.FC<UserStore> = ()  => {
                         break;
                     case 400:
                         console.log('User have not id:', responseData);
-                        await axios.post(`http://localhost:3001/api/user/add_not_exists`, {
+                        await axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
                             telegram_id: user.id,
                             username: user.username,
                             user_first_name: user.first_name || null,
