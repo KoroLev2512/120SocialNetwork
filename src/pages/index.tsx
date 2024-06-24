@@ -6,12 +6,13 @@ import {useTheme} from "next-themes";
 import React, {useEffect} from "react";
 import Link from "next/link";
 import axios from "axios";
-import {GetServerSideProps} from "next";
 import {UserStore} from "@/entities/User/types/userState";
 
 
 const WelcomePage: React.FC<UserStore> = ()  => {
     const theme = useTheme();
+    const user = window.Telegram.WebApp.initDataUnsafe?.user;
+
     useEffect(() => {
             window.Telegram.WebApp.expand();
             if (theme.theme === "light") {
@@ -22,12 +23,10 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         },
     )
 
-    const user = window.Telegram.WebApp.initDataUnsafe?.user;
-
     if (user) {
         const telegramId = user.id;
         const wallet = '';
-        const ans = `${process.env.API_PATH}/user/get_by_telegram/${telegramId}`;
+        const ans = `https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`;
         fetch(ans)
             .then(async response => {
                 console.log(response.status);
@@ -38,21 +37,16 @@ const WelcomePage: React.FC<UserStore> = ()  => {
                         break;
                     case 400:
                         console.log('User have not id:', responseData);
-                        await axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
-                            telegram_id: user.id,
+                        const axiosResponse = await axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
+                            user_telegram_id: user.id,
                             username: user.username,
                             user_first_name: user.first_name || null,
                             user_second_name: user.last_name || null,
                             wallet: wallet,
                             photo: user.photo_url || null,
                             language: user.language_code || null,
-                        })
-                            .then(response => {
-                                console.log('User added:', response.data);
-                            })
-                            .catch(error => {
-                                console.error('There was a problem with your POST operation:', error);
-                            });
+                        });
+                        console.log('User added:', axiosResponse.data);
                         break;
                     default:
                         console.log('Unexpected status:', response.status);
@@ -80,14 +74,6 @@ const WelcomePage: React.FC<UserStore> = ()  => {
     } catch (error) {
         console.error('There was a problem with your POST operation:', error);
     }
-
-    // if (error) {
-    //     return <div>{error}</div>;
-    // }
-    //
-    // if (!user) {
-    //     return <div>Loading...</div>;
-    // }
 
     return (
         <main
@@ -124,27 +110,5 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         </main>
     );
 };
-
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     const telegram_id = context.query.telegram_id;
-//     try {
-//         const response = await axios.get(`${process.env.API_PATH}/user/get_by_telegram/123`);
-//         return {
-//             props: {
-//                 user: response.data,
-//                 error: null
-//             }
-//         };
-//     } catch (error) {
-//         console.error(error);
-//         return {
-//             props: {
-//                 user: null,
-//                 error: 'Error fetching user data'
-//             }
-//         };
-//     }
-// };
 
 export default WelcomePage;
