@@ -22,10 +22,10 @@ app.post('/api/post/add', async (req, res) => {
     }
 });
 
-app.post('/api/user/add_not_exist', async (req, res) => {
+app.post('/api/user/add_not_exists', async (req, res) => {
     const userProps = req.body;
     try {
-        const response = await axios.post(`${process.env.API_PATH}/user/add_not_exist`, userProps);
+        const response = await axios.post(`${process.env.API_PATH}/user/add_not_exists`, userProps);
         res.json({ data: response.data, error: null });
     } catch (error) {
         res.json({ data: null, error: error.message });
