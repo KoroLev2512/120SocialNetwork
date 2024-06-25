@@ -1,6 +1,6 @@
 import axios from "../api/axios";
 import {PostsStore} from "../types/dto/posts.dto";
-import {FETCH_POSTS} from "../api/requests/posts.requests";
+import {FETCH_POSTS} from "@/shared/api/requests/posts.requests";
 import {create} from "zustand";
 import {devtools} from "zustand/middleware";
 import {immer} from "zustand/middleware/immer";

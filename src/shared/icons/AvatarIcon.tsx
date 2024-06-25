@@ -1,5 +1,5 @@
 import React from "react";
-import { getSvgOptions } from "@/app/lib/utils";
+import { getSvgOptions } from "@/shared/utils";
 import { IconProps } from "./types";
 
 export const AvatarIcon = ({ height = 75, width = 75, rotation = 0 }: IconProps) => {

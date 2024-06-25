@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import axios from "@/app/lib/api/axios";
+import axios from "@/shared/api/axios";
 import { UserStore } from "@/entities/User/types/userState";
 import { UserApiPaths } from "@/entities/User/consts/apiPaths";
 

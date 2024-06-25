@@ -1,9 +1,9 @@
-import {cn} from "@/app/lib/utils";
+import {cn} from "@/shared/utils";
 import {Avatar, AvatarFallback, AvatarImage} from "@/shared/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {AvatarIcon} from "@/app/lib/icons/AvatarIcon";
+import {AvatarIcon} from "@/shared/icons/AvatarIcon";
 
 interface Post {
     image: string;

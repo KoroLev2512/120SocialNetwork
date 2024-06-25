@@ -3,15 +3,22 @@
 import {Button} from "@/shared/ui/button";
 import WelcomeCard from "@/widgets/WelcomeCard/ui/welcomeCard";
 import {useTheme} from "next-themes";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import axios from "axios";
 import {UserStore} from "@/entities/User/types/userState";
+import getUserProfilePhotoUrl from "@/shared/api/users/photo";
 
 
 const WelcomePage: React.FC<UserStore> = ()  => {
     const theme = useTheme();
+    const [photoURL, setPhotoURL] = useState<string | null>(null);
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
+    const telegramId = user.id;
+
+    getUserProfilePhotoUrl(telegramId).then(photoUrl => {
+        setPhotoURL(photoUrl);
+    });
 
     useEffect(() => {
             window.Telegram.WebApp.expand();
@@ -24,32 +31,24 @@ const WelcomePage: React.FC<UserStore> = ()  => {
     )
 
     if (user) {
-        const telegramId = user.id;
         const wallet = '';
         const ans = `https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`;
         fetch(ans)
             .then(async response => {
                 console.log(response.status);
                 const responseData = await response.json();
-                switch (response.status) {
-                    case 200:
-                        console.log('User data:', responseData);
-                        break;
-                    case 400:
-                        console.log('User have not id:', responseData);
-                        const axiosResponse = await axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
-                            user_telegram_id: user.id,
-                            username: user.username,
-                            user_first_name: user.first_name || null,
-                            user_second_name: user.last_name || null,
-                            wallet: wallet,
-                            photo: user.photo_url || null,
-                            language: user.language_code || null,
-                        });
-                        console.log('User added:', axiosResponse.data);
-                        break;
-                    default:
-                        console.log('Unexpected status:', response.status);
+                if (response.status === 400) {
+                    console.log('User have not id:', responseData);
+                    const axiosResponse = await axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
+                        user_telegram_id: user.id,
+                        username: user.username,
+                        user_first_name: user.first_name || null,
+                        user_second_name: user.last_name || null,
+                        wallet: wallet,
+                        photo: photoURL || null,
+                        language: user.language_code || null,
+                    });
+                    console.log('User added:', axiosResponse.data);
                 }
             })
             .catch(error => {
@@ -57,22 +56,6 @@ const WelcomePage: React.FC<UserStore> = ()  => {
             });
     } else {
         console.error('User data not available');
-    }
-
-    const wallet = '';
-    try {
-        const response = axios.post(`https://120-server.vercel.app/api/user/add_not_exists`, {
-            telegram_id: user.id,
-            username: user.username,
-            user_first_name: user.first_name || null,
-            user_second_name: user.last_name || null,
-            wallet: wallet,
-            photo: user.photo_url || null,
-            language: user.language_code || null,
-        });
-        console.log('User added', response);
-    } catch (error) {
-        console.error('There was a problem with your POST operation:', error);
     }
 
     return (
@@ -90,23 +73,6 @@ const WelcomePage: React.FC<UserStore> = ()  => {
             <Link className="max-w-[284px] w-full" href={"/feed"}>
                 <Button className="w-full">Continue</Button>
             </Link>
-            <div>
-                <h1>User Profile</h1>
-                <p><strong>ID:</strong> {user.id}</p>
-                <p><strong>First Name:</strong> {user.first_name}</p>
-                <p><strong>Second Name:</strong> {user?.last_name}</p>
-                <p><strong>Username:</strong> {user.username}</p>
-                {/*<p><strong>Telegram ID:</strong> {telegram_id}</p>*/}
-                <p><strong>Language:</strong> {user?.language_code}</p>
-                {/*<p><strong>Wallet:</strong> {wallet}</p>*/}
-                <p><strong>Profile Photo:</strong>
-                    <img
-                        src={user.photo_url}
-                        alt="User photo"
-                        className="w-[50px] h-[50px] rounded-full"
-                    />
-                </p>
-            </div>
         </main>
     );
 };

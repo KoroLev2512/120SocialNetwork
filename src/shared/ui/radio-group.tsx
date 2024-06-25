@@ -4,7 +4,7 @@ import * as React from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/shared/utils";
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,

@@ -4,7 +4,7 @@ import {PhotoIcon} from "@heroicons/react/24/solid";
 import {BackButton} from "@zakarliuka/react-telegram-web-tools";
 import Action from "@/shared/ui/action";
 import {SecondaryInput} from "@/shared/ui/input";
-import {AvatarIcon} from "@/app/lib/icons/AvatarIcon";
+import {AvatarIcon} from "@/shared/icons/AvatarIcon";
 
 export default function SettingsProfile() {
     const router = useRouter();

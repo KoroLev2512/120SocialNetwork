@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { ReactNode } from "react";
-import {AvatarIcon} from "@/app/lib/icons/AvatarIcon";
+import {AvatarIcon} from "@/shared/icons/AvatarIcon";
+import axios from "axios";
 
 export default function Settings() {
   const router = useRouter();

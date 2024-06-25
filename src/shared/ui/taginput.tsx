@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Badge } from "@/shared/ui/badge";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/shared/utils";
 import { type InputProps } from "./input";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
