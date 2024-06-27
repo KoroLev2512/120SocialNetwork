@@ -164,7 +164,6 @@ export default function WelcomePage() {
               )}
             />
           </div>
-          <button type="submit">submit from pc</button>
           <MainButton
             onClick={form.handleSubmit(onSubmit)}
             text="Publish"

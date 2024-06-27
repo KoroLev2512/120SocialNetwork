@@ -7,6 +7,7 @@ export interface Post {
     link: string;
     time_creation: string;
     image: string;
+    description: string;
 }
 
 export interface PostsProps {

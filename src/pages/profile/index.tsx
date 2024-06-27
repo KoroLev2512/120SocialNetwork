@@ -1,58 +1,57 @@
-import {cn} from "@/shared/utils";
-import {Avatar, AvatarFallback, AvatarImage} from "@/shared/ui/avatar";
-import Image from "next/image";
+import { cn } from "@/shared/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import Link from "next/link";
-import React from "react";
-import {AvatarIcon} from "@/shared/icons/AvatarIcon";
+import { useEffect, useState } from "react";
+import { AvatarIcon } from "@/shared/icons/AvatarIcon";
+import getUserProfilePhotoUrl from "@/shared/api/users/photo";
+import axios from "axios";
+import { GetAllPostsByUser } from "@/shared/api/posts/getAllByUser";
+import { Post } from "@/shared/api/posts/types";
+import { Button } from "@/shared/ui/button";
+import IconTon from "@/shared/assets/icons/IconTon";
 
-interface Post {
-    image: string;
-    reward?: number;
-}
+// скелеты для загрузки
+// страница воллета
 
-interface ProfilePageTempProps {
-    id: number;
-    username: string | null;
-    avatar: string | null;
-    connectedWallet?: boolean;
-    currency: number;
-    posts?: Post[];
-}
-
-const props: ProfilePageTempProps = {
-    id: 1,
-    username: null,
-    avatar: null,
-    currency: 139,
-    connectedWallet: true,
-    posts: [
-        {
-            image:
-                "https://i.pinimg.com/736x/0e/1d/af/0e1daf3a5b6d735f8990cff4c9091ca3.jpg",
-            reward: 100,
-        },
-        {
-            image:
-                "https://i.pinimg.com/564x/9f/c4/f8/9fc4f8e04016c5022f94e3f387b0086a.jpg",
-        },
-        {
-            image:
-                "https://i.pinimg.com/564x/fe/87/c7/fe87c7e92448487771c46a0727036fb0.jpg",
-            reward: 250,
-        },
-        {
-            image:
-                "https://i.pinimg.com/564x/58/1e/0e/581e0e73228169539c0063c8cff8b57a.jpg",
-        },
-        {
-            image:
-                "https://i.pinimg.com/564x/dd/d6/85/ddd68572bb7ecd995ee53826291905e4.jpg",
-            reward: 2500,
-        },
-    ],
-};
+type PostsProps = Post[];
 
 export default function Profile() {
+    const [photoURL, setPhotoURL] = useState<string | null>(null);
+    const [actualUserId, setActualUserId] = useState<number>();
+    const [wallet, setWallet] = useState<string>();
+    const [posts, setPosts] = useState<PostsProps>([]);
+    const user = window.Telegram.WebApp.initDataUnsafe?.user;
+
+    getUserProfilePhotoUrl(user.id).then(photoUrl => {
+        setPhotoURL(photoUrl);
+    });
+
+    const getUser = async (id: number) => {
+        try {
+            const response = await axios.get(`https://120-server.vercel.app/api/user/get_by_telegram/${id}`);
+            const data = response.data;
+            return data.data;
+        } catch (error) {
+            console.error('Caught an error while trying to get user id');
+            return null;
+        }
+    };
+
+    getUser(user.id).then(data => {
+        setActualUserId(data.id);
+        setWallet(data.wallet)
+    });
+
+    useEffect(() => {
+        async function getPosts() {
+            if (actualUserId) {
+                const result = await GetAllPostsByUser(actualUserId);
+                setPosts(result.posts);
+            }
+        }
+        getPosts();
+    }, [actualUserId]);
+
     return (
         <main
             className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
@@ -60,31 +59,25 @@ export default function Profile() {
                 className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white dark:bg-app_gray_dark-300 px-8 py-[14px]">
                 <div className="inline-flex items-center gap-x-4">
                     <Avatar className="size-[74px]">
-                        {props.avatar ?
-                            (
-                                <AvatarImage
-                                    alt={`@${props.username}`}
-                                    src={props.avatar}
-                                />
-                            ) : (
-                                <AvatarFallback>
-                                    <AvatarIcon height={75} width={75} rotation={0}/>
-                                </AvatarFallback>
-                            )}
+                        {photoURL ? (<AvatarImage alt="Avatar" src={photoURL} />) : (<AvatarFallback><AvatarIcon height={75} width={75} /></AvatarFallback>)}
                     </Avatar>
                     <div className="flex flex-col">
-                        <p className="text-secondarybody font-semibold">
-                            @{props.username ?? 'user_' + props.id}
+                        <p className="text-secondarybody font-semibold truncate max-w-[110px]">
+                            @{user.username}
                         </p>
                         <p className="text-secondarybody font-medium text-app_gray_light-300">
-                            {props.posts ? props.posts.length : 0} posts
+                        {!posts.length ? "No posts" : posts.length === 1 ? "1 post" : `${posts.length} posts`}
                         </p>
                     </div>
                 </div>
-                <Link href="/profile/wallet">
+                {wallet === "" ? (<Button asChild size={"sm"}>
+        <Link href="/profile/wallet">
+        <IconTon className="size-3" /> Connect Wallet
+        </Link>
+      </Button>) : (<Link href="/profile/wallet">
                     <div className="inline-flex items-center gap-x-1.5">
                         <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
-                            {props.currency}
+                            139
                             <IconBlock/>
                         </p>
                         <svg
@@ -102,24 +95,15 @@ export default function Profile() {
                             />
                         </svg>
                     </div>
-                </Link>
+                </Link>)}
             </section>
-            <Posts/>
-        </main>
-    );
-}
-
-const Posts = () => {
-    return (
-        <>
-            {props.posts ? (
-                <section className="grid w-full grid-cols-3">
-                    {Object.values(props.posts).map((i, index) => (
-                        <PostCard key={index} image={i.image} reward={i.reward}/>
-                    ))}
-                </section>
-            ) : (
-                <div
+            {posts && posts.length > 0 ? (<section className="grid w-full grid-cols-3">
+                {posts.map((i, index) => {
+                    return(
+                        <PostCard key={index} image={i.image} control_id={i.control_id} />
+                    )
+                })}
+            </section>) : (<section
                     className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
                     <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300"/>
                     <div className="flex flex-col items-center">
@@ -130,24 +114,18 @@ const Posts = () => {
                             Setup your profile first
                         </p>
                     </div>
-                </div>
-            )}
-        </>
+                </section>)}
+        </main>
     );
-};
+}
 
-type PostCardTempProps = {
-    image: string;
-    reward?: number;
-};
-
-const PostCard = ({image, reward}: PostCardTempProps) => {
-    return (
+// поставлю некстовский Image когда решим юрл для картинок + награды позже
+const PostCard = ({image, control_id}: Post) => {
+    return(
         <div className="relative aspect-square">
-            {reward ? (
-                <div
-                    className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-1.5 py-0.5 text-secondarybody font-medium">
-                    +{reward} <IconBlock className="size-4"/>
+            {control_id === true ? (
+                <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-1.5 py-0.5 text-secondarybody font-medium">
+                    +139 <IconBlock className="size-4" />
                 </div>
             ) : (
                 <div
@@ -155,17 +133,14 @@ const PostCard = ({image, reward}: PostCardTempProps) => {
                     Pending...
                 </div>
             )}
-            <Image
-                width={100}
-                height={100}
-                quality={100}
+            <img
                 className="aspect-square size-full"
                 src={image}
                 alt="Image"
             />
         </div>
-    );
-};
+    )
+}
 
 const IconBlock = ({className}: { className?: string }) => {
     return (

@@ -7,6 +7,7 @@ export type Posts = {
     link: string;
     time_creation: number;
     image: string;
+    description: string;
 }
 
 export type PostsStore = {
