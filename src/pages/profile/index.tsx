@@ -1,13 +1,13 @@
-import { cn } from "@/shared/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
+import {cn} from "@/shared/utils";
+import {Avatar, AvatarFallback, AvatarImage} from "@/shared/ui/avatar";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AvatarIcon } from "@/shared/icons/AvatarIcon";
+import {useEffect, useState} from "react";
+import {AvatarIcon} from "@/shared/icons/AvatarIcon";
 import getUserProfilePhotoUrl from "@/shared/api/users/photo";
 import axios from "axios";
-import { GetAllPostsByUser } from "@/shared/api/posts/getAllByUser";
-import { Post } from "@/shared/api/posts/types";
-import { Button } from "@/shared/ui/button";
+import {GetAllPostsByUser} from "@/shared/api/posts/getAllByUser";
+import {Post} from "@/shared/api/posts/types";
+import {Button} from "@/shared/ui/button";
 import IconTon from "@/shared/assets/icons/IconTon";
 
 // скелеты для загрузки
@@ -49,6 +49,7 @@ export default function Profile() {
                 setPosts(result.posts);
             }
         }
+
         getPosts();
     }, [actualUserId]);
 
@@ -59,22 +60,23 @@ export default function Profile() {
                 className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white dark:bg-app_gray_dark-300 px-8 py-[14px]">
                 <div className="inline-flex items-center gap-x-4">
                     <Avatar className="size-[74px]">
-                        {photoURL ? (<AvatarImage alt="Avatar" src={photoURL} />) : (<AvatarFallback><AvatarIcon height={75} width={75} /></AvatarFallback>)}
+                        {photoURL ? (<AvatarImage alt="Avatar" src={photoURL}/>) : (
+                            <AvatarFallback><AvatarIcon height={75} width={75}/></AvatarFallback>)}
                     </Avatar>
                     <div className="flex flex-col">
                         <p className="text-secondarybody font-semibold truncate max-w-[110px]">
                             @{user.username}
                         </p>
                         <p className="text-secondarybody font-medium text-app_gray_light-300">
-                        {!posts.length ? "No posts" : posts.length === 1 ? "1 post" : `${posts.length} posts`}
+                            {!posts.length ? "No posts" : posts.length === 1 ? "1 post" : `${posts.length} posts`}
                         </p>
                     </div>
                 </div>
                 {wallet === "" ? (<Button asChild size={"sm"}>
-        <Link href="/profile/wallet">
-        <IconTon className="size-3" /> Connect Wallet
-        </Link>
-      </Button>) : (<Link href="/profile/wallet">
+                    <Link href="/profile/wallet">
+                        <IconTon className="size-3"/> Connect Wallet
+                    </Link>
+                </Button>) : (<Link href="/profile/wallet">
                     <div className="inline-flex items-center gap-x-1.5">
                         <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
                             139
@@ -99,33 +101,34 @@ export default function Profile() {
             </section>
             {posts && posts.length > 0 ? (<section className="grid w-full grid-cols-3">
                 {posts.map((i, index) => {
-                    return(
-                        <PostCard key={index} image={i.image} control_id={i.control_id} />
+                    return (
+                        <PostCard key={index} image={i.image} control_id={i.control_id}/>
                     )
                 })}
             </section>) : (<section
-                    className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
-                    <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300"/>
-                    <div className="flex flex-col items-center">
-                        <p className="text-body">
-                            No posts yet!
-                        </p>
-                        <p className="text-secondarybody">
-                            Setup your profile first
-                        </p>
-                    </div>
-                </section>)}
+                className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
+                <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300"/>
+                <div className="flex flex-col items-center">
+                    <p className="text-body">
+                        No posts yet!
+                    </p>
+                    <p className="text-secondarybody">
+                        Setup your profile first
+                    </p>
+                </div>
+            </section>)}
         </main>
     );
 }
 
 // поставлю некстовский Image когда решим юрл для картинок + награды позже
 const PostCard = ({image, control_id}: Post) => {
-    return(
+    return (
         <div className="relative aspect-square">
             {control_id === true ? (
-                <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-1.5 py-0.5 text-secondarybody font-medium">
-                    +139 <IconBlock className="size-4" />
+                <div
+                    className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white dark:bg-app_gray_dark-200 px-1.5 py-0.5 text-secondarybody font-medium">
+                    +139 <IconBlock className="size-4"/>
                 </div>
             ) : (
                 <div

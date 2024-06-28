@@ -17,10 +17,10 @@ const Posts: React.FC<PostsProps> = ({posts, error}) => {
             {posts.map(post => (
                 <PostCard
                     key={post.id}
-                    user={`${post.user_id}`}
-                    usersAvatar={post.image}
+                    user={`${post.username}`}
+                    usersAvatar={post.profile_photo}
                     postsAwardInBP={5341}
-                    postsDescription={post.control_id}
+                    postsDescription={post.description}
                     postsImage={post.image}
                 />
             ))}

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {GetServerSideProps} from 'next';
 import {UserStore} from "@/entities/User/types/userState";
 
-const UserProfile: React.FC<UserStore> = ({ user, error }) => {
+const UserProfile: React.FC<UserStore> = ({user, error}) => {
     if (error) {
         return <div>{error}</div>;
     }
