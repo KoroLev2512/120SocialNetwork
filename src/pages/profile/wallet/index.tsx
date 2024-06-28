@@ -42,8 +42,6 @@ export default function ProfileWallet() {
       getPosts();
   }, [actualUserId]);
 
-  // пока что делать не стал, но когда сделаем дропдаун - сделаю чтобы содержимое дропа менялось при состоянии кошелька ( если он подключен и т.д )
-
   return (
     <main className="mx-auto flex h-screen w-full max-w-[420px] pt-6 px-10 flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
       <BackButton onClick={() => router.back()} />
@@ -71,8 +69,8 @@ export default function ProfileWallet() {
       <Button className="text-body text-white py-4 w-full rounded-[16px] mt-[28px]">
         Connect Wallet To Withdraw
       </Button>
-      {posts.filter(post => post.control_id).length > 0 ? (<div className="rounded-[10px] bg-white dark:bg-app_gray_dark-200 w-full flex flex-col gap-y-4 p-4 mt-6">
-        {posts.filter(post => post.control_id).map((i, index) => {
+      {posts.filter(post => post.control).length > 0 ? (<div className="rounded-[10px] bg-white dark:bg-app_gray_dark-200 w-full flex flex-col gap-y-4 p-4 mt-6">
+        {posts.filter(post => post.control).map((i, index) => {
             return(
               <>
                 <div className="inline-flex items-center gap-x-2.5">

@@ -1,7 +1,7 @@
 export interface Post {
     id: number;
     user_id: number;
-    control_id: string;
+    control: boolean;
     balance_sheet_id: string;
     tag_id: string;
     link: string;

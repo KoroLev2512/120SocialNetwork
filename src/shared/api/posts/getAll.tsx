@@ -20,7 +20,7 @@ const Posts: React.FC<PostsProps> = ({posts, error}) => {
                     user={`${post.user_id}`}
                     usersAvatar={post.image}
                     postsAwardInBP={5341}
-                    postsDescription={post.control_id}
+                    postsDescription={post.description}
                     postsImage={post.image}
                 />
             ))}
