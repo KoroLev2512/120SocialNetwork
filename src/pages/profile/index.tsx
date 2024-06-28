@@ -83,7 +83,7 @@ export default function Profile() {
             <p className="text-secondarybody font-medium text-app_gray_light-300">
               {isLoading ? (
                 <Skeleton width={60} />
-              ) : !posts.length ? (
+              ) : posts === null ? (
                 "No posts"
               ) : posts.length === 1 ? (
                 "1 post"
