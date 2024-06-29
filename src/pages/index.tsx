@@ -9,7 +9,6 @@ import axios from "axios";
 import {UserStore} from "@/entities/User/types/userState";
 import getUserProfilePhotoUrl from "@/shared/api/users/photo";
 
-
 const WelcomePage: React.FC<UserStore> = ()  => {
     const theme = useTheme();
     const [photoURL, setPhotoURL] = useState<string | null>(null);

@@ -7,5 +7,17 @@ img {
 }
 
 input {
-  -webkit-border-radius: 0px;
+  -webkit-border-radius: 0;
+}
+
+.swiper-pagination-custom {
+  @apply absolute ml-4 mb-1 inline-flex items-center gap-x-2.5
+}
+
+.swiper-pagination-bullet-active-custom {
+  @apply !bg-app_ton
+}
+
+.swiper-pagination-bullet-custom {
+  @apply size-2.5 inline-block rounded-full bg-[#D9D9D9] dark:bg-[#D9D9D9]/25
 }
