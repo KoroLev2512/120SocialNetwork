@@ -7,11 +7,11 @@ img {
 }
 
 input {
-  -webkit-border-radius: 0px;
+  -webkit-border-radius: 0;
 }
 
 .swiper-pagination-custom {
-  @apply absolute ml-4 mb-4 inline-flex items-center gap-x-2.5
+  @apply absolute ml-4 mb-1 inline-flex items-center gap-x-2.5
 }
 
 .swiper-pagination-bullet-active-custom {

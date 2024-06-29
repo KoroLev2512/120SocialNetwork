@@ -45,7 +45,7 @@ const WelcomeCard = () => {
         {slides.map((i, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className="flex flex-col items-center gap-y-[12px] pb-10">
+              <div className="flex flex-col items-center gap-y-[12px] gap-x-[12px] pb-10">
                 <Image
                   src={i.image}
                   className="max-w-[331px] px-4"
