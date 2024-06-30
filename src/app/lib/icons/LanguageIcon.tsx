@@ -1,11 +1,7 @@
 import React from "react";
-import { getSvgOptions } from "@/app/lib/utils";
 import { IconProps } from "./types";
 
-const LanguageIcon = ({ height = 24, width = 24, rotation = 0 }: IconProps) => {
-  const svgOptions = getSvgOptions({
-    rotationDegree: rotation,
-  });
+const LanguageIcon = ({ height = 24, width = 24 }: IconProps) => {
 
   return (
     <svg
@@ -18,7 +14,7 @@ const LanguageIcon = ({ height = 24, width = 24, rotation = 0 }: IconProps) => {
     >
       <path
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           d="m9 4 8 8-8 8"
       />
     </svg>

@@ -1,11 +1,7 @@
 import React from "react";
-import { getSvgOptions } from "@/app/lib/utils";
 import { IconProps } from "./types";
 
-const AvatarIcon = ({ height = 76, width = 76, rotation = 0 }: IconProps) => {
-    const svgOptions = getSvgOptions({
-        rotationDegree: rotation,
-    });
+const AvatarIcon = ({ height = 76, width = 76}: IconProps) => {
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg"
