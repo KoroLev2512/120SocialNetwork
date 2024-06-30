@@ -7,9 +7,12 @@ const nextConfig = {
   devIndicators: {
     buildActivity: false,
   },
+  env: {
+    API_PATH: process.env.API_PATH,
+  }
   // trailingSlash: true,
   // output: "standalone",
-  // reactStrictMode: false,
+  // reactStrictMode: true,
   // swcMinify: true,
 };
 

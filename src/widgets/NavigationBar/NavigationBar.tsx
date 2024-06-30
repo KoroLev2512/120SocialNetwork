@@ -1,4 +1,4 @@
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/shared/utils";
 import { CogIcon, CameraIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export const NavigationBar = () => {
   const router = useRouter();
 
-  return router.pathname != "/" ? (
+  return router.pathname != "/" && router.pathname != "/feed/addPost" ? (
     <nav className="w-full bg-white border-t dark:bg-app_gray_dark-300 dark:border-app_gray_dark-100 border-black/15 py-2.5 px-[54px] justify-between inline-flex items-center fixed left-0 bottom-0 max-w-[420px] mx-auto">
       <Link
         href={"/profile"}

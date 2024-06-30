@@ -2,17 +2,19 @@
 
 import Action from "@/shared/ui/action";
 import ThemeSwitch from "@/widgets/ThemeSwitch/ui/themeSwitch";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { ReactNode } from "react";
+import {AvatarIcon} from "@/shared/icons/AvatarIcon";
+import axios from "axios";
 
 export default function Settings() {
   const router = useRouter();
 
   return (
-    <main className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+    <main className="flex bg-app_gray_light-100 mb-16 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
       <BackButton onClick={() => router.back()} />
       <h1 className="text-largetitle">Settings</h1>
       <SettingsGroup title="personal">
@@ -20,7 +22,9 @@ export default function Settings() {
           <Action
             title="Edit Profile"
             leftElement={
-              <div className="size-[28px] rounded-full bg-black/20" />
+              <div className="size-[28px] rounded-full bg-black/20">
+                  <AvatarIcon height={28} width={28} rotation={0}/>
+              </div>
             }
             rightArrow
           />

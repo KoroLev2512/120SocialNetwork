@@ -1,42 +1,53 @@
 import { Button } from "@/shared/ui/button";
-import { BackButton } from "@zakarliuka/react-telegram-web-tools";
+import BackButton from "@/shared/ui/backbutton";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { GetAllPostsByUser } from "@/shared/api/posts/getAllByUser";
+import { Post } from "@/shared/api/posts/types";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+type PostsProps = Post[];
 
 export default function ProfileWallet() {
+  const [actualUserId, setActualUserId] = useState<number>();
+  const [wallet, setWallet] = useState<string>();
+  const [posts, setPosts] = useState<PostsProps>([]);
   const router = useRouter();
-  const earnings = [
-    {
-      earned: 123,
-      post: {
-        previewimage:
-          "https://i.pinimg.com/564x/fe/87/c7/fe87c7e92448487771c46a0727036fb0.jpg",
-        description: "Lifestyle, chill, graffity",
-      },
-    },
-    {
-      earned: 456,
-      post: {
-        previewimage:
-          "https://i.pinimg.com/564x/58/1e/0e/581e0e73228169539c0063c8cff8b57a.jpg",
-        description: "Graffity, skateboarding",
-      },
-    },
-    {
-      earned: 789,
-      post: {
-        previewimage:
-          "https://i.pinimg.com/564x/dd/d6/85/ddd68572bb7ecd995ee53826291905e4.jpg",
-        description: "Music, hip-hop",
-      },
-    },
-  ];
+  const user = window.Telegram.WebApp.initDataUnsafe?.user;
+
+  const getUser = async (id: number) => {
+    try {
+        const response = await axios.get(`https://120-server.vercel.app/api/user/get_by_telegram/${id}`);
+        const data = response.data;
+        return data.data;
+    } catch (error) {
+        console.error('Caught an error while trying to get user id');
+        return null;
+    }
+};
+
+  getUser(user.id).then(data => {
+    setActualUserId(data.id);
+    setWallet(data.wallet)
+  });
+
+  useEffect(() => {
+      async function getPosts() {
+          if (actualUserId) {
+              const result = await GetAllPostsByUser(2);
+              setPosts(result.posts);
+          }
+      }
+      getPosts();
+  }, [actualUserId]);
+
   return (
     <main className="mx-auto flex h-screen w-full max-w-[420px] pt-6 px-10 flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
       <BackButton onClick={() => router.back()} />
       <div className="px-4 mb-[18px] py-1.5 inline-flex gap-x-1 items-center rounded-full bg-app_ton">
-        <p className="text-secondarybody font-semibold text-white">
-          0xd75Evn534f...
+        <p className="text-secondarybody font-semibold text-white truncate max-w-[120px]">
+          0xd75Evn534f87612kj
         </p>
         <svg
           width="15"
@@ -58,35 +69,32 @@ export default function ProfileWallet() {
       <Button className="text-body text-white py-4 w-full rounded-[16px] mt-[28px]">
         Connect Wallet To Withdraw
       </Button>
-      <div className="rounded-[10px] bg-white dark:bg-app_gray_dark-200 w-full flex flex-col gap-y-4 p-4 mt-6">
-        {earnings.map((i, index) => {
-          return (
-            <>
-              <div className="inline-flex items-center gap-x-2.5">
-                <Image
-                  src={i.post.previewimage}
-                  className="size-10 rounded-[6px]"
-                  alt="Image"
-                  quality={100}
-                  width={40}
-                  height={40}
-                />
-                <div className="flex flex-col">
-                  <p className="text-secondarybody font-semibold">
-                    +{i.earned} Blocks
-                  </p>
-                  <p className="text-[14px] text-app_gray_light-300 font-regular tracking-[-0.04em]">
-                    {i.post.description}
-                  </p>
+      {posts.filter(post => post.control).length > 0 ? (<div className="rounded-[10px] bg-white dark:bg-app_gray_dark-200 w-full flex flex-col gap-y-4 p-4 mt-6">
+        {posts.filter(post => post.control).map((i, index) => {
+            return(
+              <>
+                <div className="inline-flex items-center gap-x-2.5">
+                  <img
+                    src={i.image}
+                    className="size-10 rounded-[6px]"
+                    alt="Image"
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-secondarybody font-semibold">
+                      +139 Blocks
+                    </p>
+                    <p className="text-[14px] text-app_gray_light-300 font-regular tracking-[-0.04em]">
+                      {i.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              {index < earnings.length - 1 && (
-                <div className="w-full h-[1px] bg-app_gray_light-300/25 dark:bg-app_gray_light-300/25" />
-              )}
-            </>
-          );
-        })}
-      </div>
+                {index < posts.length - 1 && (
+                  <div className="w-full h-[1px] bg-app_gray_light-300/25 dark:bg-app_gray_light-300/25" />
+                )}
+              </>
+            )
+          })}
+      </div>) : null}
     </main>
   );
 }
