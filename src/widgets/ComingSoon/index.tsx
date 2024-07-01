@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ComingSoon() {
   return (
-    <section className="flex h-screen w-full flex-col items-center justify-center gap-y-2.5 bg-app_gray_light-100 pb-[72px] dark:bg-app_gray_dark-300">
+    <section className="flex z-[1] absolute h-screen w-full backdrop-blur-[6px] flex-col items-center justify-center gap-y-2.5 bg-app_gray_light-100/75 pb-[72px] dark:bg-app_gray_dark-300/75">
       <BlockIcon />
       <h1 className="text-largetitle">Coming soon</h1>
       <p className="text-center text-body text-black/65 dark:text-white/65">
