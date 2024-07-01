@@ -1,5 +1,5 @@
 import {useRouter} from "next/router";
-import {SettingsGroup} from "..";
+import {SettingsGroup} from "@/pages/settings";
 import {PhotoIcon} from "@heroicons/react/24/solid";
 import {BackButton} from "@zakarliuka/react-telegram-web-tools";
 import Action from "@/shared/ui/action";
