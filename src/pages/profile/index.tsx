@@ -11,6 +11,7 @@ import {Button} from "@/shared/ui/button";
 import IconTon from "@/shared/assets/icons/IconTon";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import {useTranslations} from "next-intl";
 
 type PostsProps = Post[];
 
@@ -21,8 +22,9 @@ export default function Profile() {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [posts, setPosts] = useState<PostsProps>([]);
   const user = window.Telegram.WebApp.initDataUnsafe?.user;
+  const t = useTranslations();
 
-  getUserProfilePhotoUrl(user.id).then((photoUrl) => {
+    getUserProfilePhotoUrl(user.id).then((photoUrl) => {
     setPhotoURL(photoUrl);
   });
 
@@ -84,9 +86,9 @@ export default function Profile() {
                             {isLoading ? (
                                 <Skeleton width={60} />
                             ) : posts === null ? (
-                                "No posts"
+                                t('no_posts')
                             ) : posts.length === 1 ? (
-                                "1 post"
+                                t('1 post')
                             ) : (
                                 `${posts.length} posts`
                             )}
