@@ -53,23 +53,22 @@ export default function SettingsLanguage() {
       <h1 className="text-largetitle text-center">Change Language</h1>
       <RadioGroup onValueChange={changeLanguage}>
         <SettingsGroup>
-          <RadioGroupItem
-            title="Russian"
+        <RadioGroupItem
+            title={t('russian')}
             secondaryTitle="Russian"
             value="ru"
             id="lang_ru"
             checked={locale === 'ru'}
-          />
-          <RadioGroupItem
-            title="English"
+        />
+        <RadioGroupItem
+            title={t('english')}
             secondaryTitle="English"
             value="en"
             id="lang_en"
             checked={locale === 'en'}
-          />
+        />
         </SettingsGroup>
       </RadioGroup>
-      {t('test')}
     </main>
   );
 }
