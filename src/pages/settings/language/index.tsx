@@ -50,7 +50,7 @@ export default function SettingsLanguage() {
   return (
     <main className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[420px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
       <BackButton onClick={() => router.push('/settings', router.asPath, { locale: locale })} />
-      <h1 className="text-largetitle text-center">Change Language</h1>
+      <h1 className="text-largetitle text-center">{t('change_language')}</h1>
       <RadioGroup onValueChange={changeLanguage}>
         <SettingsGroup>
         <RadioGroupItem

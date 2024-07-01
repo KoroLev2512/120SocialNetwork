@@ -1,5 +1,4 @@
 {
-    "test": "haha",
     "feed": "Feed",
     "profile": "Profile",
     "settings": "Settings",
@@ -15,6 +14,18 @@
     "related_to_120_community": "related to 120 community and earn Block jettons",
     "no_posts_yet": "No posts yet!",
     "setup_your_profile_first": "Setup your profile first",
+    "exchange_BP": "Exchange BP",
+    "for_an_amazing": "for an amazing rewards",
+    "personal": "personal",
+    "customization": "customization",
+    "help&support": "help & support",
+    "edit_profile": "Edit Profile",
+    "change_language": "Change language",
+    "dark_mode": "Dark Mode",
+    "referrals": "Referrals",
+    "community_chat": "Community Chat",
+    "support": "Support",
     "russian": "Russian",
-    "english": "English"
+    "english": "English",
+    "current_language": "English"
 }

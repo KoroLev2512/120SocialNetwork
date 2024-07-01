@@ -1,5 +1,4 @@
 {
-    "test": "хаха",
     "feed": "Новости",
     "profile": "Профиль",
     "settings": "Настройки",
@@ -13,8 +12,20 @@
     "choose_language": "Выбор языка",
     "share_creativity": "Делись творчеством",
     "related_to_120_community": "которое относится к 120Block и получай награду",
+    "no_posts_yet": "Пока ещё нет постов!",
+    "setup_your_profile_first": "Настройте свой профиль",
+    "exchange_BP": "Разменивай BP",
+    "for_an_amazing": "за крутые награды",
+    "personal": "персонализация",
+    "customization": "кастомизация",
+    "help&support": "поддержка",
+    "edit_profile": "Редактировать данные",
+    "change_language": "Сменить язык",
+    "dark_mode": "Тёмная тема",
+    "referrals": "Реферальная программа",
+    "community_chat": "Чат сообщества",
+    "support": "Полезные ссылки",
     "russian": "Русский",
     "english": "Английский",
-    "no_posts_yet": "Пока ещё нет постов!",
-    "setup_your_profile_first": "Настройте свой профиль"
+    "current_language": "Русский"
 }

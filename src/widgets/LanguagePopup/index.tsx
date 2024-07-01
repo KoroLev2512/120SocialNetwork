@@ -51,7 +51,7 @@ export default function LanguagePopup() {
     return(
         <Dialog>
             <DialogTrigger>
-                <Action className="dark:bg-app_gray_dark-100 dark:active:bg-app_gray_light-100/5 mb-2 px-10 py-[14px] active:" rightArrow title={t('choose_language')} />
+                <Action rightLabel={t('current_language')} className="dark:bg-app_gray_dark-100 dark:active:bg-app_gray_light-100/5 mb-2 px-10 py-[14px] active:" rightArrow title={t('choose_language')} />
             </DialogTrigger>
             <DialogContent className="px-4">
                 <section className="flex flex-col items-center gap-y-2">

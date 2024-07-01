@@ -21,8 +21,8 @@ const WelcomeCard = () => {
         },
         {
             image: "/welcome_exchange.svg",
-            title: "Exchange BP",
-            description: "for an amazing rewards",
+            title: t('exchange_BP'),
+            description: t('for_an_amazing'),
         },
     ];
 
