@@ -8,26 +8,47 @@ import Link from "next/link";
 import axios from "axios";
 import {UserStore} from "@/entities/User/types/userState";
 import getUserProfilePhotoUrl from "@/shared/api/users/photo";
+import { useTranslations } from "next-intl";
+import { GetStaticPropsContext } from "next";
+import { useRouter } from "next/router";
 
 const WelcomePage: React.FC<UserStore> = ()  => {
     const theme = useTheme();
     const [photoURL, setPhotoURL] = useState<string | null>(null);
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
     const telegramId = user.id;
+    const t = useTranslations();
+
+    const router = useRouter();
 
     getUserProfilePhotoUrl(telegramId).then(photoUrl => {
         setPhotoURL(photoUrl);
     });
 
     useEffect(() => {
-            window.Telegram.WebApp.expand();
-            if (theme.theme === "light") {
-                window.Telegram.WebApp.setHeaderColor("#F7F9FB")
-            } else {
-                window.Telegram.WebApp.setHeaderColor("#111111")
+        window.Telegram.WebApp.expand();
+        if (theme.theme === "light") {
+            window.Telegram.WebApp.setHeaderColor("#F7F9FB");
+        } else {
+            window.Telegram.WebApp.setHeaderColor("#111111");
+        }
+
+        const getUsersLanguage = async () => {
+            try {
+                const response = await fetch(`https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`);
+                const data = await response.json();
+                const userLanguage = data.data.language;
+
+                if (userLanguage === 'en') {
+                    router.push('en');
+                }
+            } catch (error) {
+                console.log('mhm', error);
             }
-        },
-    )
+        };
+
+        getUsersLanguage();
+    }, [user.language_code]);
 
     if (user) {
         const wallet = '';
@@ -61,7 +82,7 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         <main
             className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-12">
             <div className="flex flex-col items-center">
-                <h1 className="text-largetitle font-medium">Hello there</h1>
+                <h1 className="text-largetitle font-medium">{t('test')}</h1>
                 <h1 className="text-title font-normal">Let's get started!</h1>
             </div>
             <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300">
@@ -75,5 +96,13 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         </main>
     );
 };
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+      props: {
+        messages: (await import(`../../languages_test/${locale}.json`)).default
+      }
+    };
+  }
 
 export default WelcomePage;
