@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { ReactNode } from "react";
+import { cn } from "../utils";
 
 //TODO :: active:bg should be disablable
 
@@ -10,6 +11,7 @@ const Action = ({
   rightLabel,
   rightElement,
   leftSecondaryElement,
+  className,
 }: {
   title: string;
   leftElement?: ReactNode;
@@ -17,9 +19,10 @@ const Action = ({
   leftSecondaryElement?: ReactNode;
   rightLabel?: string;
   rightElement?: ReactNode;
+  className?: string;
 }) => {
   return (
-    <div className="max-h-[44px] overflow-hidden px-[18px] py-[9px] w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white dark:bg-app_gray_dark-200 dark:active:bg-app_gray_dark-100">
+    <div className={cn("max-h-[44px] overflow-hidden px-[18px] py-[9px] w-full justify-between items-center inline-flex active:bg-[#E5E5EA] transition-colors duration-100 *:select-none bg-white dark:bg-app_gray_dark-200 dark:active:bg-app_gray_dark-100", className)}>
       <div className="inline-flex gap-x-3 items-center">
         {leftElement}
         <p className="text-[17px] font-regular leading-[22px] tracking-[-0.43px]">
@@ -35,12 +38,12 @@ const Action = ({
         ) : (
           ""
         )}
+        {rightElement}
         {rightArrow ? (
           <ChevronRightIcon className="text-[#C8C7CB] size-[26px]" />
         ) : (
           ""
         )}
-        {rightElement}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/pagination';
+import LanguagePopup from "@/widgets/LanguagePopup";
 
 const WelcomeCard = () => {
     const t = useTranslations();
@@ -27,13 +28,7 @@ const WelcomeCard = () => {
 
     return (
     <div className="flex overflow-hidden w-full flex-col bg-white dark:bg-app_gray_dark-100 rounded-[14px] max-w-[480px]">
-      <div className="inline-flex w-full items-center justify-between px-[40px] py-[14px]">
-        <p className="text-secondarybody text-black dark:text-white">{t('choose_language')}</p>
-        <div className="inline-flex items-center gap-x-2 text-app_gray_light-300">
-          <p className="text-secondarybody">English</p>
-          <Language />
-        </div>
-      </div>
+      <LanguagePopup />
       <Swiper
         className="w-full relative"
         pagination={{
