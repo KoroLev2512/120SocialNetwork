@@ -8,11 +8,11 @@ import Link from "next/link";
 import axios from "axios";
 import {UserStore} from "@/entities/User/types/userState";
 import getUserProfilePhotoUrl from "@/shared/api/users/photo";
-import { useTranslations } from "next-intl";
-import { GetStaticPropsContext } from "next";
-import { useRouter } from "next/router";
+import {useTranslations} from "next-intl";
+import {GetStaticPropsContext} from "next";
+import {useRouter} from "next/router";
 
-const WelcomePage: React.FC<UserStore> = ()  => {
+const WelcomePage: React.FC<UserStore> = () => {
     const theme = useTheme();
     const [photoURL, setPhotoURL] = useState<string | null>(null);
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
@@ -80,18 +80,17 @@ const WelcomePage: React.FC<UserStore> = ()  => {
 
     return (
         <main
-            className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-12">
+            className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-6 cursor-default">
             <div className="flex flex-col items-center">
-                <h1 className="text-largetitle font-medium">{t('test')}</h1>
-                <h1 className="text-title font-normal">Let's get started!</h1>
+                <h1 className="text-largetitle font-medium">{t('hello_there')}</h1>
+                <h1 className="text-title font-normal">{t('let\'s_get_started!')}</h1>
             </div>
-            <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300">
-                <span className="font-medium">120Block</span> is a community that unites
-                talented people, find new paths for self-realization and earning!
+            <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300 cursor-default">
+                <span className="font-medium">120Block</span>{t('community')}
             </p>
             <WelcomeCard/>
             <Link className="max-w-[284px] w-full" href={"/feed"}>
-                <Button className="w-full">Continue</Button>
+                <Button className="w-full mb-2">{t('continue')}</Button>
             </Link>
         </main>
     );
@@ -99,10 +98,10 @@ const WelcomePage: React.FC<UserStore> = ()  => {
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
     return {
-      props: {
-        messages: (await import(`../../languages_test/${locale}.json`)).default
-      }
+        props: {
+            messages: (await import(`../../languages_test/${locale}.json`)).default
+        }
     };
-  }
+}
 
 export default WelcomePage;

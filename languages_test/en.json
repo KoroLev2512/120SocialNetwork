@@ -1,4 +1,15 @@
 {
     "test": "haha",
-    "feed": "feed"
+    "feed": "Feed",
+    "profile": "Profile",
+    "settings": "Settings",
+    "add_new_post": "+ Add new post",
+    "continue": "Continue",
+    "no_posts": "No posts",
+    "hello_there": "Hello there",
+    "let's_get_started!": "Let's get started!",
+    "community": "is a community that unites talented people,\nfind new paths for self-realization and earning!",
+    "choose_language": "Choose language",
+    "share_creativity": "Share Creativity",
+    "related_to_120_community": "related to 120 community and earn Block jettons"
 }
