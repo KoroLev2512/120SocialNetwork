@@ -146,7 +146,7 @@ export default function Profile() {
             ) : posts && posts.length > 0 ? (
                 <section className="grid w-full grid-cols-3">
                     {posts.map((post, index) => (
-                        <PostCard key={post.id} image={post.image} control={post.control} />
+                        <PostCard key={post.id} image={post.image} check={post.control} />
                     ))}
                 </section>
             ) : (
@@ -164,15 +164,15 @@ export default function Profile() {
 
 // поставлю некстовский Image когда решим юрл для картинок + награды позже
 type PostCardProps = {
-  control: boolean;
+  check: boolean;
   image: string;
 };
 
-const PostCard = ({ control, image }: PostCardProps) => {
+const PostCard = ({ check, image }: PostCardProps) => {
     const t = useTranslations()
   return (
     <div className="relative aspect-square">
-      {control ? (
+      {check ? (
         <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-1.5 py-0.5 text-secondarybody font-medium dark:bg-app_gray_dark-200">
           +139 <IconBlock className="size-4" />
         </div>

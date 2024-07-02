@@ -11,6 +11,7 @@ export interface Post {
     description: string;
     username: string;
     profile_photo: string;
+    check: boolean;
 }
 
 export interface PostsProps {
