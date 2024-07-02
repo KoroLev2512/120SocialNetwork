@@ -89,7 +89,7 @@ export default function Profile() {
                             ) : posts === null ? (
                                 t('no_posts')
                             ) : posts.length === 1 ? (
-                                t('1 post')
+                                t('1_post')
                             ) : (
                                 `${posts.length} ${t('posts')}`
                             )}
