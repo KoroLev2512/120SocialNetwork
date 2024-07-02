@@ -27,7 +27,10 @@ const PostCard = ({
           </p>
         </div>
       </div>
-      <img src={usersAvatar} className="w-full aspect-square rounded-b-[14px]" />
+      <img
+          src={postsImage}
+          className="w-full aspect-square rounded-b-[14px]"
+      />
     </div>
   );
 };

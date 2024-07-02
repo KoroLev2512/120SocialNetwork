@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useTranslations} from "next-intl";
-import { GetStaticPropsContext } from "next";
+import {GetStaticPropsContext} from "next";
 
 export default function ComingSoon() {
     const t = useTranslations();
