@@ -2,7 +2,6 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import {AppProps} from "next/app";
 import {NavigationBar} from "@/widgets/NavigationBar";
-
 import {WebAppProvider} from "@/app/providers/WebAppProvider";
 import {ThemeProvider} from "@/app/providers/ThemesProvider";
 import {NextIntlClientProvider} from 'next-intl'
