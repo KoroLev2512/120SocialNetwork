@@ -7,9 +7,12 @@
     "continue": "Продолжить",
 
     "no_posts": "Нет постов",
-    "1 post": "1 post",
+    "1_post": "1 пост",
+    "posts": "постов",
+    "pending": "В процессе",
     "no_posts_yet": "Пока ещё нет постов!",
     "setup_your_profile_first": "Настройте свой профиль",
+    "connect_wallet": "Подключить кошелёк",
 
     "hello_there": "Привет",
     "let's_get_started!": "Давай начнём!",
@@ -44,11 +47,24 @@
     "contact_support": "Связаться с поддержкой",
 
     "Coming soon": "Скоро",
-    "description": "Эта страница будет выпущена",
+    "This page will be released in the": "Эта страница будет выпущена",
     "next few updates": "в следующих обновлениях",
     "Stay turned!": "Следите за обновлениями!",
+    "home_btn": "Вернуться в ленту",
 
     "russian": "Русский",
     "english": "Английский",
-    "current_language": "Русский"
+    "current_language": "Русский",
+
+    "addPostForm": {
+        "successfully_post": "Успешно добавлен новый пост!",
+        "description": {
+            "title": "Описание",
+            "placeholder": "Новый тэг"
+        },
+        "post_url": {
+            "title": "Ссылка на существующий пост",
+            "placeholder": "https://"
+        }
+    }
 }

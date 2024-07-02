@@ -14,7 +14,7 @@ const Posts: React.FC<PostsProps> = ({posts, error}) => {
 
     return (
         <>
-            {posts.map(post => (
+            {posts.reverse().map(post => (
                 <PostCard
                     key={post.id}
                     user={`${post.username}`}

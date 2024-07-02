@@ -7,9 +7,12 @@
     "continue": "Continue",
 
     "no_posts": "No posts",
-    "1 post": "1 post",
+    "1_post": "1 post",
+    "posts": "posts",
+    "pending": "Pending",
     "no_posts_yet": "No posts yet!",
     "setup_your_profile_first": "Setup your profile first",
+    "connect_wallet": "Connect wallet",
 
     "hello_there": "Hello there",
     "let's_get_started!": "Let's get started!",
@@ -47,8 +50,21 @@
     "This page will be released in the": "This page will be released in the",
     "next few updates": "next few updates",
     "Stay turned!": "Stay tuned!",
+    "home_btn": "Back to the home page",
 
     "russian": "Russian",
     "english": "English",
-    "current_language": "English"
+    "current_language": "English",
+
+    "addPostForm": {
+        "successfully_post": "Successfully added a new post!",
+        "description": {
+            "title": "Description",
+            "placeholder": "Add a tag"
+        },
+        "post_url": {
+            "title": "URL to the post",
+            "placeholder": "https://"
+        }
+    }
 }

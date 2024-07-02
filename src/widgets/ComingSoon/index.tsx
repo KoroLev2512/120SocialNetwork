@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {useTranslations} from "next-intl";
-import {GetServerSideProps} from "next";
-import {fetchPosts} from "@/shared/api/posts/getAll";
+import { GetStaticPropsContext } from "next";
 
 export default function ComingSoon() {
     const t = useTranslations();
@@ -23,7 +22,7 @@ export default function ComingSoon() {
               href={"/feed"}
               className="text-black/20 underline transition-all active:text-black/40 dark:text-white/20 dark:active:text-white/40"
           >
-            Back to the home page
+            {t('home_btn')}
           </Link>
         </span>
             </p>
@@ -57,13 +56,10 @@ const BlockIcon = ({className}: { className?: string }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({locale}) => {
-    const data = await fetchPosts();
-    const messages = (await import(`../../../languages_test/${locale}.json`)).default;
+export async function getStaticProps({locale}: GetStaticPropsContext) {
     return {
         props: {
-            ...data,
-            messages
+            messages: (await import(`../../../languages_test/${locale}.json`)).default
         }
     };
-};
+}

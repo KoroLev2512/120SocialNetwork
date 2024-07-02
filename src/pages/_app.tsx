@@ -23,7 +23,7 @@ function HomePage({Component, pageProps}: AppProps) {
         <WebAppProvider>
             <ThemeProvider attribute="class">
                 <NextIntlClientProvider locale={router.locale} messages={pageProps.messages}>
-                    <div className={`${inter.className} antialiased max-w-[420px]`}>
+                    <div className={`${inter.className} antialiased max-w-[480px]`}>
                         <Component {...pageProps} />
                         <NavigationBar/>
                     </div>

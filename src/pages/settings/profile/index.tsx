@@ -6,6 +6,7 @@ import Action from "@/shared/ui/action";
 import {SecondaryInput} from "@/shared/ui/input";
 import {AvatarIcon} from "@/shared/icons/AvatarIcon";
 import ComingSoon from "@/widgets/ComingSoon";
+import { GetStaticPropsContext } from "next";
 
 export default function SettingsProfile() {
     const router = useRouter();
@@ -14,7 +15,7 @@ export default function SettingsProfile() {
         <div className="relative">
             <ComingSoon />
             <main
-                className="bg-app_gray_light-100 saturate-0 dark:bg-app_gray_dark-300 max-w-[420px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+                className="bg-app_gray_light-100 saturate-0 dark:bg-app_gray_dark-300 max-w-[480px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
                 <BackButton onClick={() => router.back()}/>
                 <h1 className="text-largetitle text-center">Profile Settings</h1>
                 <div className="flex flex-col gap-y-3 items-center">
@@ -45,4 +46,12 @@ export default function SettingsProfile() {
             </main>
         </div>
     );
+}
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../../../../languages_test/${locale}.json`)).default
+        }
+    };
 }

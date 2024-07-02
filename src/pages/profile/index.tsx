@@ -12,6 +12,7 @@ import IconTon from "@/shared/assets/icons/IconTon";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import {useTranslations} from "next-intl";
+import { GetStaticPropsContext } from "next";
 
 type PostsProps = Post[];
 
@@ -58,7 +59,7 @@ export default function Profile() {
     }, [actualUserId]);
 
     return (
-        <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
+        <main className="mx-auto flex h-screen w-full max-w-[480px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
             <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px] dark:bg-app_gray_dark-300">
                 <div className="inline-flex items-center gap-x-4">
                     {isLoading ? (
@@ -90,7 +91,7 @@ export default function Profile() {
                             ) : posts.length === 1 ? (
                                 t('1 post')
                             ) : (
-                                `${posts.length} posts`
+                                `${posts.length} ${t('posts')}`
                             )}
                         </p>
                     </div>
@@ -100,7 +101,7 @@ export default function Profile() {
                 ) : wallet === "" ? (
                     <Button asChild size={"sm"}>
                         <Link href="/profile/wallet">
-                            <IconTon className="size-3" /> Connect Wallet
+                            <IconTon className="size-3" /> {t('connect_wallet')}
                         </Link>
                     </Button>
                 ) : (
@@ -152,8 +153,8 @@ export default function Profile() {
                 <section className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
                     <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300" />
                     <div className="flex flex-col items-center">
-                        <p className="text-body">No posts yet!</p>
-                        <p className="text-secondarybody">Setup your profile first</p>
+                        <p className="text-body">{t('no_posts_yet')}</p>
+                        <p className="text-secondarybody">{t('setup_your_profile_first')}</p>
                     </div>
                 </section>
             )}
@@ -168,6 +169,7 @@ type PostCardProps = {
 };
 
 const PostCard = ({ control, image }: PostCardProps) => {
+    const t = useTranslations()
   return (
     <div className="relative aspect-square">
       {control ? (
@@ -176,7 +178,7 @@ const PostCard = ({ control, image }: PostCardProps) => {
         </div>
       ) : (
         <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-2 py-0.5 text-secondarybody font-medium dark:bg-app_gray_dark-200">
-          Pending...
+          {t('pending')}...
         </div>
       )}
       <img className="aspect-square size-full" src={image} alt="Image" />
@@ -221,3 +223,11 @@ const IconBlock = ({ className }: { className?: string }) => {
     </svg>
   );
 };
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../../../languages_test/${locale}.json`)).default
+        }
+    };
+}
