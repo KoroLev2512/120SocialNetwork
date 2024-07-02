@@ -8,7 +8,6 @@ import {useRouter} from "next/router";
 import React from "react";
 import {ReactNode} from "react";
 import {AvatarIcon} from "@/shared/icons/AvatarIcon";
-import axios from "axios";
 import {useTranslations} from "next-intl";
 import {GetServerSideProps} from "next";
 import {fetchPosts} from "@/shared/api/posts/getAll";
@@ -20,7 +19,7 @@ export default function Settings() {
         <main
             className="flex bg-app_gray_light-100 mb-16 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
             <BackButton onClick={() => router.back()}/>
-            <h1 className="text-largetitle">{t('settings')}</h1>
+            <h1 className="text-largetitle">{t('Settings')}</h1>
             <SettingsGroup title={t('personal')}>
                 <Link href="/settings/profile">
                     <Action

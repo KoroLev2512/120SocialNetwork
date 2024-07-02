@@ -3,6 +3,8 @@ import {CogIcon, CameraIcon, UserCircleIcon} from "@heroicons/react/24/solid";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {useTranslations} from "next-intl";
+import {GetServerSideProps} from "next";
+import {fetchPosts} from "@/shared/api/posts/getAll";
 
 export const NavigationBar = () => {
     const router = useRouter();
@@ -22,7 +24,7 @@ export const NavigationBar = () => {
             >
                 {/* позже сделать чтобы иконка менялась в случае если у юзера есть аватарка */}
                 <UserCircleIcon className="size-8"/>
-                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('profile')}</p>
+                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('Profile')}</p>
             </Link>
             <Link
                 href={"/feed"}
@@ -32,7 +34,7 @@ export const NavigationBar = () => {
                 )}
             >
                 <CameraIcon className="size-8"/>
-                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('feed')}</p>
+                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('Feed')}</p>
             </Link>
             <Link
                 href={"/settings"}
@@ -44,8 +46,19 @@ export const NavigationBar = () => {
                 )}
             >
                 <CogIcon className="size-8"/>
-                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('settings')}</p>
+                <p className="text-[10px] font-medium tracking-[-0.04em]">{t('Settings')}</p>
             </Link>
         </nav>
     ) : null;
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+    const data = await fetchPosts();
+    const messages = (await import(`../../../languages_test/${locale}.json`)).default;
+    return {
+        props: {
+            ...data,
+            messages
+        }
+    };
 };

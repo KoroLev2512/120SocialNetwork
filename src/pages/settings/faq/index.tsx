@@ -9,6 +9,8 @@ import BackButton from "@/shared/ui/backbutton";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {useTranslations} from "next-intl";
+import {GetServerSideProps} from "next";
+import {fetchPosts} from "@/shared/api/posts/getAll";
 
 export default function SettingsFAQ() {
     const router = useRouter();
@@ -16,22 +18,28 @@ export default function SettingsFAQ() {
 
     const accordionItems = [
         {
-            title: "Ways to earn tokens",
+            title: t('faq_first_title'),
             content:
-                "Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy  text ever since the 1500s,",
+                t('faq_first_description'),
             value: "1",
         },
         {
-            title: "How to upload content?",
+            title: t('faq_second_title'),
             content:
-                "Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy  text ever since the 1500s,",
+                t('faq_second_description'),
             value: "2",
         },
         {
-            title: "What’s 120’ Block?",
+            title: t('faq_third_title'),
             content:
-                "Lorem Ipsum is simply dummy text of the printing and  typesetting industry. Lorem Ipsum has been the industry's standard dummy  text ever since the 1500s,",
+                t('faq_third_description'),
             value: "3",
+        },
+        {
+            title: t('faq_forth_title'),
+            content:
+                t('faq_forth_description'),
+            value: "4",
         },
     ];
 
@@ -39,8 +47,8 @@ export default function SettingsFAQ() {
         <main
             className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[420px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
             <BackButton onClick={() => router.back()}/>
-            <h1 className="text-largetitle text-center">
-                Frequently Asked Questions
+            <h1 className="text-largetitle text-center select-none">
+                {t('FAQ')}
             </h1>
             <Accordion
                 type="single"
@@ -51,7 +59,7 @@ export default function SettingsFAQ() {
                     return (
                         <div key={index}>
                             <AccordionItem value={i.value}>
-                                <AccordionTrigger className="text-black dark:text-white">{i.title}</AccordionTrigger>
+                                <AccordionTrigger className="text-black dark:text-white select-none">{i.title}</AccordionTrigger>
                                 <AccordionContent className="text-app_gray_light-300">{i.content}</AccordionContent>
                             </AccordionItem>
                             {index < accordionItems.length - 1 && (
@@ -63,10 +71,10 @@ export default function SettingsFAQ() {
                 })}
             </Accordion>
             <div className="items-center flex flex-col gap-y-0.5">
-                <p className="text-body">Still have questions?</p>
+                <p className="text-body">{t('questions')}</p>
                 <Link href={"/"}>
                     <Button variant={"link"} size={"none"}>
-                        Contact support
+                        {t('contact_support')}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
@@ -90,3 +98,14 @@ export default function SettingsFAQ() {
         </main>
     );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+    const data = await fetchPosts();
+    const messages = (await import(`../../../../languages_test/${locale}.json`)).default;
+    return {
+        props: {
+            ...data,
+            messages
+        }
+    };
+};
