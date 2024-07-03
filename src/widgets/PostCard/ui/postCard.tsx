@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type postCardProps = {
   user: string;
   usersAvatar?: string;
@@ -27,9 +29,12 @@ const PostCard = ({
           </p>
         </div>
       </div>
-      <img
+      <Image
+          alt=""
+          width={512}
+          height={512}
           src={postsImage}
-          className="w-full aspect-square rounded-b-[14px]"
+          className="w-full aspect-square rounded-b-[14px] select-none pointer-events-none"
       />
     </div>
   );

@@ -11,6 +11,8 @@ type InputTagsProps = Omit<InputProps, "value" | "onChange"> & {
   onChange: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
+// todo: при нажатии на пробел тоже добавлять текст
+
 const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
   ({ className, value, onChange, ...props }, ref) => {
     const [pendingDataPoint, setPendingDataPoint] = React.useState("");
@@ -34,6 +36,12 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
       }
     };
 
+    const handleRemoveTag = (e: MouseEvent, itemToRemove: string) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onChange(value.filter((item) => item !== itemToRemove));
+    };
+
     return (
       <div
         className={cn(
@@ -44,11 +52,9 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
         {value.map((item) => (
           <Badge key={item}>
             {item}
-            <button
-              onClick={() => {
-                onChange(value.filter((i) => i !== item));
-              }}
-            >
+              <button
+                onClick={(e) => handleRemoveTag(e, item)}
+              >
               <XMarkIcon className="size-4" />
             </button>
           </Badge>
@@ -63,16 +69,9 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
           value={pendingDataPoint}
           onChange={(e) => setPendingDataPoint(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === ",") {
+            if (e.key === "Enter" || e.key === "," || e.key === " ") {
               e.preventDefault();
               addPendingDataPoint();
-            } else if (
-              e.key === "Backspace" &&
-              pendingDataPoint.length === 0 &&
-              value.length > 0
-            ) {
-              e.preventDefault();
-              onChange(value.slice(0, -1));
             }
           }}
           {...props}

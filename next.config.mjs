@@ -2,7 +2,14 @@
 
 const nextConfig = {
   images: {
-    domains: ["i.pinimg.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        port: '',
+        pathname: '/**/**'
+      }
+    ],
   },
   devIndicators: {
     buildActivity: false,

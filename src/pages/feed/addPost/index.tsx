@@ -26,7 +26,7 @@ import { GetStaticPropsContext } from "next";
 const formSchema = z.object({
   image: z.string().min(1),
   description: z.array(z.string()).min(1),
-  link: z.string().min(1),
+  link: z.string(),
 });
 
 export default function WelcomePage() {
@@ -115,6 +115,7 @@ export default function WelcomePage() {
                             <input
                               {...field}
                               type="file"
+                              required
                               id="imageUpload"
                               onChange={ImageUpload}
                               accept="image/*"
@@ -139,6 +140,7 @@ export default function WelcomePage() {
                     <InputTags
                       label={t('addPostForm.description.title')}
                       max={3}
+                      required
                       onChange={(newTagsString) => {
                         setTags(newTagsString);
                         field.onChange(newTagsString);
@@ -147,7 +149,6 @@ export default function WelcomePage() {
                       placeholder={t('addPostForm.description.placeholder')}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -164,7 +165,6 @@ export default function WelcomePage() {
                       label={t('addPostForm.post_url.title')}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
