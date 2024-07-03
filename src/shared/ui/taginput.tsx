@@ -36,7 +36,7 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
       }
     };
 
-    const handleRemoveTag = (e: MouseEvent, itemToRemove: string) => {
+    const handleRemoveTag = (e: React.MouseEvent, itemToRemove: string) => {
       e.preventDefault();
       e.stopPropagation();
       onChange(value.filter((item) => item !== itemToRemove));
@@ -52,8 +52,8 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
         {value.map((item) => (
           <Badge key={item}>
             {item}
-              <button
-                onClick={(e) => handleRemoveTag(e, item)}
+            <button
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleRemoveTag(e, item)}
               >
               <XMarkIcon className="size-4" />
             </button>

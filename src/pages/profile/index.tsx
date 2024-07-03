@@ -25,10 +25,6 @@ export default function Profile() {
   const user = window.Telegram.WebApp.initDataUnsafe?.user;
   const t = useTranslations();
 
-    getUserProfilePhotoUrl(user.id).then((photoUrl) => {
-    setPhotoURL(photoUrl);
-  });
-
     const getUser = async (id: number) => {
         try {
             const response = await axios.get(
@@ -45,6 +41,7 @@ export default function Profile() {
     getUser(user.id).then((data) => {
         setActualUserId(data.id);
         setWallet(data.wallet);
+        setPhotoURL(data.profile_photo)
     });
 
     useEffect(() => {
