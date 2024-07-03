@@ -2,7 +2,7 @@ import Image from "next/image";
 
 type postCardProps = {
   user: string;
-  usersAvatar?: string;
+  usersAvatar: string;
   postsDescription: string;
   postsImage: string;
   postsAwardInBP: number;
@@ -18,7 +18,10 @@ const PostCard = ({
   return (
     <div className="max-w-[389px] w-full rounded-[14px] bg-white dark:bg-app_gray_dark-100 flex flex-col gap-y-0.5">
       <div className="inline-flex items-center gap-x-1.5 py-1 pl-1">
-        <img
+        <Image
+            alt="pfp"
+            width={512}
+            height={512}
             src={usersAvatar}
             className="size-[38px] rounded-full"
         />

@@ -4,6 +4,7 @@ import PostCard from "@/widgets/PostCard/ui/postCard";
 import { PostsProps } from './types';
 
 const Posts: React.FC<PostsProps> = ({posts, error}) => {
+
     if (error) {
         return <div>{error}</div>;
     }
