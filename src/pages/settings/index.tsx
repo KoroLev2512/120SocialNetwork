@@ -17,7 +17,7 @@ export default function Settings() {
     const t = useTranslations();
     return (
         <main
-            className="flex bg-app_gray_light-100 mb-16 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+            className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
             <BackButton onClick={() => router.back()}/>
             <h1 className="text-largetitle">{t('Settings')}</h1>
             <SettingsGroup title={t('personal')}>

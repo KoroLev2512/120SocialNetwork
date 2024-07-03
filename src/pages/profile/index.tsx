@@ -98,17 +98,11 @@ export default function Profile() {
                 </div>
                 {isLoading ? (
                     ""
-                ) : wallet === "" ? (
-                    <Button asChild size={"sm"}>
-                        <Link href="/profile/wallet">
-                            <IconTon className="size-3" /> {t('connect_wallet')}
-                        </Link>
-                    </Button>
                 ) : (
                     <Link href="/profile/wallet">
                         <div className="inline-flex items-center gap-x-1.5">
                             <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
-                                139
+                                0
                                 <IconBlock />
                             </p>
                             <svg
