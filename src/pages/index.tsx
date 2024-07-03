@@ -19,8 +19,6 @@ const WelcomePage: React.FC<UserStore> = () => {
     const telegramId = user.id;
     const t = useTranslations();
 
-    const [doesUserExist, setUserExist] = useState<boolean | null>(null)
-
     const router = useRouter();
 
     getUserProfilePhotoUrl(telegramId).then(photoUrl => {
@@ -33,22 +31,6 @@ const WelcomePage: React.FC<UserStore> = () => {
             window.Telegram.WebApp.setHeaderColor("#F7F9FB");
         } else {
             window.Telegram.WebApp.setHeaderColor("#111111");
-        }
-
-        const checkIfUserExist = async () => {
-            try{
-                const response = await fetch(`https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`);
-                const data = await response.json()
-
-                if (response.status === 200 && data.data ) {
-                    setUserExist(true);
-                    router.push('/feed')
-                } else {
-                    setUserExist(false)
-                }
-            } catch (error) {
-                setUserExist(false)
-            }
         }
 
         const getUsersLanguage = async () => {
@@ -66,10 +48,9 @@ const WelcomePage: React.FC<UserStore> = () => {
         };
 
         getUsersLanguage();
-        checkIfUserExist()
-    }, [user.language_code, telegramId, router]);
+    }, [user.language_code]);
 
-    if (doesUserExist === false && user) {
+    if (user) {
         const wallet = '';
         const ans = `https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`;
         fetch(ans)
@@ -97,7 +78,7 @@ const WelcomePage: React.FC<UserStore> = () => {
         console.error('User data not available');
     }
 
-    return doesUserExist ? null : (
+    return(
         <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-6 cursor-default">
             <div className="flex flex-col items-center">
                 <h1 className="text-largetitle font-medium">{t('hello_there')}</h1>
