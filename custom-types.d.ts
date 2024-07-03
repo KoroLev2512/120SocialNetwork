@@ -41,6 +41,7 @@ declare global {
                 initData: string;
                 initDataUnsafe: WebAppInitData;
                 setHeaderColor: (string) => void;
+                setBackgroundColor: (string) => void;
                 BackButton: {
                     isVisible: boolean;
                     onClick: (callback: () => void) => void;

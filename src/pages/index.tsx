@@ -29,8 +29,10 @@ const WelcomePage: React.FC<UserStore> = () => {
         window.Telegram.WebApp.expand();
         if (theme.theme === "light") {
             window.Telegram.WebApp.setHeaderColor("#F7F9FB");
+            window.Telegram.WebApp.setBackgroundColor("#F7F9FB");
         } else {
             window.Telegram.WebApp.setHeaderColor("#111111");
+            window.Telegram.WebApp.setBackgroundColor("#111111");
         }
 
         const getUsersLanguage = async () => {
