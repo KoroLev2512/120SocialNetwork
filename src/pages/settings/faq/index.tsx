@@ -45,7 +45,7 @@ export default function SettingsFAQ() {
 
     return (
         <main
-            className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[480px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
+            className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[480px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-2">
             <BackButton onClick={() => router.back()}/>
             <h1 className="text-largetitle text-center select-none">
                 {t('FAQ')}
@@ -59,7 +59,7 @@ export default function SettingsFAQ() {
                     return (
                         <div key={index}>
                             <AccordionItem value={i.value}>
-                                <AccordionTrigger className="text-black dark:text-white select-none">{i.title}</AccordionTrigger>
+                                <AccordionTrigger className="text-black dark:text-white select-none text-start">{i.title}</AccordionTrigger>
                                 <AccordionContent className="text-app_gray_light-300">{i.content}</AccordionContent>
                             </AccordionItem>
                             {index < accordionItems.length - 1 && (
