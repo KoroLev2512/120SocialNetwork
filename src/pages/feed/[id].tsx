@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Image from "next/image";
 import {GetServerSideProps} from 'next';
 
 interface Post {
@@ -37,7 +38,7 @@ const Post: React.FC<PostProps> = ({post, error}) => {
             <p><strong>Tag_ID:</strong> {post.tag_id}</p>
             <p><strong>Link:</strong> {post.link}</p>
             <p><strong>Image:</strong></p>
-                <img
+                <Image
                     src={post.image}
                     alt="Post"
                 />

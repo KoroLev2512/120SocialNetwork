@@ -13,6 +13,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import {useTranslations} from "next-intl";
 import { GetStaticPropsContext } from "next";
+import Image from "next/image";
 
 type PostsProps = Post[];
 
@@ -172,7 +173,11 @@ const PostCard = ({ check, image }: PostCardProps) => {
           {t('pending')}...
         </div>
       )}
-      <img className="aspect-square size-full" src={image} alt="Image" />
+      <Image
+          className="aspect-square size-full"
+          src={image}
+          alt="Image"
+      />
     </div>
   );
 };

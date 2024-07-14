@@ -50,7 +50,7 @@ const WelcomePage: React.FC<UserStore> = () => {
         };
 
         getUsersLanguage();
-    }, [user.language_code]);
+    }, [user.language_code, router, theme.theme, telegramId]);
 
     if (user) {
         const wallet = '';

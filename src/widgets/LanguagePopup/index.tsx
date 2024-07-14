@@ -9,7 +9,7 @@ import {useState} from "react";
 import Action from "@/shared/ui/action";
 
 export default function LanguagePopup() {
-    const router = useRouter()
+    const router= useRouter();
     const {locale} = router;
     const [actualUserId, setActualUserId] = useState<number>();
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
