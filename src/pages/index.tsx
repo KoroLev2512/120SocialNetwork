@@ -35,21 +35,21 @@ const WelcomePage: React.FC<UserStore> = () => {
             window.Telegram.WebApp.setBackgroundColor("#111111");
         }
 
-        const getUsersLanguage = async () => {
-            try {
-                const response = await fetch(`https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`);
-                const data = await response.json();
-                const userLanguage = data.data.language;
+        // const getUsersLanguage = async () => {
+        //     try {
+        //         const response = await fetch(`https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`);
+        //         const data = await response.json();
+        //         const userLanguage = data.data.language;
+        //
+        //         if (userLanguage === 'en') {
+        //             router.push('en');
+        //         }
+        //     } catch (error) {
+        //         console.log('mhm', error);
+        //     }
+        // };
+        // getUsersLanguage();
 
-                if (userLanguage === 'en') {
-                    router.push('en');
-                }
-            } catch (error) {
-                console.log('mhm', error);
-            }
-        };
-
-        getUsersLanguage();
     }, [user.language_code, router, theme.theme, telegramId]);
 
     if (user) {
