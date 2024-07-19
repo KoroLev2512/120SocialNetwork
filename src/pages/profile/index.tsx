@@ -65,7 +65,7 @@ export default function Profile() {
                     ) : (
                         <Avatar className="size-[74px]">
                             {photoURL ? (
-                                <AvatarImage alt="Avatar" src={photoURL} />
+                                <AvatarImage width={128} height={128} alt="Avatar" src={photoURL} />
                             ) : (
                                 <AvatarFallback>
                                     <AvatarIcon height={75} width={75} />
@@ -176,6 +176,8 @@ const PostCard = ({ check, image }: PostCardProps) => {
       <Image
           className="aspect-square size-full"
           src={image}
+          width={512}
+          height={512}
           alt="Image"
       />
     </div>

@@ -39,6 +39,8 @@ const Post: React.FC<PostProps> = ({post, error}) => {
             <p><strong>Link:</strong> {post.link}</p>
             <p><strong>Image:</strong></p>
                 <Image
+                    width={128}
+                    height={128}
                     src={post.image}
                     alt="Post"
                 />
