@@ -1,8 +1,10 @@
 export interface Post {
     key: number;
+    post_id: number;
     id: number;
     user_id: number;
     control: boolean;
+    check: boolean;
     balance_sheet_id: string;
     tag_id: string;
     link: string;
@@ -11,7 +13,6 @@ export interface Post {
     description: string;
     username: string;
     profile_photo: string;
-    check: boolean;
 }
 
 export interface PostsProps {
