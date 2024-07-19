@@ -15,6 +15,8 @@ import {fetchPosts} from "@/shared/api/posts/getAll";
 export default function Settings() {
     const router = useRouter();
     const t = useTranslations();
+    const user = window.Telegram.WebApp.initDataUnsafe?.user;
+
     return (
         <main
             className="flex bg-app_gray_light-100 dark:bg-app_gray_dark-300 h-screen flex-col gap-y-6 w-full items-center px-5 pt-6">
@@ -67,6 +69,11 @@ export default function Settings() {
                         </svg>
                     }
                 />
+                {user.id === 5141393525 || user.id === 759084369 ? (
+                    <Link href={"admin"}>
+                        <Action title="Admin panel" rightArrow />
+                    </Link>
+                ) : null}
             </SettingsGroup>
         </main>
     );
