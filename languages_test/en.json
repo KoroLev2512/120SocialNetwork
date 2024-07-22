@@ -66,5 +66,10 @@
             "title": "URL to the post",
             "placeholder": "https://"
         }
+    },
+
+    "orientationWarning": {
+        "title": "Tilt me vertical!",
+        "text": "120Block miniapp performs only in vertical mode "
     }
 }
