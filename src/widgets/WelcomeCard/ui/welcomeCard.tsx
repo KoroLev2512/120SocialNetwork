@@ -27,7 +27,7 @@ const WelcomeCard = () => {
     ];
 
     return (
-    <div className="flex overflow-hidden w-full flex-col bg-white dark:bg-app_gray_dark-100 rounded-[14px] max-w-[480px]">
+    <div className="flex overflow-hidden w-full flex-col bg-white dark:bg-app_gray_dark-100 rounded-[14px] ">
       <LanguagePopup />
       <Swiper
         className="w-full relative"

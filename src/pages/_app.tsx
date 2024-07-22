@@ -8,6 +8,7 @@ import {NextIntlClientProvider} from 'next-intl'
 
 import "@/app/styles/globals.css";
 import { useRouter } from "next/router";
+import OrientationWarning from "@/widgets/OrientationWarning";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -23,7 +24,8 @@ function HomePage({Component, pageProps}: AppProps) {
         <WebAppProvider>
             <ThemeProvider attribute="class">
                 <NextIntlClientProvider locale={router.locale} messages={pageProps.messages}>
-                    <div className={`${inter.className} antialiased max-w-[480px]`}>
+                    <div className={`${inter.className} antialiased `}>
+                        <OrientationWarning />
                         <Component {...pageProps} />
                         <NavigationBar/>
                     </div>

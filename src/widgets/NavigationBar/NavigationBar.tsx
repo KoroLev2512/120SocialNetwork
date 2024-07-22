@@ -12,7 +12,7 @@ export const NavigationBar = () => {
 
     return router.pathname != "/" && router.pathname != "/feed/addPost" ? (
         <nav
-            className="w-full z-[999] bg-white border-t dark:bg-app_gray_dark-300 dark:border-app_gray_dark-100 border-black/15 py-2.5 px-[54px] justify-between inline-flex items-center fixed left-0 bottom-0 max-w-[480px] mx-auto">
+            className="w-full z-[99] bg-white border-t dark:bg-app_gray_dark-300 dark:border-app_gray_dark-100 border-black/15 pb-8 pt-2.5 px-[54px] justify-between inline-flex items-center fixed left-0 bottom-0  mx-auto">
             <Link
                 href={"/profile"}
                 className={cn(

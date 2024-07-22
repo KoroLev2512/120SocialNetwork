@@ -48,7 +48,7 @@ export default function ProfileWallet() {
   return (
     <div className="relative">
       <ComingSoon />
-      <main className="mx-auto saturate-0 flex h-screen w-full max-w-[480px] pt-6 px-10 flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
+      <main className="mx-auto saturate-0 flex h-screen w-full  pt-6 px-10 flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
         <BackButton onClick={() => router.back()} />
         <div className="px-4 mb-[18px] py-1.5 inline-flex gap-x-1 items-center rounded-full bg-app_ton">
           <p className="text-secondarybody font-semibold text-white truncate max-w-[120px]">

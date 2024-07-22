@@ -45,7 +45,7 @@ export default function SettingsFAQ() {
 
     return (
         <main
-            className="bg-app_gray_light-100 dark:bg-app_gray_dark-300 max-w-[480px] flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-2">
+            className="bg-app_gray_light-100 dark:bg-app_gray_dark-300  flex h-screen flex-col gap-y-6 w-full items-center px-5 pt-2">
             <BackButton onClick={() => router.back()}/>
             <h1 className="text-largetitle text-center select-none">
                 {t('FAQ')}

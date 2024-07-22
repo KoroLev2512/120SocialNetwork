@@ -57,7 +57,7 @@ export default function Profile() {
     }, [actualUserId]);
 
     return (
-        <main className="mx-auto flex h-screen w-full max-w-[480px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
+        <main className="mx-auto flex h-screen w-full  flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
             <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px] dark:bg-app_gray_dark-300">
                 <div className="inline-flex items-center gap-x-4">
                     {isLoading ? (
