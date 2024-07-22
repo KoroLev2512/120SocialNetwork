@@ -1,0 +1,75 @@
+{
+    "Feed": "Feed",
+    "Profile": "Profile",
+    "Settings": "Settings",
+
+    "add_new_post": "Add new post",
+    "continue": "Continue",
+
+    "no_posts": "No posts",
+    "1_post": "1 post",
+    "posts": "posts",
+    "pending": "Pending",
+    "no_posts_yet": "No posts yet!",
+    "setup_your_profile_first": "Setup your profile first",
+    "connect_wallet": "Connect wallet",
+
+    "hello_there": "Hello there",
+    "let's_get_started!": "Let's get started!",
+    "community": "is a community that unites talented people,\nfind new paths for self-realization and earning!",
+    "choose_language": "Choose language",
+    "share_creativity": "Share Creativity",
+    "related_to_120_community": "related to 120 community and earn Block jettons",
+    "exchange_BP": "Exchange BP",
+    "for_an_amazing": "for an amazing rewards",
+
+    "personal": "personal",
+    "customization": "customization",
+    "help&support": "help & support",
+
+    "edit_profile": "Edit Profile",
+    "change_language": "Change language",
+    "dark_mode": "Dark Mode",
+    "referrals": "Referrals",
+    "community_chat": "Community Chat",
+    "support": "Support",
+
+    "FAQ": "Frequently Asked Questions",
+    "faq_first_title": "What are “120Block” tokens awarded for?",
+    "faq_first_description": "“120Block” tokens are awarded for content related to the “120” community. After the post is reviewed and evaluated, the number of tokens is determined. Creative, original, and large-scale works of art are rewarded with larger prizes. Tokens can also be earned by participating in “120” events. P.S. To collaborate with the project, write a proposal in the “Suggestions and Ideas\uD83D\uDCA1” topic in the Telegram chat, rewards are also given for this!",
+    "faq_second_title": "What content is suitable for publication?",
+    "faq_second_description": "Any content that does not violate the rules of the Telegram platform and the internal rules of 120Block is suitable for publication. This can be paintings, art, music, graffiti, extreme videos, theatrical performances. We encourage any creativity, as long as it somehow refers to the “120” community, for example, it can be graffiti with the numbers “120”, or an inscription on the field with the same numbers, anything goes!",
+    "faq_third_title": "What content is prohibited for publication?",
+    "faq_third_description": "Prohibited: any violence, pornography, as well as any content containing insults, threats, and manifestations of hatred towards other users or groups.",
+    "faq_forth_title": "Why was my post not accepted?",
+    "faq_forth_description": "Posts are usually rejected due to non-compliance with platform rules. If you believe this is a mistake, submit the post for re-review.",
+    "questions": "Still have questions?",
+    "contact_support": "Contact support",
+
+    "Coming soon": "Coming soon",
+    "This page will be released in the": "This page will be released in the",
+    "next few updates": "next few updates",
+    "Stay turned!": "Stay tuned!",
+    "home_btn": "Back to the home page",
+
+    "russian": "Russian",
+    "english": "English",
+    "current_language": "English",
+
+    "addPostForm": {
+        "successfully_post": "Successfully added a new post!",
+        "description": {
+            "title": "Description",
+            "placeholder": "Add a tag"
+        },
+        "post_url": {
+            "title": "URL to the post",
+            "placeholder": "https://"
+        }
+    },
+
+    "orientationWarning": {
+        "title": "Tilt me vertical!",
+        "text": "120Block miniapp performs only in vertical mode "
+    }
+}
