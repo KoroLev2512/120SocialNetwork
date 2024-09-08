@@ -3,24 +3,21 @@ import { GetStaticPropsContext } from "next";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-const OrientationWarning = () => {
+const OrientationWarning = () => {  
   const t = useTranslations("orientationWarning");
   const [isLandscape, setLandscape] = useState(false);
 
   useEffect(() => {
-    const OrientationChange = () => {
-      if (window.innerWidth > window.innerHeight) {
-        setLandscape(true);
-      } else {
-        setLandscape(false);
-      }
+    const orientationChange = () => {
+      const angle = window.screen.orientation?.angle || window.orientation;
+      setLandscape(angle === 90 || angle === -90);
     };
 
-    window.addEventListener("resize", OrientationChange);
-    OrientationChange();
+    window.addEventListener("orientationchange", orientationChange);
+    orientationChange();
 
     return () => {
-      window.removeEventListener("resize", OrientationChange);
+      window.removeEventListener("orientationchange", orientationChange);
     };
   }, []);
 
