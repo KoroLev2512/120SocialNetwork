@@ -3,13 +3,13 @@ import { GetStaticPropsContext } from "next";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-const OrientationWarning = () => {  
+const OrientationWarning = () => {
   const t = useTranslations("orientationWarning");
   const [isLandscape, setLandscape] = useState(false);
 
   useEffect(() => {
     const orientationChange = () => {
-      const angle = window.screen.orientation?.angle || window.orientation;
+      const angle = window.screen.orientation?.angle || window.screen.orientation;
       setLandscape(angle === 90 || angle === -90);
     };
 
