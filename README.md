@@ -62,12 +62,12 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Interface Components
 
 – Carousel on start page  
-– Menubar
-– React Hook Form for adding posts
-– Accordion
-– Avatar
-– Alerts
-– Switch button for dark mode
+– Menubar   
+– React Hook Form for adding posts  
+– Accordion     
+– Avatar    
+– Alerts    
+– Switch button for dark mode   
 – Modal window for change language
 
 ## Status
