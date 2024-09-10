@@ -11,6 +11,8 @@ type InputTagsProps = Omit<InputProps, "value" | "onChange"> & {
   onChange: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
+// todo: при нажатии на пробел тоже добавлять текст
+
 const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
   ({ className, value, onChange, ...props }, ref) => {
     const [pendingDataPoint, setPendingDataPoint] = React.useState("");
@@ -34,6 +36,12 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
       }
     };
 
+    const handleRemoveTag = (e: React.MouseEvent, itemToRemove: string) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onChange(value.filter((item) => item !== itemToRemove));
+    };
+
     return (
       <div
         className={cn(
@@ -45,10 +53,8 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
           <Badge key={item}>
             {item}
             <button
-              onClick={() => {
-                onChange(value.filter((i) => i !== item));
-              }}
-            >
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleRemoveTag(e, item)}
+              >
               <XMarkIcon className="size-4" />
             </button>
           </Badge>
@@ -59,20 +65,13 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
             </label>
         )}
         <input
-          className="flex-1 outline-none placeholder:text-app_gray_light-300/60 bg-white dark:bg-app_gray_dark-200 space-x-2 max-w-[72px]"
+          className="flex-1 outline-none placeholder:text-app_gray_light-300/60 bg-white dark:bg-app_gray_dark-200 space-x-2 max-w-[82px]"
           value={pendingDataPoint}
           onChange={(e) => setPendingDataPoint(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === ",") {
+            if (e.key === "Enter" || e.key === "," || e.key === " ") {
               e.preventDefault();
               addPendingDataPoint();
-            } else if (
-              e.key === "Backspace" &&
-              pendingDataPoint.length === 0 &&
-              value.length > 0
-            ) {
-              e.preventDefault();
-              onChange(value.slice(0, -1));
             }
           }}
           {...props}

@@ -1,7 +1,7 @@
 import React from "react";
-import { IconProps } from "./types";
+import {IconProps} from "./types";
 
-const ChangeProfileIcon = ({ height = 28, width = 28, rotation = 0 }: IconProps) => {
+const ChangeProfileIcon = ({height = 28, width = 28}: IconProps) => {
 
     return (
         <svg

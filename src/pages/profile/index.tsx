@@ -11,6 +11,9 @@ import {Button} from "@/shared/ui/button";
 import IconTon from "@/shared/assets/icons/IconTon";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import {useTranslations} from "next-intl";
+import { GetStaticPropsContext } from "next";
+import Image from "next/image";
 
 type PostsProps = Post[];
 
@@ -21,10 +24,7 @@ export default function Profile() {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [posts, setPosts] = useState<PostsProps>([]);
   const user = window.Telegram.WebApp.initDataUnsafe?.user;
-
-  getUserProfilePhotoUrl(user.id).then((photoUrl) => {
-    setPhotoURL(photoUrl);
-  });
+  const t = useTranslations();
 
     const getUser = async (id: number) => {
         try {
@@ -42,6 +42,7 @@ export default function Profile() {
     getUser(user.id).then((data) => {
         setActualUserId(data.id);
         setWallet(data.wallet);
+        setPhotoURL(data.profile_photo)
     });
 
     useEffect(() => {
@@ -56,7 +57,7 @@ export default function Profile() {
     }, [actualUserId]);
 
     return (
-        <main className="mx-auto flex h-screen w-full max-w-[420px] flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
+        <main className="mx-auto flex h-screen w-full  flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-200">
             <section className="inline-flex w-full items-center justify-between border-b border-[#B6B6BA]/40 bg-white px-8 py-[14px] dark:bg-app_gray_dark-300">
                 <div className="inline-flex items-center gap-x-4">
                     {isLoading ? (
@@ -64,7 +65,7 @@ export default function Profile() {
                     ) : (
                         <Avatar className="size-[74px]">
                             {photoURL ? (
-                                <AvatarImage alt="Avatar" src={photoURL} />
+                                <AvatarImage width={128} height={128} alt="Avatar" src={photoURL} />
                             ) : (
                                 <AvatarFallback>
                                     <AvatarIcon height={75} width={75} />
@@ -84,28 +85,22 @@ export default function Profile() {
                             {isLoading ? (
                                 <Skeleton width={60} />
                             ) : posts === null ? (
-                                "No posts"
+                                t('no_posts')
                             ) : posts.length === 1 ? (
-                                "1 post"
+                                t('1_post')
                             ) : (
-                                `${posts.length} posts`
+                                `${posts.length} ${t('posts')}`
                             )}
                         </p>
                     </div>
                 </div>
                 {isLoading ? (
                     ""
-                ) : wallet === "" ? (
-                    <Button asChild size={"sm"}>
-                        <Link href="/profile/wallet">
-                            <IconTon className="size-3" /> Connect Wallet
-                        </Link>
-                    </Button>
                 ) : (
                     <Link href="/profile/wallet">
                         <div className="inline-flex items-center gap-x-1.5">
                             <p className="inline-flex items-center gap-x-1.5 text-title font-semibold">
-                                139
+                                0
                                 <IconBlock />
                             </p>
                             <svg
@@ -143,15 +138,15 @@ export default function Profile() {
             ) : posts && posts.length > 0 ? (
                 <section className="grid w-full grid-cols-3">
                     {posts.map((post, index) => (
-                        <PostCard key={post.id} image={post.image} control={post.control} />
+                        <PostCard key={post.id} image={post.image} check={post.control} />
                     ))}
                 </section>
             ) : (
                 <section className="mx-auto flex w-full flex-col items-center justify-center gap-y-4 pt-32 text-center text-app_gray_light-300">
                     <div className="size-20 rounded-[12px] border-[4px] border-app_gray_light-300" />
                     <div className="flex flex-col items-center">
-                        <p className="text-body">No posts yet!</p>
-                        <p className="text-secondarybody">Setup your profile first</p>
+                        <p className="text-body">{t('no_posts_yet')}</p>
+                        <p className="text-secondarybody">{t('setup_your_profile_first')}</p>
                     </div>
                 </section>
             )}
@@ -161,23 +156,30 @@ export default function Profile() {
 
 // поставлю некстовский Image когда решим юрл для картинок + награды позже
 type PostCardProps = {
-  control: boolean;
+  check: boolean;
   image: string;
 };
 
-const PostCard = ({ control, image }: PostCardProps) => {
+const PostCard = ({ check, image }: PostCardProps) => {
+    const t = useTranslations()
   return (
     <div className="relative aspect-square">
-      {control ? (
+      {check ? (
         <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-1.5 py-0.5 text-secondarybody font-medium dark:bg-app_gray_dark-200">
           +139 <IconBlock className="size-4" />
         </div>
       ) : (
         <div className="absolute right-1.5 top-1.5 inline-flex items-center gap-x-1 rounded-full bg-white px-2 py-0.5 text-secondarybody font-medium dark:bg-app_gray_dark-200">
-          Pending...
+          {t('pending')}...
         </div>
       )}
-      <img className="aspect-square size-full" src={image} alt="Image" />
+      <Image
+          className="aspect-square size-full"
+          src={image}
+          width={512}
+          height={512}
+          alt="Image"
+      />
     </div>
   );
 };
@@ -219,3 +221,11 @@ const IconBlock = ({ className }: { className?: string }) => {
     </svg>
   );
 };
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../../../languages_test/${locale}.json`)).default
+        }
+    };
+}

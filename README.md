@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 120Block: a new look at street culture
 
-## Getting Started
+This project is intended for creative people who want to find new acquaintances and monetize their creativity.
+With this project people can post directly in the app, share your creativity, and earn $Block tokens!
 
-First, run the development server:
+
+Look at the [NextJS documentation](https://nextjs.org/docs) to learn more info about framework and [FSD documentation](https://feature-sliced.design/docs) to learn about architectural methodology.
+
+## Setup
+
+Make sure to install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# npm
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+```
+
+
+Check out the [deploying documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more information.
+
+Open [http://localhost:3002](http://localhost:3002) with your browser to see the result.
+
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+1. Start page (for users who logged into the application for the first time)
+2. Feed
+3. Profile
+4. Settings (with FAQ, edit nikname, photo, support and other things)
+5. Adding posts
+6. Wallet
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Interface Components
 
-## Deploy on Vercel
+– Carousel on start page  
+– Menubar
+– React Hook Form
+– Accordion
+– Avatar
+– Alerts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Status
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+At the moment the project is under development and the launch of the MVP is planned in july-august on bot 120Block.
+
+## Contacts
+
+To contact about the project, you can write to [120Block team](https://t.me/block_120en).
+
+## Gratitude
+
+We are grateful to the React and Next teams for the ReactJS and NextJS frameworks and Telegram team that we used to create this application.

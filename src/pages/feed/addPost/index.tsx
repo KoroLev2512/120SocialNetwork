@@ -20,14 +20,17 @@ import {
 } from "@/shared/ui/form";
 import { useForm } from "react-hook-form";
 import { addPost } from "@/shared/api/posts/add";
+import { useTranslations } from "next-intl";
+import { GetStaticPropsContext } from "next";
 
 const formSchema = z.object({
   image: z.string().min(1),
   description: z.array(z.string()).min(1),
-  link: z.string().min(1),
+  link: z.string(),
 });
 
 export default function WelcomePage() {
+  const t = useTranslations();
   const router = useRouter();
   const [image, addImage] = useState<string | null>(null);
   const [tags, setTags] = useState<string[]>([]);
@@ -62,13 +65,15 @@ export default function WelcomePage() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     addPost(values)
+    alert(t('addPostForm.successfully_post'))
+    router.push('/feed')
   }
 
   return (
     <main className="flex h-screen w-full flex-col items-center bg-app_gray_light-100 dark:bg-app_gray_dark-300">
       <BackButton onClick={() => router.back()} />
       <div className="flex flex-col items-center py-[24px]">
-        <h1 className="text-title font-bold">Add up photo</h1>
+        <h1 className="text-title font-bold">{t('add_new_post')}</h1>
       </div>
       <Form {...form}>
         <form
@@ -110,6 +115,7 @@ export default function WelcomePage() {
                             <input
                               {...field}
                               type="file"
+                              required
                               id="imageUpload"
                               onChange={ImageUpload}
                               accept="image/*"
@@ -132,17 +138,17 @@ export default function WelcomePage() {
                 <FormItem>
                   <FormControl>
                     <InputTags
-                      label="Description"
+                      label={t('addPostForm.description.title')}
                       max={3}
+                      required
                       onChange={(newTagsString) => {
                         setTags(newTagsString);
                         field.onChange(newTagsString);
                       }}
                       value={tags}
-                      placeholder="Add a tag"
+                      placeholder={t('addPostForm.description.placeholder')}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -154,12 +160,11 @@ export default function WelcomePage() {
                   <FormControl>
                     <DefaultInput
                       {...field}
-                      placeholder="https://"
+                      placeholder={t('addPostForm.post_url.placeholder')}
                       className="text-app_blue dark:text-app_blue"
-                      label="URL to the post"
+                      label={t('addPostForm.post_url.title')}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -173,4 +178,12 @@ export default function WelcomePage() {
       </Form>
     </main>
   );
+}
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../../../../languages_test/${locale}.json`)).default
+        }
+    };
 }

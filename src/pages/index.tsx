@@ -8,26 +8,49 @@ import Link from "next/link";
 import axios from "axios";
 import {UserStore} from "@/entities/User/types/userState";
 import getUserProfilePhotoUrl from "@/shared/api/users/photo";
+import {useTranslations} from "next-intl";
+import {GetStaticPropsContext} from "next";
+import {useRouter} from "next/router";
 
-const WelcomePage: React.FC<UserStore> = ()  => {
+const WelcomePage: React.FC<UserStore> = () => {
     const theme = useTheme();
     const [photoURL, setPhotoURL] = useState<string | null>(null);
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
     const telegramId = user.id;
+    const t = useTranslations();
+
+    const router = useRouter();
 
     getUserProfilePhotoUrl(telegramId).then(photoUrl => {
         setPhotoURL(photoUrl);
     });
 
     useEffect(() => {
-            window.Telegram.WebApp.expand();
-            if (theme.theme === "light") {
-                window.Telegram.WebApp.setHeaderColor("#F7F9FB")
-            } else {
-                window.Telegram.WebApp.setHeaderColor("#111111")
-            }
-        },
-    )
+        window.Telegram.WebApp.expand();
+        if (theme.theme === "light") {
+            window.Telegram.WebApp.setHeaderColor("#F7F9FB");
+            window.Telegram.WebApp.setBackgroundColor("#F7F9FB");
+        } else {
+            window.Telegram.WebApp.setHeaderColor("#111111");
+            window.Telegram.WebApp.setBackgroundColor("#111111");
+        }
+
+        // const getUsersLanguage = async () => {
+        //     try {
+        //         const response = await fetch(`https://120-server.vercel.app/api/user/get_by_telegram/${telegramId}`);
+        //         const data = await response.json();
+        //         const userLanguage = data.data.language;
+        //
+        //         if (userLanguage === 'en') {
+        //             router.push('en');
+        //         }
+        //     } catch (error) {
+        //         console.log('mhm', error);
+        //     }
+        // };
+        // getUsersLanguage();
+
+    }, [user.language_code, router, theme.theme, telegramId]);
 
     if (user) {
         const wallet = '';
@@ -57,23 +80,29 @@ const WelcomePage: React.FC<UserStore> = ()  => {
         console.error('User data not available');
     }
 
-    return (
-        <main
-            className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-12">
+    return(
+        <main className="flex h-screen w-full flex-col items-center gap-y-[28px] bg-app_gray_light-100 dark:bg-app_gray_dark-300 px-8 pt-6 cursor-default">
             <div className="flex flex-col items-center">
-                <h1 className="text-largetitle font-medium">Hello there</h1>
-                <h1 className="text-title font-normal">Let's get started!</h1>
+                <h1 className="text-largetitle font-medium">{t('hello_there')}</h1>
+                <h1 className="text-title font-normal">{t('let\'s_get_started!')}</h1>
             </div>
-            <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300">
-                <span className="font-medium">120Block</span> is a community that unites
-                talented people, find new paths for self-realization and earning!
+            <p className="max-w-[314px] text-center text-[12px] font-normal leading-4 tracking-[-0.02em] text-app_gray_light-300 cursor-default">
+                <span className="font-medium">120Block</span>{t('community')}
             </p>
             <WelcomeCard/>
             <Link className="max-w-[284px] w-full" href={"/feed"}>
-                <Button className="w-full">Continue</Button>
+                <Button className="w-full mb-2">{t('continue')}</Button>
             </Link>
         </main>
     );
 };
+
+export async function getStaticProps({locale}: GetStaticPropsContext) {
+    return {
+        props: {
+            messages: (await import(`../../languages_test/${locale}.json`)).default
+        }
+    };
+}
 
 export default WelcomePage;

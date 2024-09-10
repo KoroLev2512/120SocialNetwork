@@ -4,9 +4,11 @@ import {AppProps} from "next/app";
 import {NavigationBar} from "@/widgets/NavigationBar";
 import {WebAppProvider} from "@/app/providers/WebAppProvider";
 import {ThemeProvider} from "@/app/providers/ThemesProvider";
+import {NextIntlClientProvider} from 'next-intl'
 
 import "@/app/styles/globals.css";
-import {useState} from "react";
+import { useRouter } from "next/router";
+import OrientationWarning from "@/widgets/OrientationWarning";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -16,14 +18,18 @@ export const metadata: Metadata = {
 };
 
 function HomePage({Component, pageProps}: AppProps) {
+    const router = useRouter();
 
     return (
         <WebAppProvider>
             <ThemeProvider attribute="class">
-                <div className={`${inter.className} antialiased max-w-[420px]`}>
-                    <Component {...pageProps} />
-                    <NavigationBar/>
-                </div>
+                <NextIntlClientProvider locale={router.locale} messages={pageProps.messages}>
+                    <div className={`${inter.className} antialiased `}>
+                        <OrientationWarning />
+                        <Component {...pageProps} />
+                        <NavigationBar/>
+                    </div>
+                </NextIntlClientProvider>
             </ThemeProvider>
         </WebAppProvider>
     );
