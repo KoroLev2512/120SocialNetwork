@@ -4,7 +4,7 @@ This project is intended for creative people who want to find new acquaintances 
 With this project people can post directly in the app, share your creativity, and earn $Block tokens!
 
 
-Look at the [NextJS documentation](https://nextjs.org/docs) to learn more info about framework and [FSD documentation](https://feature-sliced.design/docs) to learn about architectural methodology.
+Look at the [NextJS documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack and [FSD documentation](https://feature-sliced.design/docs) to learn about architectural methodology.
 
 ## Setup
 
