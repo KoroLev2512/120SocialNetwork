@@ -3,24 +3,24 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/shared/ui/avatar";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {AvatarIcon} from "@/shared/icons/AvatarIcon";
-import getUserProfilePhotoUrl from "@/shared/api/users/photo";
 import axios from "axios";
 import {GetAllPostsByUser} from "@/shared/api/posts/getAllByUser";
 import {Post} from "@/shared/api/posts/types";
-import {Button} from "@/shared/ui/button";
-import IconTon from "@/shared/assets/icons/IconTon";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import {useTranslations} from "next-intl";
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
+// import {Button} from "@/shared/ui/button";
+// import IconTon from "@/shared/assets/icons/IconTon";
+// import getUserProfilePhotoUrl from "@/shared/api/users/photo";
 
 type PostsProps = Post[];
 
 export default function Profile() {
   const [photoURL, setPhotoURL] = useState<string | null>(null);
   const [actualUserId, setActualUserId] = useState<number>();
-  const [wallet, setWallet] = useState<string>();
+  //const [wallet, setWallet] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(true);
   const [posts, setPosts] = useState<PostsProps>([]);
   const user = window.Telegram.WebApp.initDataUnsafe?.user;
@@ -225,7 +225,7 @@ const IconBlock = ({ className }: { className?: string }) => {
 export async function getStaticProps({locale}: GetStaticPropsContext) {
     return {
         props: {
-            messages: (await import(`../../../languages_test/${locale}.json`)).default
+            messages: (await import(`../../../languages/${locale}.json`)).default
         }
     };
 }

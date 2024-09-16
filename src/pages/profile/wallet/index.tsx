@@ -10,7 +10,7 @@ import { GetStaticPropsContext } from "next";
 // import { useState, useEffect } from "react";
 // import axios from "axios";
 
-type PostsProps = Post[];
+//type PostsProps = Post[];
 
 export default function ProfileWallet() {
 //   const [actualUserId, setActualUserId] = useState<number>();
@@ -108,7 +108,7 @@ export default function ProfileWallet() {
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   return {
       props: {
-          messages: (await import(`../../../../languages_test/${locale}.json`)).default
+          messages: (await import(`../../../../languages/${locale}.json`)).default
       }
   };
 }

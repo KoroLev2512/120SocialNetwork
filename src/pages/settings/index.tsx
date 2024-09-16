@@ -110,7 +110,7 @@ export const SettingsGroup = ({children, title}: SettingsGroupProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({locale}) => {
-    const messages = (await import(`../../../languages_test/${locale}.json`)).default;
+    const messages = (await import(`../../../languages/${locale}.json`)).default;
     return {
         props: {
             messages

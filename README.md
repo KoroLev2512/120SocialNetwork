@@ -2,7 +2,7 @@
 
 #### This project is intended for creative people who want to find new acquaintances and monetize their creativity. With this project people can post directly in the app, share your creativity, and earn $Block tokens!
 
-Look at the [NextJS documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack.
+Look at the [Next.js documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack.
 
 ## Setup
 

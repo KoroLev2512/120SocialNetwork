@@ -54,7 +54,7 @@ export const NavigationBar = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     const data = await fetchPosts();
-    const messages = (await import(`../../../languages_test/${locale}.json`)).default;
+    const messages = (await import(`../../../languages/${locale}.json`)).default;
     return {
         props: {
             ...data,
