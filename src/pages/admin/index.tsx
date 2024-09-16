@@ -7,7 +7,7 @@ import {PostsProps} from "@/shared/api/posts/types";
 export default function Index({posts, error}: PostsProps) {
     return (
         <main
-            className="bg-app_gray_light-100 flex flex-col gap-y-[18px] w-full items-center pb-24 px-6 pt-4">
+            className="flex flex-col gap-y-[18px] w-full items-center pb-24 px-6 pt-4">
             <Posts posts={posts} error={error}/>
         </main>
     );

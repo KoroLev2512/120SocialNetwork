@@ -1,7 +1,7 @@
 import {Dialog, DialogContent, DialogTrigger} from "@/shared/ui/dialog";
 import {useRouter} from "next/router";
 import {RadioGroup, RadioGroupItem} from "@/shared/ui/radio-group";
-import {SettingsGroup} from "@/pages/settings/index";
+import {SettingsGroup} from "@/pages/settings";
 import {useTranslations} from "next-intl";
 import {GetStaticPropsContext} from "next";
 import axios from "axios";
@@ -9,7 +9,7 @@ import {useState} from "react";
 import Action from "@/shared/ui/action";
 
 export default function LanguagePopup() {
-    const router= useRouter();
+    const router = useRouter();
     const {locale} = router;
     const [actualUserId, setActualUserId] = useState<number>();
     const user = window.Telegram.WebApp.initDataUnsafe?.user;
@@ -35,13 +35,12 @@ export default function LanguagePopup() {
     const changeLanguage = async (newLocale: string) => {
         try {
             const language = newLocale;
-
             await axios.post('https://120-server.vercel.app/api/user/update', {
                 user_id: actualUserId,
                 language: language
             });
 
-            router.push(router.pathname, router.asPath, {locale: newLocale});
+            await router.push(router.pathname, router.asPath, {locale: newLocale});
             console.log(`Successfully changed users language to ${newLocale}`)
         } catch (error) {
             console.error(`Caught an error while trying to change language to ${newLocale}`, error);

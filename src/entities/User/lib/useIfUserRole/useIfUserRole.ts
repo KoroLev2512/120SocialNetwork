@@ -1,3 +1,5 @@
+// TODO: Refactor this file to use store
+
 // import { ROLES } from "@/entities/User/types/userState";
 // import { isEmpty, isNull } from "lodash";
 // import { useUserStore } from "@/entities/User/model/slice/userStore";
