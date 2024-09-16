@@ -1,7 +1,6 @@
 import { Button } from "@/shared/ui/button";
 import BackButton from "@/shared/ui/backbutton";
 import { useRouter } from "next/router";
-import { Post } from "@/shared/api/posts/types";
 import ComingSoon from "@/widgets/ComingSoon";
 import { GetStaticPropsContext } from "next";
 
@@ -9,6 +8,7 @@ import { GetStaticPropsContext } from "next";
 // import { GetAllPostsByUser } from "@/shared/api/posts/getAllByUser";
 // import { useState, useEffect } from "react";
 // import axios from "axios";
+// import { Post } from "@/shared/api/posts/types";
 
 //type PostsProps = Post[];
 
