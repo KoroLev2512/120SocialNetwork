@@ -20,7 +20,7 @@ type PostsProps = Post[];
 export default function Profile() {
   const [photoURL, setPhotoURL] = useState<string | null>(null);
   const [actualUserId, setActualUserId] = useState<number>();
-  //const [wallet, setWallet] = useState<string>();
+  const [wallet, setWallet] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(true);
   const [posts, setPosts] = useState<PostsProps>([]);
   const user = window.Telegram.WebApp.initDataUnsafe?.user;
