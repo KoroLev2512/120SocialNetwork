@@ -13,11 +13,13 @@ export default function Index({posts, error}: PostsProps) {
     );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({locale}) => {
     const data = await fetchPosts();
+    const messages = (await import(`../../../languages/${locale}.json`)).default;
     return {
         props: {
             ...data,
+            messages,
         }
     };
 };
