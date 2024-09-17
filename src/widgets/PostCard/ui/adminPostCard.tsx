@@ -84,6 +84,8 @@ const AdminPostCard: React.FC<postCardProps> = ({
                 src={postsImage}
                 className="w-full aspect-square rounded-b-[14px]"
                 alt={'post'}
+                width={512}
+                height={512}
             />
         </div>
     );
