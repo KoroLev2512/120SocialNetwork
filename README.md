@@ -1,3 +1,4 @@
+![Image alt](https://github.com/120-block/120SocialNetwork/blob/dev/public/Frame%20120block.png)
 # 120Block: a new look at street culture
 
 #### This project is intended for creative people who want to find new acquaintances and monetize their creativity. With this project people can post directly in the app, share your creativity, and earn $Block tokens!
@@ -62,14 +63,14 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Interface Components
 
-– Carousel on start page  
-– Menubar   
-– React Hook Form for adding posts  
-– Accordion     
-– Avatar    
-– Alerts    
-– Switch button for dark mode   
-– Modal window for change language
+- Carousel on start page  
+- Menubar   
+- React Hook Form for adding posts  
+- Accordion     
+- Avatar    
+- Alerts    
+- Switch button for dark mode   
+- Modal window for change language
 
 ## Status
 
