@@ -59,7 +59,7 @@ const BlockIcon = ({className}: { className?: string }) => {
 export async function getStaticProps({locale}: GetStaticPropsContext) {
     return {
         props: {
-            messages: (await import(`../../../languages_test/${locale}.json`)).default
+            messages: (await import(`../../../languages/${locale}.json`)).default
         }
     };
 }

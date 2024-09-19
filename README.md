@@ -1,10 +1,9 @@
+![Image alt](https://github.com/120-block/120SocialNetwork/blob/dev/public/Frame%20120block.png)
 # 120Block: a new look at street culture
 
-This project is intended for creative people who want to find new acquaintances and monetize their creativity.
-With this project people can post directly in the app, share your creativity, and earn $Block tokens!
+#### This project is intended for creative people who want to find new acquaintances and monetize their creativity. With this project people can post directly in the app, share your creativity, and earn $Block tokens!
 
-
-Look at the [NextJS documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack and [FSD documentation](https://feature-sliced.design/docs) to learn about architectural methodology.
+Look at the [Next.js documentation](https://nextjs.org/docs) and [React documentation](https://nextjs.org/docs) to learn more info about stack.
 
 ## Setup
 
@@ -39,12 +38,15 @@ We use [ngrok](https://ngrok.com/) to test the application in Telegram. To do th
 ngrok http --domain=ant-logical-initially.ngrok-free.app 3002
 ```
 
-You can create a bot using BotFather or use our test on @DeployServerMiniAppBot
+You can start editing the page by modifying `src/pages/index.tsx`. The page auto-updates as you edit the file.
 
 
 Check out the [deploying documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more information.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+
+##### You can create a bot using BotFather or use our test on @DeployServerMiniAppBot
 
 ## Pages
 
@@ -61,14 +63,14 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Interface Components
 
-– Carousel on start page  
-– Menubar   
-– React Hook Form for adding posts  
-– Accordion     
-– Avatar    
-– Alerts    
-– Switch button for dark mode   
-– Modal window for change language
+- Carousel on start page  
+- Menubar   
+- React Hook Form for adding posts  
+- Accordion     
+- Avatar    
+- Alerts    
+- Switch button for dark mode   
+- Modal window for change language
 
 ## Status
 

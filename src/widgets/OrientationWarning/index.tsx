@@ -8,19 +8,16 @@ const OrientationWarning = () => {
   const [isLandscape, setLandscape] = useState(false);
 
   useEffect(() => {
-    const OrientationChange = () => {
-      if (window.innerWidth > window.innerHeight) {
-        setLandscape(true);
-      } else {
-        setLandscape(false);
-      }
+    const orientationChange = () => {
+      const angle = window.screen.orientation?.angle || window.screen.orientation;
+      setLandscape(angle === 90 || angle === -90);
     };
 
-    window.addEventListener("resize", OrientationChange);
-    OrientationChange();
+    window.addEventListener("orientationchange", orientationChange);
+    orientationChange();
 
     return () => {
-      window.removeEventListener("resize", OrientationChange);
+      window.removeEventListener("orientationchange", orientationChange);
     };
   }, []);
 
@@ -44,7 +41,7 @@ const OrientationWarning = () => {
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
-      messages: (await import(`../../../languages_test/${locale}.json`))
+      messages: (await import(`../../../languages/${locale}.json`))
         .default,
     },
   };

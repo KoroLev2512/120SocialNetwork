@@ -2,7 +2,8 @@ import React from 'react';
 import axios from "axios";
 import { AvatarImage, Avatar, AvatarFallback } from "@/shared/ui/avatar";
 import { AvatarIcon } from "@radix-ui/react-icons";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import { HandThumbDownIcon, HandThumbUpIcon } from '@heroicons/react/20/solid';
 
 type postCardProps = {
     post_id: number;
@@ -70,19 +71,21 @@ const AdminPostCard: React.FC<postCardProps> = ({
                         {postsDescription}
                     </p>
                 </div>
-                <div className="ml-auto pr-[12px]">
-                    <button className="mr-2 text-green-500" onClick={handleAccept}>
-                        accept
+                <div className="ml-auto pr-[12px] inline-flex gap-x-2.5 items-center">
+                    <button className="bg-[#21c004]/15 border border-[#21c004] text-[#21c004] rounded-[8px] px-2.5 py-1 text-xs leading-[15px] font-medium inline-flex items-center gap-x-1.5 active:bg-[#21c004]/25" onClick={handleAccept} >
+                        Accept <HandThumbUpIcon className='size-3' />
                     </button>
-                    <button className="text-red-500" onClick={handleReject}>
-                        reject
+                    <button className="bg-[#F55858]/15 border border-[#F55858] text-[#F55858] rounded-[8px] px-2.5 py-1 text-xs leading-[15px] font-medium inline-flex items-center gap-x-1.5 active:bg-[#F55858]/25" onClick={handleReject} >
+                        Reject <HandThumbDownIcon className='size-3' />
                     </button>
                 </div>
             </div>
-            <img
+            <Image
                 src={postsImage}
                 className="w-full aspect-square rounded-b-[14px]"
                 alt={'post'}
+                width={512}
+                height={512}
             />
         </div>
     );

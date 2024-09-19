@@ -1,7 +1,6 @@
 import { Button } from "@/shared/ui/button";
 import BackButton from "@/shared/ui/backbutton";
 import { useRouter } from "next/router";
-import { Post } from "@/shared/api/posts/types";
 import ComingSoon from "@/widgets/ComingSoon";
 import { GetStaticPropsContext } from "next";
 
@@ -9,8 +8,9 @@ import { GetStaticPropsContext } from "next";
 // import { GetAllPostsByUser } from "@/shared/api/posts/getAllByUser";
 // import { useState, useEffect } from "react";
 // import axios from "axios";
+// import { Post } from "@/shared/api/posts/types";
 
-type PostsProps = Post[];
+//type PostsProps = Post[];
 
 export default function ProfileWallet() {
 //   const [actualUserId, setActualUserId] = useState<number>();
@@ -108,7 +108,7 @@ export default function ProfileWallet() {
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   return {
       props: {
-          messages: (await import(`../../../../languages_test/${locale}.json`)).default
+          messages: (await import(`../../../../languages/${locale}.json`)).default
       }
   };
 }

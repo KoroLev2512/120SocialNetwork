@@ -7,13 +7,13 @@ type postCardProps = {
   usersAvatar: string | null;
   postsDescription: string;
   postsImage: string | StaticImageData | null;
-  postsAwardInBP: number;
+  //postsAwardInBP: number;
 };
 
 const PostCard = ({
   user,
   usersAvatar,
-  postsAwardInBP,
+  //postsAwardInBP,
   postsDescription,
   postsImage,
 }: postCardProps) => {
@@ -41,7 +41,7 @@ const PostCard = ({
           alt="test"
           width={512}
           height={512}
-          src={postsImage}
+          src={"/"+postsImage}
           className="w-full aspect-square rounded-b-[14px] select-none pointer-events-none"
         />
       )}

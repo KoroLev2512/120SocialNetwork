@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl, FormField,
-  FormItem, FormMessage
+  FormItem
 } from "@/shared/ui/form";
 import { useForm } from "react-hook-form";
 import { addPost } from "@/shared/api/posts/add";
@@ -183,7 +183,7 @@ export default function WelcomePage() {
 export async function getStaticProps({locale}: GetStaticPropsContext) {
     return {
         props: {
-            messages: (await import(`../../../../languages_test/${locale}.json`)).default
+            messages: (await import(`../../../../languages/${locale}.json`)).default
         }
     };
 }
