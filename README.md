@@ -78,7 +78,7 @@ At the moment, the project is under development. We are testing the MVP version 
 
 ## Contacts
 
-To contact about the project, you can write to [120Block team support](https://t.me/block_120sup).
+To contact about the project, you can write to [me](https://t.me/korolev_2512).
 
 ## Gratitude
 
